@@ -1,0 +1,25 @@
+.scroll-expand {
+  width: 100%;
+  padding: 80px 120px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.scroll-expand__heading {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+  margin-bottom: 48px;
+}
+
+@media (max-width: 810px) {
+  .scroll-expand {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-expand {
+    padding: 48px 20px;
+  }
+}

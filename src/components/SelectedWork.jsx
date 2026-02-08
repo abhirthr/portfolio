@@ -1,0 +1,151 @@
+import ScrollExpand from './ui/scroll-expand'
+import './SelectedWork.css'
+
+const publications = [
+  {
+    type: 'Patent',
+    title: 'A System and Method for Forecasting Solar Photovoltaic Power Using Machine Learning',
+    venue: 'iHUB DivyaSampark, IIT Roorkee',
+    detail: 'Published — Application No. 202311059664',
+    link: null,
+  },
+  {
+    type: 'Journal',
+    title: 'Day ahead solar forecast using long short term memory network augmented with Fast Fourier transform-assisted decomposition technique',
+    venue: 'Renewable Energy 247 (2025): 123021',
+    detail: null,
+    link: 'https://doi.org/10.1016/j.renene.2025.123021',
+  },
+  {
+    type: 'Journal',
+    title: 'Energy, exergy and performance analysis of a 380 kWP roof-top PV plant assisted with data-driven models for energy generation',
+    venue: 'Journal of Thermal Engineering 10.5 (2024): 1164–1183',
+    detail: null,
+    link: null,
+  },
+  {
+    type: 'Conference',
+    title: 'An IoT-Based Automatic Light Control System for Smart Buildings',
+    venue: 'International Conference on Signal, Machines, Automation, and Algorithm — Springer Nature Singapore, 2023',
+    detail: null,
+    link: 'https://doi.org/10.1007/978-981-97-6349-842',
+  },
+  {
+    type: 'Book Chapter',
+    title: 'Configurations of Converters applied to Electric Vehicles with comprehensive control strategies and optimization',
+    venue: 'Power Electronics for Electric Vehicles and Energy Storage — CRC Press, Taylor & Francis Group',
+    detail: 'Accepted for publication',
+    link: null,
+  },
+  {
+    type: 'Conference',
+    title: 'Building Energy Management Through Load Control Using Internet of Things',
+    venue: 'Innovations in Power and Advanced Computing Technologies (i-PACT), 2021, pp. 1–6',
+    detail: null,
+    link: 'https://doi.org/10.1109/i-PACT52855.2021.9696596',
+  },
+]
+
+const projects = [
+  {
+    label: 'M.Tech Thesis',
+    title: 'Yield Modelling and Data-Driven Feasibility Analysis of Solar PV and Solar Thermal Systems',
+    description:
+      'Developed a data-driven model for solar PV energy yield forecasting with integrated optimization to maximize performance under varying climates. Enabled site-specific feasibility and parameter tuning for utility-scale and distributed installations using MATLAB and statistical techniques.',
+  },
+  {
+    label: 'B.Tech Project',
+    title: 'Enhancement of Voltage Quality in Isolated Power Systems',
+    description:
+      'Designed a battery-backed Series Compensator in MATLAB/Simulink to reduce Total Harmonic Distortion (THD) and improve voltage stability by actively compensating faults in isolated grids.',
+  },
+  {
+    label: 'Industrial Training',
+    title: 'Uttar Pradesh Power Corporation Limited (UPPCL), Lucknow',
+    description:
+      'Gained practical experience at a 132 kV substation, working with transformers, switchgear, lightning arresters, CT/PT devices, and grid protection protocols during live operations.',
+  },
+  {
+    label: 'Workshop',
+    title: 'Industrial Automation — Sofcon, SRMCEM, Lucknow',
+    description:
+      'Hands-on training on PLC programming, HMI, SCADA, relay logic, and sensor integration for automation and process control.',
+  },
+  {
+    label: 'Summer Training',
+    title: 'UNICON PLC Automation',
+    description:
+      'Completed MATLAB-based training focused on control system fundamentals, dynamic system modeling, and signal processing applications relevant to power systems.',
+  },
+]
+
+const courses = [
+  { title: 'Google Data Analytics Certificate', provider: 'Google / Coursera' },
+  { title: 'Programming for Everybody (Getting Started with Python)', provider: 'University of Michigan / Coursera' },
+  { title: 'Python Data Structures', provider: 'University of Michigan / Coursera' },
+  { title: 'Intro to Machine Learning & Intermediate Machine Learning', provider: 'Kaggle' },
+  { title: 'Neural Networks and Deep Learning', provider: 'DeepLearning.AI / Coursera' },
+  { title: 'MATLAB and Simulink Onramp', provider: 'MathWorks' },
+  { title: 'Machine Learning with MATLAB', provider: 'MathWorks' },
+  { title: 'Solving Ordinary Differential Equations with MATLAB', provider: 'MathWorks' },
+  { title: 'Machine Learning and Data Science Bootcamp', provider: 'Udemy' },
+  { title: 'Machine Learning', provider: 'Andrew Ng / Stanford University' },
+]
+
+function SelectedWork() {
+  return (
+    <section id="work" className="selected-work">
+      <div className="selected-work__panels">
+        <ScrollExpand
+          title="Publications"
+                  >
+          <ol className="pub-list">
+            {publications.map((pub, i) => (
+              <li key={i} className="pub-item">
+                <span className="pub-type">{pub.type}</span>
+                <p className="pub-title">
+                  {pub.link ? (
+                    <a href={pub.link} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+                  ) : (
+                    pub.title
+                  )}
+                </p>
+                <p className="pub-venue">{pub.venue}</p>
+                {pub.detail && <p className="pub-detail">{pub.detail}</p>}
+              </li>
+            ))}
+          </ol>
+        </ScrollExpand>
+
+        <ScrollExpand
+          title="Projects & Training"
+                  >
+          <div className="project-list">
+            {projects.map((p, i) => (
+              <div key={i} className="project-item">
+                <span className="project-label">{p.label}</span>
+                <h4 className="project-title">{p.title}</h4>
+                <p className="project-desc">{p.description}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollExpand>
+
+        <ScrollExpand
+          title="Courses Certifications"
+                  >
+          <ul className="course-list">
+            {courses.map((c, i) => (
+              <li key={i} className="course-item">
+                <span className="course-title">{c.title}</span>
+                <span className="course-provider">{c.provider}</span>
+              </li>
+            ))}
+          </ul>
+        </ScrollExpand>
+      </div>
+    </section>
+  )
+}
+
+export default SelectedWork
