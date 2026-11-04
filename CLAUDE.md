@@ -57,6 +57,7 @@ src/lib/useLiveResults.js          fetch live results JSON, fall back to bundled
 src/data/irf-results.json          snapshot of the app's model_results.json
 public/                            CV pdf, favicons, og-image.png (home), og/<slug>.png (case-study share cards), robots.txt, sitemap.xml,
                                    images/{research,field,app}, patent-certificate.webp, avatar.webp
+                                   (field/ also holds the 3 "Out in the field" photos, EXIF stripped)
 ```
 
 ## Conventions
@@ -115,4 +116,7 @@ case study pages (India Renewables Forecast; FFT-LSTM paper) with their own shar
 - Next options offered: optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF (user to supply): current CV has
   no website link, lists the Gmail address, and has a missing space before the first DOI
   ("literature.https://") and a garbled Springer DOI ("...6349-84 2").
+- Book chapter (CRC, "Configurations of Converters…") is published; year and DOI not yet
+  supplied, so it shows without either. Not found on Crossref under the 2023 CRC book.
+- Confirm the ML-Sol booth photo is from the 21 Jan 2025 workshop (caption assumes it).
 - User to add https://abhijeetrathore.in to LinkedIn, Google Scholar, CV and GitHub.
