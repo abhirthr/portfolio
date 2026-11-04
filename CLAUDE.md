@@ -103,18 +103,27 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
   backend isn't reachable from the cloud sandbox, so forecast panels can't be captured here.
 - Vercel returns a TLS reset for a domain not yet added to the project.
 
-## Status (2026-11-04)
-Done and live: featured app section with screenshots, research highlight (paper + patent),
-field work section, timeline + toolkit, honors, compact courses, contact block, CV download,
-case study pages (India Renewables Forecast; FFT-LSTM paper) with their own share cards, custom domain, `app.` subdomain for the forecasting app, email forwarding, Search Console + sitemap, analytics.
+## Status (2026-11-04, end of session)
+Done and live: hero (headline, proof chips, live sun chip, playable name canvas), desktop nav
+with active section + scroll progress, featured app section, research highlight (paper + patent,
+count-up stats), field work section with "Out in the field" photos, two-column experience +
+toolkit, publications with years and DOI/book links, honors, courses (6 + show all), contact,
+CV download, case study pages (India Renewables Forecast; FFT-LSTM paper) with their own share
+cards, custom domain, `app.` subdomain, email forwarding, Search Console + sitemap, analytics.
+Working branch and `main` are in sync.
 
 ## Open items
 - The case study depends on the field names of the app's `public/data/model_results.json`
   (ml-demo1 Phase 1.5b/1.5c and Phase 2 merged to its `main` on 2026-11-04, ml-demo1 PR #13).
 - ML-Sol case study dropped (2026-11-04): its model is the paper's; the engineering side is
   already covered by the home Field Work section.
-- Next options offered: optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF (user to supply): current CV has
-  no website link, lists the Gmail address, and has a missing space before the first DOI
-  ("literature.https://") and a garbled Springer DOI ("...6349-84 2").
+- Refresh the CV PDF (user to supply): current CV has no website link, lists the Gmail
+  address, has a missing space before the first DOI ("literature.https://"), a garbled
+  Springer DOI ("...6349-84 2"; correct is 10.1007/978-981-97-6349-8_42), and still calls the
+  book chapter "accepted" (it is Chapter 13, CRC Press, 2023). Check new CV for a phone number.
+- Repo to be made private by the user later; afterwards push a test change and confirm Vercel
+  still deploys (commits must be authored as the user).
+- Optional: `api.abhijeetrathore.in` for the Render API. User declined more sections/notes for
+  now (3 papers in the pipeline); add them when published.
 - Confirm the ML-Sol booth photo is from the 21 Jan 2025 workshop (caption assumes it).
 - User to add https://abhijeetrathore.in to LinkedIn, Google Scholar, CV and GitHub.
