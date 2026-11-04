@@ -30,6 +30,9 @@ npx vite preview               # serves dist/, incl. /projects/... pages
 ```
 Deploy: commit on the working branch, push it, then fast-forward `main`
 (`git push origin <branch>:main`) once the user says to put it live.
+Commit author: always `Abhijeet Rathore <abhijeetrthr@gmail.com>` (set `git config user.name/user.email`
+in each new session). Needed once the repo goes private: Vercel Hobby blocks deploys of commits
+by other authors. User plans to make the repo private later.
 
 ## Layout
 ```
