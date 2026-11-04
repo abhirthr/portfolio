@@ -18,6 +18,21 @@
   gap: 24px;
 }
 
+.hero__intro {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-accent);
+  flex-shrink: 0;
+}
+
 .hero__subtitle {
   font-size: 14px;
   font-weight: 400;
@@ -75,15 +90,22 @@
 }
 
 @media (max-width: 810px) {
+  .hero__intro {
+    padding: 0 40px;
+  }
+
   .hero__subtitle {
     font-size: 13px;
-    padding: 0 40px;
+    text-align: left;
   }
 }
 
 @media (max-width: 480px) {
+  .hero__intro {
+    padding: 0 20px;
+  }
+
   .hero__subtitle {
     font-size: 12px;
-    padding: 0 20px;
   }
 }

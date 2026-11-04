@@ -8,9 +8,12 @@ function Hero() {
       <AnimatedHeroSection />
 
       <div className="hero__bottom">
-        <p className="hero__subtitle">
-          PhD Researcher at IIT Roorkee — Machine Learning for Renewable Energy
-        </p>
+        <div className="hero__intro">
+          <img className="hero__avatar" src="/images/avatar.webp" alt="Abhijeet Rathore" width="44" height="44" />
+          <p className="hero__subtitle">
+            PhD Researcher at IIT Roorkee — Machine Learning for Renewable Energy
+          </p>
+        </div>
         <div className="hero__cta">
           {CV_URL && (
             <a className="hero__btn hero__btn--primary" href={CV_URL} download>

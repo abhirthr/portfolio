@@ -115,41 +115,54 @@
   max-width: 760px;
 }
 
-/* Courses list */
+/* Courses grid */
 .course-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .course-item {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  gap: 10px;
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  transition: border-color 0.2s ease;
 }
 
-.course-item:first-child {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+.course-item:hover {
+  border-color: var(--color-accent);
 }
 
 .course-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--color-black);
   line-height: 1.4;
 }
 
 .course-provider {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.4);
-  white-space: nowrap;
-  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--color-accent-ink);
+}
+
+@media (max-width: 1024px) {
+  .course-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .course-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 810px) {
@@ -157,14 +170,6 @@
     padding: 0 40px;
   }
 
-  .course-item {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .course-provider {
-    white-space: normal;
-  }
 }
 
 @media (max-width: 480px) {

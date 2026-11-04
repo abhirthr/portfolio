@@ -1,16 +1,43 @@
-# React + Vite
+# Abhijeet Rathore — portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site of Abhijeet Rathore, PhD researcher at IIT Roorkee working on machine
+learning for solar and wind forecasting.
 
-Currently, two official plugins are available:
+**Live:** https://portfolio-beta-lovat-12.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What's on the page
 
-## React Compiler
+| Section | Component |
+| --- | --- |
+| Hero (pixel-name animation, CV and contact buttons) | `src/components/Hero.jsx` |
+| Featured project: India Renewables Forecast | `src/components/FeaturedProject.jsx` |
+| Experience timeline and toolkit | `src/components/WorkedWith.jsx` |
+| Research highlight: FFT-assisted LSTM paper and granted patent | `src/components/ResearchHighlight.jsx` |
+| Research Engineer work: ML-Sol, six weather stations, 2023 poster | `src/components/FieldWork.jsx` |
+| Publications, research projects, honors, courses | `src/components/SelectedWork.jsx` |
+| About and contact | `src/components/About.jsx` |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Shared pieces live in `src/components/ui/` (particle background, image lightbox,
+section wrapper). Site-wide settings such as the CV path and contact email are in
+`src/lib/site.js`; colour tokens (including the solar-amber accent) are in
+`src/index.css`.
 
-## Expanding the ESLint configuration
+## Develop
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run lint
+npm run build    # output in dist/
+```
+
+Built with React 19, Vite and framer-motion. Deployed on Vercel from `main`.
+
+## Assets
+
+- `public/images/research/`: figures from Rathore et al., *Renewable Energy* 247 (2025)
+  123021, © Elsevier, reproduced by the author. The paper itself is linked by DOI, not hosted.
+- `public/images/field/`: ML-Sol screenshots and the Research Scholars' Day 2023 poster.
+- `public/Abhijeet_Rathore_CV.pdf`: the CV behind the Download CV button. To update it,
+  replace the file (keep the name) or change `CV_URL` in `src/lib/site.js`.
+- `public/og-image.png`: the preview card shown when the link is shared.

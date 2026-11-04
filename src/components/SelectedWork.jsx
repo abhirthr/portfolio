@@ -148,7 +148,7 @@ function SelectedWork() {
           </ul>
         </ScrollExpand>
 
-        <ScrollExpand title="Honors & Awards">
+        <ScrollExpand id="honors" title="Honors & Awards">
           <ul className="honor-list">
             {honors.map((h) => (
               <li key={h.title} className={`honor-item${h.gold ? ' honor-item--gold' : ''}`}>
