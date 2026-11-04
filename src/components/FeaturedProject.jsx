@@ -86,14 +86,6 @@ function FeaturedProject() {
               >
                 Open live app <span aria-hidden="true">↗</span>
               </a>
-              <a
-                className="featured__btn"
-                href="https://github.com/abhirthr/ml-demo1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View code <span aria-hidden="true">↗</span>
-              </a>
             </div>
           </Motion.div>
 
