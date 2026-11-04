@@ -41,8 +41,8 @@ const publications = [
     type: 'Book Chapter',
     title: 'Configurations of Converters applied to Electric Vehicles with comprehensive control strategies and optimization',
     venue: 'Power Electronics for Electric Vehicles and Energy Storage — CRC Press, Taylor & Francis Group',
-    detail: 'Accepted for publication',
-    year: 'In press',
+    detail: null,
+    year: null, // published; year and DOI to come from the author
     link: null,
   },
   {
@@ -126,7 +126,7 @@ function SelectedWork() {
             {publications.map((pub) => (
               <li key={pub.title} className="pub-item">
                 <div className="pub-meta">
-                  <span className="pub-year">{pub.year}</span>
+                  {pub.year && <span className="pub-year">{pub.year}</span>}
                   <span className="pub-type">{pub.type}</span>
                 </div>
                 <div className="pub-body">
