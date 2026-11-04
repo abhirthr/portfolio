@@ -81,7 +81,7 @@ function FeaturedProject() {
             <div className="featured__actions">
               <a
                 className="featured__btn featured__btn--primary"
-                href="https://solar-forecast.vercel.app"
+                href="https://app.abhijeetrathore.in"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -148,9 +148,9 @@ function FeaturedProject() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <a href="https://solar-forecast.vercel.app" target="_blank" rel="noopener noreferrer" className="featured__shot-link">
+          <a href="https://app.abhijeetrathore.in" target="_blank" rel="noopener noreferrer" className="featured__shot-link">
             <BrowserFrame
-              url="solar-forecast.vercel.app"
+              url="app.abhijeetrathore.in"
               images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
               ratio={1440 / 900}
               label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, and the results page"

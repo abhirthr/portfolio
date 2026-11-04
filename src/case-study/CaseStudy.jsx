@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { BaselineBars, MonthlyChart, SiteSkill, FeatureImportance } from './charts'
 import './CaseStudy.css'
 
-const APP_URL = 'https://solar-forecast.vercel.app'
+const APP_URL = 'https://app.abhijeetrathore.in'
 const RESULTS_URL = `${APP_URL}/data/model_results.json`
 
 const reveal = {
@@ -194,7 +194,7 @@ function CaseStudy() {
         <Motion.figure className="cs-shot" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
           <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="cs-shot__link">
             <BrowserFrame
-              url="solar-forecast.vercel.app"
+              url="app.abhijeetrathore.in"
               images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
               ratio={1440 / 900}
               label="Screenshots of the live app: the India map and the results page"

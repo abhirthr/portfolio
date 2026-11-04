@@ -12,6 +12,9 @@ end of each session.
 - **DNS (GoDaddy):** A `@` 76.76.21.21 · CNAME `www` cname.vercel-dns.com (Vercel suggests
   newer 216.198.79.1 / project CNAME; old values keep working) · MX `@` mx1/mx2.improvmx.com
   (10/20) · TXT `@` SPF for ImprovMX · TXT `@` google-site-verification (keep it).
+- **App:** https://app.abhijeetrathore.in (the `ml-demo1` Vercel project; CNAME `app` in GoDaddy).
+  The old `solar-forecast.vercel.app` 308-redirects to it. No `www.app.` (not needed). The API is
+  still on `india-renewables-api.onrender.com`; `api.` subdomain is optional, not set up.
 - **Email:** `hello@abhijeetrathore.in` forwards to Gmail via ImprovMX (receive only; replies
   go from Gmail). Site reads it from `CONTACT_EMAIL` in `src/lib/site.js`.
 - **Search:** Google Search Console Domain property verified (via GoDaddy Domain Connect);
@@ -64,7 +67,7 @@ public/                            CV pdf, favicons, og-image.png, robots.txt, s
   as misleading; on 2026-11-04 the user chose to leave the counter out entirely. Visits are
   tracked privately in Vercel Web Analytics. The old countapi.xyz counter (dead service) is gone.
 - `abhirthr/ml-demo1` (the forecasting app) is private: never link its code. Its public
-  results file `https://solar-forecast.vercel.app/data/model_results.json` (CORS *) is fine.
+  results file `https://app.abhijeetrathore.in/data/model_results.json` (CORS *) is fine.
 - Renewable Energy paper is not open access: link the DOI, host figures only, with the
   Elsevier credit line. Never host the PDF.
 - Unpublished/ongoing PhD work stays off the site.
@@ -86,13 +89,12 @@ public/                            CV pdf, favicons, og-image.png, robots.txt, s
 ## Status (2026-11-04)
 Done and live: featured app section with screenshots, research highlight (paper + patent),
 field work section, timeline + toolkit, honors, compact courses, contact block, CV download,
-case study page, custom domain, email forwarding, Search Console + sitemap, analytics.
+case study page, custom domain, `app.` subdomain for the forecasting app, email forwarding, Search Console + sitemap, analytics.
 
 ## Open items
-- The app repo's `ROADMAP.md` (abhirthr/ml-demo1, branch `claude/great-lovelace-7f6har`, not yet
-  merged) marks Phase 2 done; the case study depends on the field names of its
-  `public/data/model_results.json`.
+- The case study depends on the field names of the app's `public/data/model_results.json`
+  (ml-demo1 Phase 1.5b/1.5c and Phase 2 merged to its `main` on 2026-11-04, ml-demo1 PR #13).
 - Next options offered: second case study (FFT-LSTM paper, or ML-Sol + stations);
-  `app.abhijeetrathore.in` for the forecasting app; refresh the CV PDF with the new domain
+  optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF with the new domain
   and `hello@` email (user to supply).
 - User to add https://abhijeetrathore.in to LinkedIn, Google Scholar, CV and GitHub.
