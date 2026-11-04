@@ -43,6 +43,30 @@ const reveal = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
+const PHOTOS = [
+  {
+    src: '/images/field/poster-day-2023.webp',
+    alt: 'Abhijeet Rathore standing beside the solar PV forecasting poster',
+    caption: 'Presenting the six-station forecasting project at Research Scholars’ Day, IIT Roorkee, 2023',
+    shape: 'tall',
+    focus: '50% 40%',
+  },
+  {
+    src: '/images/field/booth-workshop-2025.webp',
+    alt: 'Abhijeet Rathore at the Machine Learning Based Solar PV Forecasting booth with the ML-Sol banner',
+    caption: 'Demonstrating ML-Sol at the Workshop on Sustainable Energy Innovations, IIT Roorkee Greater Noida, Jan 2025',
+    shape: 'tall',
+    focus: '50% 45%',
+  },
+  {
+    src: '/images/field/monitoring-wall.webp',
+    alt: 'Abhijeet Rathore explaining the station monitoring displays to a group of visitors',
+    caption: 'Walking visitors through the live station-monitoring wall',
+    shape: 'wide',
+    focus: '40% 50%',
+  },
+]
+
 function FieldWork() {
   const [open, setOpen] = useState(null)
   const closeLightbox = () => setOpen(null)
@@ -175,6 +199,24 @@ function FieldWork() {
           </button>
         </div>
       </Motion.article>
+
+      <Motion.div
+        className="field-photos"
+        variants={reveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <h3 className="field-photos__title">Out in the field</h3>
+        <div className="field-photos__grid">
+          {PHOTOS.map((p) => (
+            <button key={p.src} className={`field-photo field-photo--${p.shape}`} onClick={() => setOpen(p)}>
+              <img src={p.src} alt={p.alt} loading="lazy" style={{ objectPosition: p.focus }} />
+              <span className="field-photo__caption">{p.caption}</span>
+            </button>
+          ))}
+        </div>
+      </Motion.div>
 
       <Lightbox item={open} onClose={closeLightbox} />
     </section>
