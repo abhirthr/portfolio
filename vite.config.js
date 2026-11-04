@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         irf: resolve(import.meta.dirname, 'projects/india-renewables-forecast/index.html'),
+        fft: resolve(import.meta.dirname, 'projects/fft-lstm-solar-forecast/index.html'),
       },
     },
   },

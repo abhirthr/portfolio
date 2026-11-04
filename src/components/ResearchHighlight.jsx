@@ -22,7 +22,7 @@ const models = [
 const sites = [
   { name: 'Jodhpur', zone: 'Hot-dry', am: 91.22, nam: 69.22, ours: 67.52 },
   { name: 'Kamuthi', zone: 'Warm-humid', am: 121.26, nam: 71.5, ours: 51.89 },
-  { name: 'Chikkoppa', zone: 'Temperate', am: 107.47, nam: 87.36, ours: 70.12 },
+  { name: 'Chikkoppa', zone: 'Warm-humid', am: 107.47, nam: 87.36, ours: 70.12 },
   { name: 'Charanka', zone: 'Hot-dry', am: 88.49, nam: 63.87, ours: 62.38 },
 ]
 const RMSE_AXIS = 130
@@ -31,7 +31,7 @@ const stats = [
   { value: '62.97', unit: 'W/m²', label: 'mean RMSE across 4 sites (R = 0.972)' },
   { value: '36.9%', unit: '', label: 'lower RMSE than attention-LSTM alone' },
   { value: '13%', unit: '', label: 'lower RMSE than decomposition without FFT' },
-  { value: '2128 s', unit: '', label: 'training vs 5571 s: 5 models instead of 15' },
+  { value: '58.8%', unit: '', label: 'less training time: 876 s vs 2128 s, 5 models instead of 15' },
 ]
 
 const figures = [
@@ -206,6 +206,9 @@ function ResearchHighlight() {
       <div className="research__actions">
         <a className="rh-btn rh-btn--primary" href={DOI} target="_blank" rel="noopener noreferrer">
           Read the paper <span aria-hidden="true">↗</span>
+        </a>
+        <a className="rh-btn" href="/projects/fft-lstm-solar-forecast/">
+          Read the case study <span aria-hidden="true">→</span>
         </a>
       </div>
 

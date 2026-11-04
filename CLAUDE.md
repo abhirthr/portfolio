@@ -35,7 +35,8 @@ Deploy: commit on the working branch, push it, then fast-forward `main`
 ```
 index.html                         home page (meta, OG, canonical, JSON-LD, analytics)
 projects/india-renewables-forecast/index.html   case-study page entry (Vite multi-page)
-vite.config.js                     rollup inputs: main + irf
+projects/fft-lstm-solar-forecast/index.html     FFT-LSTM paper case-study entry
+vite.config.js                     rollup inputs: main + irf + fft
 src/App.jsx                        home section order
 src/components/                    Hero, FeaturedProject, WorkedWith (timeline + toolkit),
                                    ResearchHighlight (FFT-LSTM paper + patent), FieldWork
@@ -43,7 +44,8 @@ src/components/                    Hero, FeaturedProject, WorkedWith (timeline +
                                    projects, honors, courses), About (+ contact), Footer, Navbar, MenuOverlay
 src/components/ui/                 animated-hero-section (pong name canvas), particles,
                                    lightbox, browser-frame, scroll-expand (section wrapper, takes id)
-src/case-study/                    CaseStudy.jsx, charts.jsx, CaseStudy.css, main.jsx
+src/case-study/                    CaseStudy.jsx, charts.jsx, CaseStudy.css, Section.jsx (shared), main.jsx
+src/fft-lstm/                      FFT-LSTM case study: FftLstm.jsx, charts.jsx, data.js (paper tables), FftLstm.css
 src/lib/site.js                    CV_URL, CONTACT_EMAIL
 src/lib/useLiveResults.js          fetch live results JSON, fall back to bundled snapshot
 src/data/irf-results.json          snapshot of the app's model_results.json
@@ -69,7 +71,10 @@ public/                            CV pdf, favicons, og-image.png, robots.txt, s
 - `abhirthr/ml-demo1` (the forecasting app) is private: never link its code. Its public
   results file `https://app.abhijeetrathore.in/data/model_results.json` (CORS *) is fine.
 - Renewable Energy paper is not open access: link the DOI, host figures only, with the
-  Elsevier credit line. Never host the PDF.
+  Elsevier credit line. Never host or commit the PDF (user uploads it per session when needed).
+- Paper training times: use Section 4.3 (876 s ours vs 2128 s N-AM-LSTM, −58.83%). The
+  conclusion's "5571 s vs 2128 s" mixes in N-AM-LSTM's 5571 ms test time. Chikkoppa is
+  warm-humid (Table 1), not temperate.
 - Unpublished/ongoing PhD work stays off the site.
 - CV on the site must not contain a phone number. Old CV with phone was purged from git
   history (force-push, 2026-11-04); GitHub may still cache commit `e8fb134` by SHA.
@@ -89,12 +94,12 @@ public/                            CV pdf, favicons, og-image.png, robots.txt, s
 ## Status (2026-11-04)
 Done and live: featured app section with screenshots, research highlight (paper + patent),
 field work section, timeline + toolkit, honors, compact courses, contact block, CV download,
-case study page, custom domain, `app.` subdomain for the forecasting app, email forwarding, Search Console + sitemap, analytics.
+case study pages (India Renewables Forecast; FFT-LSTM paper), custom domain, `app.` subdomain for the forecasting app, email forwarding, Search Console + sitemap, analytics.
 
 ## Open items
 - The case study depends on the field names of the app's `public/data/model_results.json`
   (ml-demo1 Phase 1.5b/1.5c and Phase 2 merged to its `main` on 2026-11-04, ml-demo1 PR #13).
-- Next options offered: second case study (FFT-LSTM paper, or ML-Sol + stations);
+- Next options offered: third case study (ML-Sol + stations);
   optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF with the new domain
   and `hello@` email (user to supply).
 - User to add https://abhijeetrathore.in to LinkedIn, Google Scholar, CV and GitHub.

@@ -325,6 +325,9 @@
 
 .research__actions {
   margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .rh-btn {
@@ -346,6 +349,16 @@
 .rh-btn--primary:hover {
   transform: translateY(-2px);
   background: #2a2a2a;
+}
+
+.rh-btn:not(.rh-btn--primary) {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #010101;
+}
+
+.rh-btn:not(.rh-btn--primary):hover {
+  transform: translateY(-2px);
+  border-color: #010101;
 }
 
 /* Patent */

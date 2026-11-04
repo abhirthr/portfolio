@@ -1,0 +1,376 @@
+/* FFT-LSTM case study. Builds on case-study/CaseStudy.css (cs- classes). */
+
+.fl-title {
+  font-size: clamp(36px, 5.6vw, 76px);
+  max-width: 16ch;
+}
+
+/* Model colours: greys for baselines, amber for ours */
+.fl-m--rf { background: rgba(255, 255, 255, 0.22); }
+.fl-m--lstm { background: rgba(255, 255, 255, 0.34); }
+.fl-m--am { background: rgba(255, 255, 255, 0.48); }
+.fl-m--nam { background: #6ea8fe; }
+.fl-m--ours { background: var(--color-accent); }
+
+.fl-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.fl-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.fl-tab {
+  padding: 7px 14px;
+  border: 1px solid var(--cs-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cs-text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.fl-tab small {
+  margin-left: 4px;
+  font-size: 11px;
+  color: var(--cs-muted);
+}
+
+.fl-tab:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.fl-tab[aria-selected='true'] {
+  border-color: var(--color-accent);
+  background: rgba(245, 165, 36, 0.12);
+  color: #fff;
+}
+
+/* Grouped bars */
+.fl-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 32px;
+}
+
+.fl-group__name {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.fl-group__name span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--cs-muted);
+}
+
+.fl-group__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fl-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  gap: 10px;
+  align-items: center;
+  outline: none;
+}
+
+.fl-bar__track {
+  height: 12px;
+  border-radius: 0 4px 4px 0;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.fl-bar__fill {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  transition: width 0.5s ease;
+}
+
+.fl-bar__value {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-align: right;
+  color: var(--cs-muted);
+}
+
+.fl-bar.is-best .fl-bar__value {
+  color: #fff;
+  font-weight: 700;
+}
+
+.fl-bar__tip {
+  bottom: calc(100% + 6px);
+  left: 0;
+  display: none;
+}
+
+.fl-bar:hover .fl-bar__tip,
+.fl-bar:focus-visible .fl-bar__tip {
+  display: block;
+}
+
+.fl-bar:focus-visible .fl-bar__track {
+  outline: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.cs-bars__value.fl-wide {
+  min-width: 48px;
+}
+
+.fl-lit .cs-bars__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.fl-lit .cs-bars__label small {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--cs-muted);
+}
+
+.cs-section__body > .cs-chart + .cs-chart,
+.cs-section__body > .cs-chart + .cs-grid-2 {
+  margin-top: 24px;
+}
+
+/* Frequency groups */
+.fl-freq {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.fl-freq__group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--cs-line);
+  border-radius: 12px;
+}
+
+.fl-freq__group:first-child,
+.fl-freq__group:nth-child(2),
+.fl-freq__group:nth-child(3) {
+  border-color: rgba(245, 165, 36, 0.35);
+}
+
+.fl-freq__head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fl-freq__head strong {
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+.fl-freq__head span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cs-muted);
+}
+
+.fl-freq__imfs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fl-freq__imfs li {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+}
+
+.fl-freq__imfs code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cs-muted);
+}
+
+/* Pipeline stages */
+.fl-stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.fl-stages li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--cs-line);
+  border-radius: 12px;
+  background: var(--cs-card);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.fl-stages li:nth-child(3),
+.fl-stages li:nth-child(4) {
+  border-color: rgba(245, 165, 36, 0.45);
+}
+
+.fl-stages__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-accent);
+}
+
+.fl-stages strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.fl-stages span:last-child {
+  color: var(--cs-muted);
+}
+
+/* Sites */
+.fl-sites {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.fl-site {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--cs-line);
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--cs-muted);
+}
+
+.fl-site strong {
+  font-size: 15px;
+  color: #fff;
+}
+
+.fl-site em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+/* Figures */
+.fl-figures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.fl-figure {
+  all: unset;
+  cursor: zoom-in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--cs-line);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.fl-figure:hover,
+.fl-figure:focus-visible {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.fl-figure img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.fl-figure span {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--cs-text);
+}
+
+.fl-credit {
+  font-size: 12px;
+  color: var(--cs-muted);
+}
+
+.cs-section__body > .fl-credit {
+  font-size: 12px;
+}
+
+/* Citation */
+.fl-cite {
+  margin-top: 96px;
+  padding: 24px;
+  border: 1px solid var(--cs-line);
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.fl-cite p + p {
+  margin-top: 10px;
+}
+
+.fl-cite a {
+  color: var(--color-accent);
+}
+
+@media (max-width: 1024px) {
+  .fl-freq {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fl-sites {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .fl-groups,
+  .fl-figures {
+    grid-template-columns: 1fr;
+  }
+
+  .fl-stages,
+  .fl-freq,
+  .fl-sites {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fl-cite {
+    margin-top: 64px;
+    padding: 18px;
+  }
+}
