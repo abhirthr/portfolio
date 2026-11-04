@@ -99,7 +99,9 @@ case study pages (India Renewables Forecast; FFT-LSTM paper) with their own shar
 ## Open items
 - The case study depends on the field names of the app's `public/data/model_results.json`
   (ml-demo1 Phase 1.5b/1.5c and Phase 2 merged to its `main` on 2026-11-04, ml-demo1 PR #13).
-- Next options offered: third case study (ML-Sol + stations);
-  optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF with the new domain
-  and `hello@` email (user to supply).
+- ML-Sol case study dropped (2026-11-04): its model is the paper's; the engineering side is
+  already covered by the home Field Work section.
+- Next options offered: optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF (user to supply): current CV has
+  no website link, lists the Gmail address, and has a missing space before the first DOI
+  ("literature.https://") and a garbled Springer DOI ("...6349-84 2").
 - User to add https://abhijeetrathore.in to LinkedIn, Google Scholar, CV and GitHub.
