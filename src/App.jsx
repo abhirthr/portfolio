@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import FeaturedProject from './components/FeaturedProject'
 import SelectedWork from './components/SelectedWork'
 import ResearchHighlight from './components/ResearchHighlight'
+import FieldWork from './components/FieldWork'
 import WorkedWith from './components/WorkedWith'
 import About from './components/About'
 import Footer from './components/Footer'
@@ -32,6 +33,7 @@ function App() {
           />
           <WorkedWith />
           <ResearchHighlight />
+          <FieldWork />
           <SelectedWork />
         </div>
         <About />

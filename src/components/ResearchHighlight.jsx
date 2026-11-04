@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion as Motion } from 'framer-motion'
+import Lightbox from './ui/lightbox'
 import './ResearchHighlight.css'
 
 const DOI = 'https://doi.org/10.1016/j.renene.2025.123021'
@@ -81,13 +82,7 @@ const reveal = {
 
 function ResearchHighlight() {
   const [open, setOpen] = useState(null)
-
-  useEffect(() => {
-    if (!open) return
-    const onKey = (e) => e.key === 'Escape' && setOpen(null)
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open])
+  const closeLightbox = () => setOpen(null)
 
   return (
     <section id="research" className="research">
@@ -229,15 +224,7 @@ function ResearchHighlight() {
         </div>
       </div>
 
-      {open && (
-        <div className="rh-lightbox" role="dialog" aria-modal="true" aria-label={open.caption} onClick={() => setOpen(null)}>
-          <figure onClick={(e) => e.stopPropagation()}>
-            <img src={open.src} alt={open.caption} />
-            <figcaption>{open.caption}</figcaption>
-          </figure>
-          <button className="rh-lightbox__close" onClick={() => setOpen(null)}>Close ✕</button>
-        </div>
-      )}
+      <Lightbox item={open} onClose={closeLightbox} />
     </section>
   )
 }

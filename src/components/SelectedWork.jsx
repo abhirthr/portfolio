@@ -67,7 +67,28 @@ const training = [
   { label: 'Summer Training', title: 'UNICON PLC Automation', detail: 'MATLAB control systems, dynamic system modelling, signal processing' },
 ]
 
+const honors = [
+  {
+    title: 'Institute Gold Medal',
+    org: 'Rajiv Gandhi Institute of Petroleum Technology (RGIPT)',
+    detail: 'Best academic performance, M.Tech Power and Energy Systems Engineering',
+    gold: true,
+  },
+  {
+    title: 'Certificate of Merit',
+    org: 'SRMCEM, Lucknow',
+    detail: 'Outstanding academic achievement in the 2nd, 3rd and 4th years of B.Tech',
+  },
+  {
+    title: 'Merit Certificate',
+    org: 'Central Board of Secondary Education (CBSE)',
+    detail: 'Exemplary performance in the Class 12 examinations',
+  },
+]
+
 const courses = [
+  { title: 'Gen AI Foundational Models for NLP & Language Understanding', provider: 'IBM / Coursera' },
+  { title: 'Generative AI and LLMs: Architecture and Data Preparation', provider: 'IBM / Coursera' },
   { title: 'Google Data Analytics Certificate', provider: 'Google / Coursera' },
   { title: 'Programming for Everybody (Getting Started with Python)', provider: 'University of Michigan / Coursera' },
   { title: 'Python Data Structures', provider: 'University of Michigan / Coursera' },
@@ -122,6 +143,21 @@ function SelectedWork() {
                 <span className="project-label">{t.label}</span>
                 <span className="training-title">{t.title}</span>
                 <span className="training-detail">{t.detail}</span>
+              </li>
+            ))}
+          </ul>
+        </ScrollExpand>
+
+        <ScrollExpand title="Honors & Awards">
+          <ul className="honor-list">
+            {honors.map((h) => (
+              <li key={h.title} className={`honor-item${h.gold ? ' honor-item--gold' : ''}`}>
+                <span className="honor-icon" aria-hidden="true">{h.gold ? '★' : '◆'}</span>
+                <div>
+                  <h4 className="honor-title">{h.title}</h4>
+                  <p className="honor-org">{h.org}</p>
+                  <p className="honor-detail">{h.detail}</p>
+                </div>
               </li>
             ))}
           </ul>

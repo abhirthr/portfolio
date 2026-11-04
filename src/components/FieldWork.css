@@ -1,0 +1,367 @@
+.field {
+  --fw-text: rgba(255, 255, 255, 0.85);
+  --fw-muted: rgba(255, 255, 255, 0.55);
+  --fw-line: rgba(255, 255, 255, 0.12);
+  --fw-card: rgba(255, 255, 255, 0.03);
+
+  position: relative;
+  padding: 120px 120px 120px;
+  background: #000;
+  color: var(--fw-text);
+}
+
+.field__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+}
+
+.field__title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  max-width: 980px;
+}
+
+.field__lead {
+  margin-top: 24px;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 760px;
+}
+
+.field__grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.field-card {
+  padding: 28px;
+  border: 1px solid var(--fw-line);
+  border-radius: 16px;
+  background: var(--fw-card);
+}
+
+.field-card--site {
+  padding: 0;
+  overflow: hidden;
+}
+
+.field-card__body {
+  padding: 28px;
+}
+
+.field-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.field-card__text {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.field-card__note {
+  font-size: 12px;
+  color: var(--fw-muted);
+}
+
+.field-card__sub {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fw-muted);
+}
+
+.field-points {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-points li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fw-muted);
+}
+
+.field-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.field-btn {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: #000;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.field-btn:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent-hover);
+}
+
+.field-btn--ghost {
+  background: none;
+  border-color: var(--fw-line);
+  color: #fff;
+}
+
+.field-btn--ghost:hover {
+  background: none;
+  border-color: #fff;
+}
+
+/* Browser frame with a cross-fading pair of screenshots */
+.browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  background: #1a1a1a;
+  border-bottom: 1px solid var(--fw-line);
+}
+
+.browser__bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+
+.browser__url {
+  margin-left: 12px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #0d0d0d;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fw-muted);
+}
+
+.browser__view {
+  position: relative;
+  aspect-ratio: 1440 / 760;
+  overflow: hidden;
+  background: #111;
+}
+
+.browser__view img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.browser__alt {
+  animation: browser-swap 9s ease-in-out infinite;
+}
+
+@keyframes browser-swap {
+  0%, 40% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Station map */
+.station-map {
+  margin-top: 16px;
+  width: 100%;
+  height: auto;
+}
+
+.station-map__grid {
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1;
+}
+
+.station-map__tick {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: rgba(255, 255, 255, 0.35);
+  text-anchor: middle;
+}
+
+.station-map__tick--lat {
+  text-anchor: end;
+}
+
+.station-map__dot {
+  fill: var(--color-accent);
+  stroke: #000;
+  stroke-width: 2;
+}
+
+.station-map__hub {
+  fill: #fff;
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+
+.station-map__pulse {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: station-pulse 3s ease-out infinite;
+}
+
+@keyframes station-pulse {
+  0% { opacity: 0.8; transform: scale(0.4); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+.station-map__label {
+  font-size: 14px;
+  font-weight: 500;
+  fill: #fff;
+}
+
+.field-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.field-chips li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--fw-line);
+  font-size: 12px;
+}
+
+/* Poster */
+.poster-card {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid var(--fw-line);
+  border-radius: 16px;
+  background: var(--fw-card);
+}
+
+.poster-card__thumb {
+  all: unset;
+  cursor: zoom-in;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease;
+}
+
+.poster-card__thumb:hover,
+.poster-card__thumb:focus-visible {
+  transform: rotate(-2deg) scale(1.03);
+}
+
+.poster-card__badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.poster-card__title {
+  margin-top: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.poster-card__text {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fw-muted);
+  max-width: 760px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .browser__alt,
+  .station-map__pulse {
+    animation: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .field__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 810px) {
+  .field {
+    padding: 80px 40px;
+  }
+
+  .poster-card {
+    grid-template-columns: 1fr;
+  }
+
+  .poster-card__thumb {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .field {
+    padding: 60px 20px;
+  }
+
+  .field-card,
+  .field-card__body,
+  .poster-card {
+    padding: 20px;
+  }
+
+  .field-card--site {
+    padding: 0;
+  }
+
+  .station-map__label {
+    font-size: 18px;
+  }
+}
