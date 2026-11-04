@@ -173,3 +173,41 @@
     margin-bottom: 40px;
   }
 }
+
+/* Earlier training (compact) */
+.training-heading {
+  margin-top: 56px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.training-item {
+  display: grid;
+  grid-template-columns: 160px 1fr 1.4fr;
+  gap: 20px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.training-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.training-detail {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 810px) {
+  .training-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

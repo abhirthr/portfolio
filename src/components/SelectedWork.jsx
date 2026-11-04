@@ -59,24 +59,12 @@ const projects = [
     description:
       'Designed a battery-backed Series Compensator in MATLAB/Simulink to reduce Total Harmonic Distortion (THD) and improve voltage stability by actively compensating faults in isolated grids.',
   },
-  {
-    label: 'Industrial Training',
-    title: 'Uttar Pradesh Power Corporation Limited (UPPCL), Lucknow',
-    description:
-      'Gained practical experience at a 132 kV substation, working with transformers, switchgear, lightning arresters, CT/PT devices, and grid protection protocols during live operations.',
-  },
-  {
-    label: 'Workshop',
-    title: 'Industrial Automation — Sofcon, SRMCEM, Lucknow',
-    description:
-      'Hands-on training on PLC programming, HMI, SCADA, relay logic, and sensor integration for automation and process control.',
-  },
-  {
-    label: 'Summer Training',
-    title: 'UNICON PLC Automation',
-    description:
-      'Completed MATLAB-based training focused on control system fundamentals, dynamic system modeling, and signal processing applications relevant to power systems.',
-  },
+]
+
+const training = [
+  { label: 'Industrial Training', title: 'UPPCL, Lucknow', detail: '132 kV substation operations: transformers, switchgear, CT/PT, grid protection' },
+  { label: 'Workshop', title: 'Industrial Automation, Sofcon (SRMCEM)', detail: 'PLC programming, HMI, SCADA, relay logic, sensor integration' },
+  { label: 'Summer Training', title: 'UNICON PLC Automation', detail: 'MATLAB control systems, dynamic system modelling, signal processing' },
 ]
 
 const courses = [
@@ -117,9 +105,7 @@ function SelectedWork() {
           </ol>
         </ScrollExpand>
 
-        <ScrollExpand
-          title="Projects & Training"
-                  >
+        <ScrollExpand title="Research Projects">
           <div className="project-list">
             {projects.map((p, i) => (
               <div key={i} className="project-item">
@@ -129,10 +115,20 @@ function SelectedWork() {
               </div>
             ))}
           </div>
+          <h4 className="training-heading">Earlier training</h4>
+          <ul className="training-list">
+            {training.map((t) => (
+              <li key={t.title} className="training-item">
+                <span className="project-label">{t.label}</span>
+                <span className="training-title">{t.title}</span>
+                <span className="training-detail">{t.detail}</span>
+              </li>
+            ))}
+          </ul>
         </ScrollExpand>
 
         <ScrollExpand
-          title="Courses Certifications"
+          title="Courses & Certifications"
                   >
           <ul className="course-list">
             {courses.map((c, i) => (

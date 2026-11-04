@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import FeaturedProject from './components/FeaturedProject'
 import SelectedWork from './components/SelectedWork'
 import WorkedWith from './components/WorkedWith'
 import About from './components/About'
@@ -18,6 +19,7 @@ function App() {
       <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       <main>
         <Hero />
+        <FeaturedProject />
         <div className="light-sections">
           <Particles
             className="light-sections__particles"

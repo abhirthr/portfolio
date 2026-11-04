@@ -11,6 +11,7 @@ function MenuOverlay({ isOpen, onClose }) {
         </button>
         <nav className="menu-overlay__nav">
           <a href="#home" className="menu-overlay__link" onClick={onClose}>Home</a>
+          <a href="#featured" className="menu-overlay__link" onClick={onClose}>Projects</a>
           <a href="#experience" className="menu-overlay__link" onClick={onClose}>Experience</a>
           <a href="#work" className="menu-overlay__link" onClick={onClose}>Publications</a>
           <a href="#about" className="menu-overlay__link" onClick={onClose}>About</a>
