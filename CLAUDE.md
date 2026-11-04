@@ -60,8 +60,9 @@ public/                            CV pdf, favicons, og-image.png, robots.txt, s
   poster, or the app's published `model_results.json`. Synthetic visuals are labelled.
 
 ## Decisions (don't revisit without the user)
-- No fake visitor counter (user once asked to start at 3000; declined, misleading). The old
-  countapi.xyz counter was removed because the service is dead.
+- No visitor counter on the page. A seeded count (user once asked to start at 3000) was declined
+  as misleading; on 2026-11-04 the user chose to leave the counter out entirely. Visits are
+  tracked privately in Vercel Web Analytics. The old countapi.xyz counter (dead service) is gone.
 - `abhirthr/ml-demo1` (the forecasting app) is private: never link its code. Its public
   results file `https://solar-forecast.vercel.app/data/model_results.json` (CORS *) is fine.
 - Renewable Energy paper is not open access: link the DOI, host figures only, with the
@@ -88,8 +89,9 @@ field work section, timeline + toolkit, honors, compact courses, contact block, 
 case study page, custom domain, email forwarding, Search Console + sitemap, analytics.
 
 ## Open items
-- User asked for a visible visit counter in the footer again (2026-11-04): needs a real,
-  honest count source (not started).
+- The app repo's `ROADMAP.md` (abhirthr/ml-demo1, branch `claude/great-lovelace-7f6har`, not yet
+  merged) marks Phase 2 done; the case study depends on the field names of its
+  `public/data/model_results.json`.
 - Next options offered: second case study (FFT-LSTM paper, or ML-Sol + stations);
   `app.abhijeetrathore.in` for the forecasting app; refresh the CV PDF with the new domain
   and `hello@` email (user to supply).
