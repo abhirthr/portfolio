@@ -1,6 +1,6 @@
 .featured {
-  --fp-amber: #f5a524;
-  --fp-amber-dim: rgba(245, 165, 36, 0.14);
+  --fp-amber: var(--color-accent);
+  --fp-amber-dim: var(--color-accent-soft);
   --fp-text: rgba(255, 255, 255, 0.85);
   --fp-muted: rgba(255, 255, 255, 0.55);
   --fp-line: rgba(255, 255, 255, 0.12);
@@ -138,8 +138,8 @@
 }
 
 .featured__btn--primary:hover {
-  background: #ffb94a;
-  border-color: #ffb94a;
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 /* Results card */

@@ -1,6 +1,6 @@
 .research {
-  --rh-amber: #d48806;
-  --rh-amber-soft: rgba(245, 165, 36, 0.14);
+  --rh-amber: var(--color-accent-ink);
+  --rh-amber-soft: var(--color-accent-soft);
   --rh-ink: #010101;
   --rh-muted: rgba(0, 0, 0, 0.55);
   --rh-line: rgba(0, 0, 0, 0.1);
@@ -138,7 +138,7 @@
 }
 
 .rh-line--total { stroke: #010101; }
-.rh-line--low { stroke: var(--rh-amber); }
+.rh-line--low { stroke: #d48806; }
 .rh-line--mid { stroke: #6366f1; }
 .rh-line--high { stroke: #0a93a6; stroke-width: 1.2; }
 
@@ -213,7 +213,7 @@
 
 .rh-bar--base { background: #cfcfcf; }
 .rh-bar--mid { background: #8a8a8a; }
-.rh-bar--ours { background: var(--rh-amber); }
+.rh-bar--ours { background: #d48806; }
 
 .rh-row__value {
   font-family: var(--font-mono);
@@ -380,7 +380,7 @@
   padding: 5px 10px;
   border-radius: 999px;
   background: var(--rh-amber-soft);
-  color: #8a5a00;
+  color: var(--color-accent-ink);
   font-size: 12px;
   font-weight: 600;
 }

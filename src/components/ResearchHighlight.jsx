@@ -5,9 +5,9 @@ import './ResearchHighlight.css'
 const DOI = 'https://doi.org/10.1016/j.renene.2025.123021'
 
 const pipeline = [
-  { tag: 'Input', title: 'Multivariate weather series', text: 'GHI, temperature, humidity and wind from NSRDB, 2005–2014' },
-  { tag: 'NA-MEMD', title: 'Decompose', text: 'Noise-assisted multivariate EMD splits the series into 15 intrinsic mode functions' },
-  { tag: 'FFT', title: 'Reduce', text: 'Dominant frequencies regroup the 15 IMFs into 5 signals: HIGH 1–3, MEDIUM, LOW' },
+  { tag: 'Input', title: 'Multivariate weather series', text: 'Temperature, humidity, wind speed and direction, and solar zenith angle, NSRDB 2005–2014' },
+  { tag: 'NA-MEMD', title: 'Decompose', text: 'Noise-assisted multivariate EMD splits the series into 14–15 intrinsic mode functions per site' },
+  { tag: 'FFT', title: 'Reduce', text: 'Dominant frequencies regroup the IMFs into 5 signals: HIGH 1–3, MEDIUM, LOW' },
   { tag: 'AM-LSTM', title: 'Forecast', text: 'An attention-based LSTM, tuned per signal, predicts each component' },
   { tag: 'Output', title: 'Recombine', text: 'Component forecasts sum to the 11 sunshine hours of the next day' },
 ]
@@ -97,7 +97,7 @@ function ResearchHighlight() {
         <p className="research__lead">
           A hybrid deep-learning model for hourly day-ahead irradiance at four Indian sites in
           different climate zones. Decomposition handles the non-stationary weather signal, FFT cuts
-          the number of sub-models from 15 to 5, and an attention-based LSTM forecasts each part.
+          the number of sub-models from up to 15 to 5, and an attention-based LSTM forecasts each part.
         </p>
       </Motion.div>
 

@@ -1,24 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
 import './Footer.css'
 
 function Footer() {
-  const [count, setCount] = useState(null)
-  const fetched = useRef(false)
-
-  useEffect(() => {
-    if (fetched.current) return
-    fetched.current = true
-
-    fetch('https://api.countapi.xyz/hit/abhijeet-rathore-portfolio/visits')
-      .then(res => res.json())
-      .then(data => setCount(data.value))
-      .catch(() => {
-        const stored = parseInt(localStorage.getItem('visit_count') || '0') + 1
-        localStorage.setItem('visit_count', stored)
-        setCount(stored)
-      })
-  }, [])
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -31,10 +13,6 @@ function Footer() {
           <div className="footer__column">
             <h4 className="footer__column-title">Credits</h4>
             <p className="footer__text">&copy; A.R. – 2026</p>
-            <div className="footer__counter">
-              <span className="footer__counter-label">Visits</span>
-              <span className="footer__counter-value">{count !== null ? count.toLocaleString() : '—'}</span>
-            </div>
           </div>
           <div className="footer__column">
             <h4 className="footer__column-title">Menu</h4>

@@ -71,10 +71,10 @@
   font-size: 32px;
   font-weight: 500;
   color: var(--color-white);
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
   letter-spacing: -0.01em;
 }
 
 .menu-overlay__link:hover {
-  opacity: 0.6;
+  color: var(--color-accent);
 }
