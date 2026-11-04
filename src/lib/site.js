@@ -2,4 +2,4 @@
 // The hero "Download CV" button stays hidden while this is null.
 export const CV_URL = '/Abhijeet_Rathore_CV.pdf'
 
-export const CONTACT_EMAIL = 'abhijeetrthr@gmail.com'
+export const CONTACT_EMAIL = 'hello@abhijeetrathore.in'

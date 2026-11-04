@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from '../lib/site'
 import './Footer.css'
 
 function Footer() {
@@ -31,7 +32,7 @@ function Footer() {
             <ul className="footer__links">
               <li><a href="https://linkedin.com/in/arthr" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://scholar.google.com/citations?user=NRMwxt8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-              <li><a href="mailto:abhijeetrthr@gmail.com">Email</a></li>
+              <li><a href={`mailto:${CONTACT_EMAIL}`}>Email</a></li>
               <li><a href="https://github.com/abhirthr" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
           </div>
