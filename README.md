@@ -3,7 +3,7 @@
 Personal site of Abhijeet Rathore, PhD researcher at IIT Roorkee working on machine
 learning for solar and wind forecasting.
 
-**Live:** https://portfolio-beta-lovat-12.vercel.app
+**Live:** https://abhijeetrathore.in
 
 ## What's on the page
 
