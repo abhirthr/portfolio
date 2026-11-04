@@ -116,7 +116,5 @@ case study pages (India Renewables Forecast; FFT-LSTM paper) with their own shar
 - Next options offered: optional `api.abhijeetrathore.in` for the Render API; refresh the CV PDF (user to supply): current CV has
   no website link, lists the Gmail address, and has a missing space before the first DOI
   ("literature.https://") and a garbled Springer DOI ("...6349-84 2").
-- Book chapter (CRC, "Configurations of Converters…") is published; year and DOI not yet
-  supplied, so it shows without either. Not found on Crossref under the 2023 CRC book.
 - Confirm the ML-Sol booth photo is from the 21 Jan 2025 workshop (caption assumes it).
 - User to add https://abhijeetrathore.in to LinkedIn, Google Scholar, CV and GitHub.

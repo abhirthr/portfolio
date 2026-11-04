@@ -40,10 +40,12 @@ const publications = [
   {
     type: 'Book Chapter',
     title: 'Configurations of Converters applied to Electric Vehicles with comprehensive control strategies and optimization',
-    venue: 'Power Electronics for Electric Vehicles and Energy Storage — CRC Press, Taylor & Francis Group',
+    venue: 'Chapter 13 in Power Electronics for Electric Vehicles and Energy Storage: Emerging Technologies and Developments — CRC Press, 2023',
     detail: null,
-    year: null, // published; year and DOI to come from the author
-    link: null,
+    year: '2023',
+    // No chapter DOI is registered; link the publisher's book page.
+    link: 'https://www.routledge.com/Power-Electronics-for-Electric-Vehicles-and-Energy-Storage-Emerging-Technologies-and-Developments/Kishan-Kannan-Reddy-Prabhakaran/p/book/9781032164243',
+    linkLabel: 'Book',
   },
   {
     type: 'Conference',
