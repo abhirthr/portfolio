@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import FeaturedProject from './components/FeaturedProject'
 import SelectedWork from './components/SelectedWork'
+import ResearchHighlight from './components/ResearchHighlight'
 import WorkedWith from './components/WorkedWith'
 import About from './components/About'
 import Footer from './components/Footer'
@@ -30,6 +31,7 @@ function App() {
             color="#000000"
           />
           <WorkedWith />
+          <ResearchHighlight />
           <SelectedWork />
         </div>
         <About />

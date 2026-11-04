@@ -6,8 +6,8 @@ const publications = [
     type: 'Patent',
     title: 'A System and Method for Forecasting Solar Photovoltaic Power Using Machine Learning',
     venue: 'iHUB DivyaSampark, IIT Roorkee',
-    detail: 'Published — Application No. 202311059664',
-    link: null,
+    detail: 'Granted 16 Feb 2026 — Patent No. 580682 (Application No. 202311059664)',
+    link: '/images/patent-certificate.webp',
   },
   {
     type: 'Journal',

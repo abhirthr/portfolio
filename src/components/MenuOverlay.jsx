@@ -13,6 +13,7 @@ function MenuOverlay({ isOpen, onClose }) {
           <a href="#home" className="menu-overlay__link" onClick={onClose}>Home</a>
           <a href="#featured" className="menu-overlay__link" onClick={onClose}>Projects</a>
           <a href="#experience" className="menu-overlay__link" onClick={onClose}>Experience</a>
+          <a href="#research" className="menu-overlay__link" onClick={onClose}>Research</a>
           <a href="#work" className="menu-overlay__link" onClick={onClose}>Publications</a>
           <a href="#about" className="menu-overlay__link" onClick={onClose}>About</a>
           <a href="https://github.com/abhirthr" className="menu-overlay__link" target="_blank" rel="noopener noreferrer">GitHub</a>
