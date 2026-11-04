@@ -49,7 +49,7 @@ src/fft-lstm/                      FFT-LSTM case study: FftLstm.jsx, charts.jsx,
 src/lib/site.js                    CV_URL, CONTACT_EMAIL
 src/lib/useLiveResults.js          fetch live results JSON, fall back to bundled snapshot
 src/data/irf-results.json          snapshot of the app's model_results.json
-public/                            CV pdf, favicons, og-image.png, robots.txt, sitemap.xml,
+public/                            CV pdf, favicons, og-image.png (home), og/<slug>.png (case-study share cards), robots.txt, sitemap.xml,
                                    images/{research,field,app}, patent-certificate.webp, avatar.webp
 ```
 
