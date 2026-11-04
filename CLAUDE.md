@@ -94,7 +94,7 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
 ## Status (2026-11-04)
 Done and live: featured app section with screenshots, research highlight (paper + patent),
 field work section, timeline + toolkit, honors, compact courses, contact block, CV download,
-case study pages (India Renewables Forecast; FFT-LSTM paper), custom domain, `app.` subdomain for the forecasting app, email forwarding, Search Console + sitemap, analytics.
+case study pages (India Renewables Forecast; FFT-LSTM paper) with their own share cards, custom domain, `app.` subdomain for the forecasting app, email forwarding, Search Console + sitemap, analytics.
 
 ## Open items
 - The case study depends on the field names of the app's `public/data/model_results.json`
