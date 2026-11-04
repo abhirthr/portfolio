@@ -17,6 +17,14 @@ learning for solar and wind forecasting.
 | Publications, research projects, honors, courses | `src/components/SelectedWork.jsx` |
 | About and contact | `src/components/About.jsx` |
 
+### Case studies
+
+Each case study is its own static page (Vite multi-page build, see `vite.config.js`):
+
+- `/projects/india-renewables-forecast/`: entry `projects/india-renewables-forecast/index.html`,
+  code in `src/case-study/`. Its numbers load live from the app's published
+  `data/model_results.json`, with a bundled snapshot in `src/data/irf-results.json` as fallback.
+
 Shared pieces live in `src/components/ui/` (particle background, image lightbox,
 section wrapper). Site-wide settings such as the CV path and contact email are in
 `src/lib/site.js`; colour tokens (including the solar-amber accent) are in

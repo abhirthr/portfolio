@@ -1,0 +1,809 @@
+{
+ "trained_at": "2026-09-26T11:28:46+00:00",
+ "train_period": [
+  "2022-01-01",
+  "2023-12-31"
+ ],
+ "test_period": [
+  "2024-01-01",
+  "2024-12-31"
+ ],
+ "n_train_sites": 24,
+ "holdout_sites": [
+  "Ahmedabad (GJ)",
+  "Bengaluru (KA)",
+  "Chennai (TN)",
+  "Jodhpur (RJ)",
+  "Leh (LA)",
+  "Nagpur (MH)",
+  "Patna (BR)",
+  "Port Blair (AN)"
+ ],
+ "target": "clear-sky index kt* (NASA POWER ALLSKY_SFC_SW_DWN / Ineichen GHI_cs)",
+ "headline": {
+  "seen": {
+   "n": 99313,
+   "rmse": {
+    "model": 77.91,
+    "nwp_raw": 100.94,
+    "climatology": 110.48,
+    "kasten_czeplak": 190.93
+   },
+   "mae": {
+    "model": 51.52,
+    "nwp_raw": 67.57,
+    "climatology": 74.19,
+    "kasten_czeplak": 130.75
+   },
+   "mbe_model": 7.19,
+   "skill_vs_nwp_raw": 0.228,
+   "skill_vs_climatology": 0.295
+  },
+  "unseen": {
+   "n": 33138,
+   "rmse": {
+    "model": 91.37,
+    "nwp_raw": 100.96,
+    "climatology": 125.01,
+    "kasten_czeplak": 202.27
+   },
+   "mae": {
+    "model": 60.8,
+    "nwp_raw": 67.22,
+    "climatology": 84.11,
+    "kasten_czeplak": 140.55
+   },
+   "mbe_model": 21.14,
+   "skill_vs_nwp_raw": 0.095,
+   "skill_vs_climatology": 0.269
+  },
+  "monsoon": {
+   "n": 35466,
+   "rmse": {
+    "model": 92.28,
+    "nwp_raw": 121.68,
+    "climatology": 125.01,
+    "kasten_czeplak": 216.59
+   },
+   "mae": {
+    "model": 63.3,
+    "nwp_raw": 84.03,
+    "climatology": 87.92,
+    "kasten_czeplak": 159.94
+   },
+   "mbe_model": 3.76,
+   "skill_vs_nwp_raw": 0.242,
+   "skill_vs_climatology": 0.262
+  }
+ },
+ "interval_80": {
+  "seen_sites": {
+   "coverage": 0.788,
+   "mean_width_wm2": 169.7
+  },
+  "unseen_sites": {
+   "coverage": 0.763,
+   "mean_width_wm2": 178.3
+  }
+ },
+ "per_site": [
+  {
+   "site": "Kutch (GJ)",
+   "lat": 23.25,
+   "lon": 69.67,
+   "elevation": 100.0,
+   "holdout": false,
+   "model": {
+    "mae": 38.28,
+    "rmse": 61.88,
+    "mbe": 8.63,
+    "n": 4144
+   },
+   "nwp_raw": {
+    "mae": 48.81,
+    "rmse": 79.85,
+    "mbe": 22.43,
+    "n": 4144
+   },
+   "skill_vs_nwp_raw": 0.225
+  },
+  {
+   "site": "Charanka (GJ)",
+   "lat": 23.9,
+   "lon": 71.2,
+   "elevation": 14.0,
+   "holdout": false,
+   "model": {
+    "mae": 40.38,
+    "rmse": 63.8,
+    "mbe": 4.36,
+    "n": 4161
+   },
+   "nwp_raw": {
+    "mae": 48.32,
+    "rmse": 80.42,
+    "mbe": 9.97,
+    "n": 4161
+   },
+   "skill_vs_nwp_raw": 0.207
+  },
+  {
+   "site": "Jaisalmer (RJ)",
+   "lat": 26.91,
+   "lon": 70.91,
+   "elevation": 242.0,
+   "holdout": false,
+   "model": {
+    "mae": 39.33,
+    "rmse": 65.22,
+    "mbe": 9.03,
+    "n": 4129
+   },
+   "nwp_raw": {
+    "mae": 49.62,
+    "rmse": 75.39,
+    "mbe": -7.64,
+    "n": 4129
+   },
+   "skill_vs_nwp_raw": 0.135
+  },
+  {
+   "site": "Bhadla (RJ)",
+   "lat": 27.54,
+   "lon": 71.91,
+   "elevation": 168.0,
+   "holdout": false,
+   "model": {
+    "mae": 41.69,
+    "rmse": 65.3,
+    "mbe": 10.87,
+    "n": 4133
+   },
+   "nwp_raw": {
+    "mae": 53.98,
+    "rmse": 80.03,
+    "mbe": -16.08,
+    "n": 4133
+   },
+   "skill_vs_nwp_raw": 0.184
+  },
+  {
+   "site": "Pune (MH)",
+   "lat": 18.52,
+   "lon": 73.86,
+   "elevation": 562.0,
+   "holdout": false,
+   "model": {
+    "mae": 45.5,
+    "rmse": 67.64,
+    "mbe": -0.61,
+    "n": 4130
+   },
+   "nwp_raw": {
+    "mae": 68.87,
+    "rmse": 107.25,
+    "mbe": 34.11,
+    "n": 4130
+   },
+   "skill_vs_nwp_raw": 0.369
+  },
+  {
+   "site": "Ahmedabad (GJ)",
+   "lat": 23.02,
+   "lon": 72.57,
+   "elevation": 53.0,
+   "holdout": true,
+   "model": {
+    "mae": 45.79,
+    "rmse": 68.06,
+    "mbe": -2.7,
+    "n": 4137
+   },
+   "nwp_raw": {
+    "mae": 53.16,
+    "rmse": 83.64,
+    "mbe": 5.99,
+    "n": 4137
+   },
+   "skill_vs_nwp_raw": 0.186
+  },
+  {
+   "site": "Anantapur (AP)",
+   "lat": 14.68,
+   "lon": 77.6,
+   "elevation": 348.0,
+   "holdout": false,
+   "model": {
+    "mae": 48.15,
+    "rmse": 69.88,
+    "mbe": 0.61,
+    "n": 4153
+   },
+   "nwp_raw": {
+    "mae": 61.26,
+    "rmse": 91.73,
+    "mbe": 16.85,
+    "n": 4153
+   },
+   "skill_vs_nwp_raw": 0.238
+  },
+  {
+   "site": "Jodhpur (RJ)",
+   "lat": 26.24,
+   "lon": 73.02,
+   "elevation": 222.0,
+   "holdout": true,
+   "model": {
+    "mae": 45.6,
+    "rmse": 70.78,
+    "mbe": 15.23,
+    "n": 4144
+   },
+   "nwp_raw": {
+    "mae": 54.36,
+    "rmse": 84.45,
+    "mbe": -5.28,
+    "n": 4144
+   },
+   "skill_vs_nwp_raw": 0.162
+  },
+  {
+   "site": "Pavagada (KA)",
+   "lat": 14.1,
+   "lon": 77.28,
+   "elevation": 644.0,
+   "holdout": false,
+   "model": {
+    "mae": 49.18,
+    "rmse": 71.44,
+    "mbe": 4.27,
+    "n": 4157
+   },
+   "nwp_raw": {
+    "mae": 65.26,
+    "rmse": 96.48,
+    "mbe": 20.75,
+    "n": 4157
+   },
+   "skill_vs_nwp_raw": 0.26
+  },
+  {
+   "site": "Bengaluru (KA)",
+   "lat": 12.97,
+   "lon": 77.59,
+   "elevation": 914.0,
+   "holdout": true,
+   "model": {
+    "mae": 50.83,
+    "rmse": 72.79,
+    "mbe": 3.52,
+    "n": 4165
+   },
+   "nwp_raw": {
+    "mae": 74.65,
+    "rmse": 107.87,
+    "mbe": 22.7,
+    "n": 4165
+   },
+   "skill_vs_nwp_raw": 0.325
+  },
+  {
+   "site": "Mumbai (MH)",
+   "lat": 19.08,
+   "lon": 72.88,
+   "elevation": 9.0,
+   "holdout": false,
+   "model": {
+    "mae": 49.03,
+    "rmse": 72.85,
+    "mbe": 1.69,
+    "n": 4125
+   },
+   "nwp_raw": {
+    "mae": 56.42,
+    "rmse": 86.27,
+    "mbe": 9.65,
+    "n": 4125
+   },
+   "skill_vs_nwp_raw": 0.156
+  },
+  {
+   "site": "Roorkee (UK)",
+   "lat": 29.85,
+   "lon": 77.89,
+   "elevation": 271.0,
+   "holdout": false,
+   "model": {
+    "mae": 49.51,
+    "rmse": 74.13,
+    "mbe": 8.25,
+    "n": 4099
+   },
+   "nwp_raw": {
+    "mae": 63.04,
+    "rmse": 96.51,
+    "mbe": 10.23,
+    "n": 4099
+   },
+   "skill_vs_nwp_raw": 0.232
+  },
+  {
+   "site": "Greater Noida (UP)",
+   "lat": 28.47,
+   "lon": 77.5,
+   "elevation": 202.0,
+   "holdout": false,
+   "model": {
+    "mae": 49.1,
+    "rmse": 74.59,
+    "mbe": 15.71,
+    "n": 4109
+   },
+   "nwp_raw": {
+    "mae": 65.4,
+    "rmse": 98.42,
+    "mbe": 19.45,
+    "n": 4109
+   },
+   "skill_vs_nwp_raw": 0.242
+  },
+  {
+   "site": "Muppandal (TN)",
+   "lat": 8.26,
+   "lon": 77.55,
+   "elevation": 91.0,
+   "holdout": false,
+   "model": {
+    "mae": 50.24,
+    "rmse": 75.04,
+    "mbe": 10.24,
+    "n": 4208
+   },
+   "nwp_raw": {
+    "mae": 68.61,
+    "rmse": 97.67,
+    "mbe": 26.25,
+    "n": 4208
+   },
+   "skill_vs_nwp_raw": 0.232
+  },
+  {
+   "site": "Hyderabad (TS)",
+   "lat": 17.39,
+   "lon": 78.49,
+   "elevation": 502.0,
+   "holdout": false,
+   "model": {
+    "mae": 52.61,
+    "rmse": 76.48,
+    "mbe": -5.76,
+    "n": 4129
+   },
+   "nwp_raw": {
+    "mae": 76.35,
+    "rmse": 109.43,
+    "mbe": 16.32,
+    "n": 4129
+   },
+   "skill_vs_nwp_raw": 0.301
+  },
+  {
+   "site": "Bhopal (MP)",
+   "lat": 23.26,
+   "lon": 77.41,
+   "elevation": 501.0,
+   "holdout": false,
+   "model": {
+    "mae": 52.69,
+    "rmse": 77.44,
+    "mbe": 7.79,
+    "n": 4104
+   },
+   "nwp_raw": {
+    "mae": 67.49,
+    "rmse": 101.82,
+    "mbe": 26.23,
+    "n": 4104
+   },
+   "skill_vs_nwp_raw": 0.239
+  },
+  {
+   "site": "Kurnool (AP)",
+   "lat": 15.68,
+   "lon": 78.13,
+   "elevation": 361.0,
+   "holdout": false,
+   "model": {
+    "mae": 53.24,
+    "rmse": 77.97,
+    "mbe": -3.98,
+    "n": 4144
+   },
+   "nwp_raw": {
+    "mae": 69.66,
+    "rmse": 101.31,
+    "mbe": 24.83,
+    "n": 4144
+   },
+   "skill_vs_nwp_raw": 0.23
+  },
+  {
+   "site": "Kamuthi (TN)",
+   "lat": 9.35,
+   "lon": 78.39,
+   "elevation": 30.0,
+   "holdout": false,
+   "model": {
+    "mae": 55.06,
+    "rmse": 79.01,
+    "mbe": 4.39,
+    "n": 4202
+   },
+   "nwp_raw": {
+    "mae": 69.35,
+    "rmse": 104.3,
+    "mbe": 12.3,
+    "n": 4202
+   },
+   "skill_vs_nwp_raw": 0.242
+  },
+  {
+   "site": "Chandigarh (PB)",
+   "lat": 30.73,
+   "lon": 76.78,
+   "elevation": 345.0,
+   "holdout": false,
+   "model": {
+    "mae": 48.97,
+    "rmse": 80.74,
+    "mbe": 12.79,
+    "n": 4109
+   },
+   "nwp_raw": {
+    "mae": 77.56,
+    "rmse": 104.16,
+    "mbe": -28.87,
+    "n": 4109
+   },
+   "skill_vs_nwp_raw": 0.225
+  },
+  {
+   "site": "Varanasi (UP)",
+   "lat": 25.32,
+   "lon": 82.97,
+   "elevation": 81.0,
+   "holdout": false,
+   "model": {
+    "mae": 56.41,
+    "rmse": 83.19,
+    "mbe": 15.76,
+    "n": 4119
+   },
+   "nwp_raw": {
+    "mae": 75.14,
+    "rmse": 110.87,
+    "mbe": 42.42,
+    "n": 4119
+   },
+   "skill_vs_nwp_raw": 0.25
+  },
+  {
+   "site": "Patna (BR)",
+   "lat": 25.59,
+   "lon": 85.14,
+   "elevation": 55.0,
+   "holdout": true,
+   "model": {
+    "mae": 58.54,
+    "rmse": 84.87,
+    "mbe": 10.03,
+    "n": 4132
+   },
+   "nwp_raw": {
+    "mae": 68.94,
+    "rmse": 102.4,
+    "mbe": 30.15,
+    "n": 4132
+   },
+   "skill_vs_nwp_raw": 0.171
+  },
+  {
+   "site": "Kolkata (WB)",
+   "lat": 22.57,
+   "lon": 88.36,
+   "elevation": 12.0,
+   "holdout": false,
+   "model": {
+    "mae": 57.66,
+    "rmse": 86.07,
+    "mbe": 15.02,
+    "n": 4108
+   },
+   "nwp_raw": {
+    "mae": 77.29,
+    "rmse": 111.12,
+    "mbe": 45.74,
+    "n": 4108
+   },
+   "skill_vs_nwp_raw": 0.225
+  },
+  {
+   "site": "Nagpur (MH)",
+   "lat": 21.15,
+   "lon": 79.09,
+   "elevation": 310.0,
+   "holdout": true,
+   "model": {
+    "mae": 57.8,
+    "rmse": 87.12,
+    "mbe": 13.62,
+    "n": 4141
+   },
+   "nwp_raw": {
+    "mae": 72.11,
+    "rmse": 105.95,
+    "mbe": 34.1,
+    "n": 4141
+   },
+   "skill_vs_nwp_raw": 0.178
+  },
+  {
+   "site": "Rewa (MP)",
+   "lat": 24.53,
+   "lon": 81.3,
+   "elevation": 308.0,
+   "holdout": false,
+   "model": {
+    "mae": 56.78,
+    "rmse": 87.51,
+    "mbe": 14.78,
+    "n": 4121
+   },
+   "nwp_raw": {
+    "mae": 69.03,
+    "rmse": 105.12,
+    "mbe": 31.22,
+    "n": 4121
+   },
+   "skill_vs_nwp_raw": 0.168
+  },
+  {
+   "site": "Guwahati (AS)",
+   "lat": 26.14,
+   "lon": 91.74,
+   "elevation": 55.0,
+   "holdout": false,
+   "model": {
+    "mae": 59.87,
+    "rmse": 87.72,
+    "mbe": 7.29,
+    "n": 4124
+   },
+   "nwp_raw": {
+    "mae": 76.66,
+    "rmse": 109.68,
+    "mbe": -3.46,
+    "n": 4124
+   },
+   "skill_vs_nwp_raw": 0.2
+  },
+  {
+   "site": "Raipur (CG)",
+   "lat": 21.25,
+   "lon": 81.63,
+   "elevation": 297.0,
+   "holdout": false,
+   "model": {
+    "mae": 59.33,
+    "rmse": 87.95,
+    "mbe": 3.57,
+    "n": 4131
+   },
+   "nwp_raw": {
+    "mae": 76.94,
+    "rmse": 113.95,
+    "mbe": 21.27,
+    "n": 4131
+   },
+   "skill_vs_nwp_raw": 0.228
+  },
+  {
+   "site": "Shillong (ML)",
+   "lat": 25.57,
+   "lon": 91.88,
+   "elevation": 1513.0,
+   "holdout": false,
+   "model": {
+    "mae": 60.67,
+    "rmse": 89.62,
+    "mbe": 11.19,
+    "n": 4121
+   },
+   "nwp_raw": {
+    "mae": 87.28,
+    "rmse": 123.77,
+    "mbe": 53.94,
+    "n": 4121
+   },
+   "skill_vs_nwp_raw": 0.276
+  },
+  {
+   "site": "Thiruvananthapuram (KL)",
+   "lat": 8.52,
+   "lon": 76.94,
+   "elevation": 26.0,
+   "holdout": false,
+   "model": {
+    "mae": 60.66,
+    "rmse": 90.35,
+    "mbe": 6.61,
+    "n": 4202
+   },
+   "nwp_raw": {
+    "mae": 70.03,
+    "rmse": 103.98,
+    "mbe": -0.28,
+    "n": 4202
+   },
+   "skill_vs_nwp_raw": 0.131
+  },
+  {
+   "site": "Bhubaneswar (OD)",
+   "lat": 20.3,
+   "lon": 85.82,
+   "elevation": 54.0,
+   "holdout": false,
+   "model": {
+    "mae": 62.23,
+    "rmse": 91.62,
+    "mbe": 10.15,
+    "n": 4151
+   },
+   "nwp_raw": {
+    "mae": 79.62,
+    "rmse": 115.19,
+    "mbe": 40.96,
+    "n": 4151
+   },
+   "skill_vs_nwp_raw": 0.205
+  },
+  {
+   "site": "Chennai (TN)",
+   "lat": 13.08,
+   "lon": 80.27,
+   "elevation": 10.0,
+   "holdout": true,
+   "model": {
+    "mae": 62.91,
+    "rmse": 93.73,
+    "mbe": 26.93,
+    "n": 4124
+   },
+   "nwp_raw": {
+    "mae": 71.54,
+    "rmse": 103.55,
+    "mbe": 35.37,
+    "n": 4124
+   },
+   "skill_vs_nwp_raw": 0.095
+  },
+  {
+   "site": "Port Blair (AN)",
+   "lat": 11.62,
+   "lon": 92.73,
+   "elevation": 20.0,
+   "holdout": true,
+   "model": {
+    "mae": 65.3,
+    "rmse": 103.74,
+    "mbe": 18.75,
+    "n": 4175
+   },
+   "nwp_raw": {
+    "mae": 62.59,
+    "rmse": 99.29,
+    "mbe": 35.41,
+    "n": 4175
+   },
+   "skill_vs_nwp_raw": -0.045
+  },
+  {
+   "site": "Leh (LA)",
+   "lat": 34.15,
+   "lon": 77.58,
+   "elevation": 3411.0,
+   "holdout": true,
+   "model": {
+    "mae": 99.82,
+    "rmse": 132.47,
+    "mbe": 84.13,
+    "n": 4120
+   },
+   "nwp_raw": {
+    "mae": 80.48,
+    "rmse": 116.21,
+    "mbe": 57.21,
+    "n": 4120
+   },
+   "skill_vs_nwp_raw": -0.14
+  }
+ ],
+ "monthly_seen": [
+  {
+   "month": 1,
+   "model_rmse": 71.94,
+   "nwp_rmse": 102.36
+  },
+  {
+   "month": 2,
+   "model_rmse": 59.67,
+   "nwp_rmse": 73.4
+  },
+  {
+   "month": 3,
+   "model_rmse": 60.46,
+   "nwp_rmse": 74.44
+  },
+  {
+   "month": 4,
+   "model_rmse": 70.55,
+   "nwp_rmse": 83.38
+  },
+  {
+   "month": 5,
+   "model_rmse": 79.7,
+   "nwp_rmse": 100.24
+  },
+  {
+   "month": 6,
+   "model_rmse": 90.85,
+   "nwp_rmse": 121.19
+  },
+  {
+   "month": 7,
+   "model_rmse": 98.02,
+   "nwp_rmse": 127.67
+  },
+  {
+   "month": 8,
+   "model_rmse": 97.07,
+   "nwp_rmse": 127.43
+  },
+  {
+   "month": 9,
+   "model_rmse": 81.24,
+   "nwp_rmse": 108.22
+  },
+  {
+   "month": 10,
+   "model_rmse": 73.27,
+   "nwp_rmse": 93.2
+  },
+  {
+   "month": 11,
+   "model_rmse": 62.45,
+   "nwp_rmse": 82.38
+  },
+  {
+   "month": 12,
+   "model_rmse": 65.97,
+   "nwp_rmse": 82.67
+  }
+ ],
+ "feature_importance": {
+  "kt_nwp": 0.6165,
+  "cloud": 0.0727,
+  "rh": 0.0598,
+  "cloud_low": 0.0396,
+  "lat": 0.0395,
+  "cloud_mid": 0.0351,
+  "ghi_cs": 0.0291,
+  "temp": 0.0251,
+  "cloud_high": 0.016,
+  "doy_sin": 0.0152,
+  "lon": 0.0147,
+  "cos_zenith": 0.0139,
+  "doy_cos": 0.0135,
+  "elevation": 0.009
+ }
+}

@@ -87,6 +87,9 @@ function FeaturedProject() {
               >
                 Open live app <span aria-hidden="true">↗</span>
               </a>
+              <a className="featured__btn" href="/projects/india-renewables-forecast/">
+                Read the case study <span aria-hidden="true">→</span>
+              </a>
             </div>
           </Motion.div>
 
