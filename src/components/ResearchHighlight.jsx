@@ -116,8 +116,11 @@ function ResearchHighlight() {
       <div className="rh-grid">
         <figure className="rh-card">
           <figcaption className="rh-card__title">How decomposition separates the signal</figcaption>
-          <svg
+          <Motion.svg
             className="rh-decomp"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
             viewBox={`-90 -6 ${W + 96} ${DECOMP_H}`}
             role="img"
             aria-label="Illustration: a three-day irradiance curve split into low, medium and high frequency components"
@@ -129,14 +132,14 @@ function ResearchHighlight() {
                 <Motion.path
                   d={r.path}
                   className={`rh-line ${r.cls}`}
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 1.6, delay: i * 0.35, ease: 'easeInOut' }}
+                  variants={{
+                    hidden: { pathLength: 0 },
+                    show: { pathLength: 1, transition: { duration: 1.6, delay: i * 0.35, ease: 'easeInOut' } },
+                  }}
                 />
               </g>
             ))}
-          </svg>
+          </Motion.svg>
           <p className="rh-card__note">Illustration with synthetic data. The paper’s real IMFs are in Figs. 8–11.</p>
         </figure>
 

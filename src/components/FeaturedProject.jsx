@@ -1,4 +1,5 @@
 import { motion as Motion } from 'framer-motion'
+import BrowserFrame from './ui/browser-frame'
 import './FeaturedProject.css'
 
 const steps = [
@@ -136,6 +137,27 @@ function FeaturedProject() {
             </p>
           </Motion.aside>
         </div>
+
+        <Motion.figure
+          className="featured__shot"
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <a href="https://solar-forecast.vercel.app" target="_blank" rel="noopener noreferrer" className="featured__shot-link">
+            <BrowserFrame
+              url="solar-forecast.vercel.app"
+              images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
+              ratio={1440 / 900}
+              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, and the results page"
+            />
+          </a>
+          <figcaption className="featured__shot-caption">
+            The live app: click anywhere in India for a forecast. Coloured dots are the 32 test sites, shaded by
+            how much the model beats the raw weather forecast. The second view is the results page.
+          </figcaption>
+        </Motion.figure>
       </div>
     </section>
   )

@@ -184,7 +184,13 @@ export function AnimatedHeroSection() {
         return width + calculateWordWidth(word, SMALL_PIXEL_SIZE) + (index > 0 ? WORD_SPACING * SMALL_PIXEL_SIZE : 0)
       }, 0)
       const totalWidth = Math.max(totalWidthLarge, totalWidthSmall)
-      const scaleFactor = (canvas.width * 0.8) / totalWidth
+      // Fit the name to 80% of the width, but never taller than 64% of the
+      // stage, so short laptop screens don't push it into the content below.
+      const textHeightUnits = 15 * LARGE_PIXEL_SIZE
+      const scaleFactor = Math.min(
+        (canvas.width * 0.8) / totalWidth,
+        (canvas.height * 0.64) / textHeightUnits,
+      )
 
       const adjustedLargePixelSize = LARGE_PIXEL_SIZE * scaleFactor
       const adjustedSmallPixelSize = SMALL_PIXEL_SIZE * scaleFactor

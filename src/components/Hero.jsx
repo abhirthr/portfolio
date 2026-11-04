@@ -5,7 +5,9 @@ import { CV_URL, CONTACT_EMAIL } from '../lib/site'
 function Hero() {
   return (
     <section id="home" className="hero">
-      <AnimatedHeroSection />
+      <div className="hero__stage">
+        <AnimatedHeroSection />
+      </div>
 
       <div className="hero__bottom">
         <div className="hero__intro">

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion as Motion } from 'framer-motion'
 import Lightbox from './ui/lightbox'
+import BrowserFrame from './ui/browser-frame'
 import './FieldWork.css'
 
 // Station coordinates as printed on the Research Scholars' Day poster.
@@ -66,16 +67,12 @@ function FieldWork() {
           whileInView="show"
           viewport={{ once: true, amount: 0.25 }}
         >
-          <div className="browser" aria-hidden="true">
-            <div className="browser__bar">
-              <span /><span /><span />
-              <p className="browser__url">ml-sol.com</p>
-            </div>
-            <div className="browser__view">
-              <img src="/images/field/mlsol-home.webp" alt="" loading="lazy" />
-              <img src="/images/field/mlsol-stations.webp" alt="" loading="lazy" className="browser__alt" />
-            </div>
-          </div>
+          <BrowserFrame
+            url="ml-sol.com"
+            images={['/images/field/mlsol-home.webp', '/images/field/mlsol-stations.webp']}
+            ratio={1440 / 760}
+            label="Screenshots of ml-sol.com: the home page and the monitoring-stations page"
+          />
           <div className="field-card__body">
             <h3 className="field-card__title">ML-Sol: PV power forecasting service</h3>
             <p className="field-card__text">
@@ -100,8 +97,11 @@ function FieldWork() {
           viewport={{ once: true, amount: 0.25 }}
         >
           <h3 className="field-card__title">Six monitoring stations</h3>
-          <svg
+          <Motion.svg
             className="station-map"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
             viewBox={`0 0 ${MAP_W} ${MAP_H}`}
             role="img"
             aria-label="Relative positions of the six weather stations: IIT Roorkee, Saharanpur, Kurukshetra, Vikas Nagar, Greater Noida and Tanakpur"
@@ -129,11 +129,10 @@ function FieldWork() {
               return (
                 <Motion.g
                   key={s.name}
-                  initial={{ opacity: 0, scale: 0.4 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
-                  style={{ transformOrigin: `${x}px ${y}px` }}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: { opacity: 1, transition: { duration: 0.5, delay: 0.2 + i * 0.15 } },
+                  }}
                 >
                   <circle cx={x} cy={y} r="14" className="station-map__pulse" style={{ animationDelay: `${i * 0.4}s` }} />
                   <circle cx={x} cy={y} r={s.hub ? 7 : 5.5} className={s.hub ? 'station-map__hub' : 'station-map__dot'} />
@@ -143,7 +142,7 @@ function FieldWork() {
                 </Motion.g>
               )
             })}
-          </svg>
+          </Motion.svg>
           <p className="field-card__note">Positions to scale by latitude and longitude, from the poster’s coordinates.</p>
           <h4 className="field-card__sub">Measured year-round</h4>
           <ul className="field-chips">
