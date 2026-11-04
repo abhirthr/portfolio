@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion as Motion } from 'framer-motion'
 import Lightbox from './ui/lightbox'
+import CountUp from './ui/count-up'
 import './ResearchHighlight.css'
 
 const DOI = 'https://doi.org/10.1016/j.renene.2025.123021'
@@ -184,7 +185,7 @@ function ResearchHighlight() {
       <div className="rh-stats">
         {stats.map((s) => (
           <div key={s.label} className="rh-stat">
-            <span className="rh-stat__value">{s.value}{s.unit && <small> {s.unit}</small>}</span>
+            <span className="rh-stat__value"><CountUp value={s.value} />{s.unit && <small> {s.unit}</small>}</span>
             <span className="rh-stat__label">{s.label}</span>
           </div>
         ))}

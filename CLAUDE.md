@@ -43,7 +43,10 @@ src/components/                    Hero, FeaturedProject, WorkedWith (timeline +
                                    (ML-Sol, 6 stations, 2023 poster), SelectedWork (pubs,
                                    projects, honors, courses), About (+ contact), Footer, Navbar, MenuOverlay
 src/components/ui/                 animated-hero-section (pong name canvas), particles,
-                                   lightbox, browser-frame, scroll-expand (section wrapper, takes id)
+                                   lightbox, browser-frame, scroll-expand (section wrapper, takes id),
+                                   count-up (stat numbers)
+src/components/SunNow.jsx          live "sun over Roorkee now" chip in the hero (src/lib/sun.js:
+                                   NOAA solar position + Haurwitz clear-sky, computed in browser)
 src/case-study/                    CaseStudy.jsx, charts.jsx, CaseStudy.css, Section.jsx (shared), main.jsx
 src/fft-lstm/                      FFT-LSTM case study: FftLstm.jsx, charts.jsx, data.js (paper tables), FftLstm.css
 src/lib/site.js                    CV_URL, CONTACT_EMAIL
@@ -85,6 +88,11 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
   at 64% of that height; it overlapped content on short laptop screens before.
 - Particles canvas covers the whole light section (ResizeObserver); pixel ratio is capped
   to stay under iOS Safari's ~16.7M-pixel canvas limit.
+- Navbar: desktop (>1024px) shows section links with the active one highlighted; phones keep
+  the Menu button. After the hero it becomes a near-opaque dark bar with a scroll-progress line
+  (white text used to vanish over the light sections).
+- Hero canvas: hit pixels flash amber and regrow after 9 s; click/tap serves the ball; draws
+  a still frame under prefers-reduced-motion. All pages wrap in MotionConfig reducedMotion="user".
 - SVG animations (station map, decomposition) trigger `whileInView` on the `<svg>` root,
   not on child `<g>`/`<path>` (Safari doesn't fire IntersectionObserver on SVG children).
 - The live forecast app's landing animates in; wait ~5 s before screenshots. Its Render

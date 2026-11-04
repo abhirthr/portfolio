@@ -15,27 +15,53 @@
   position: relative;
   flex: 1;
   min-height: 0;
+  margin-top: 72px; /* keep the top paddle clear of the nav bar */
+}
+
+.hero__hint {
+  position: absolute;
+  right: 48px;
+  bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
 }
 
 .hero__bottom {
   position: relative;
-  padding: 16px 0 32px;
+  padding: 8px 20px 28px;
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
+  text-align: center;
+}
+
+.hero__headline {
+  font-size: clamp(26px, 3.2vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.hero__headline em {
+  font-style: normal;
+  color: var(--color-accent);
 }
 
 .hero__intro {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .hero__avatar {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--color-accent);
@@ -43,11 +69,33 @@
 }
 
 .hero__subtitle {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--color-gray);
-  letter-spacing: 0.04em;
-  text-align: center;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.01em;
+}
+
+.hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero__proof a {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  border: 1px solid rgba(245, 165, 36, 0.35);
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hero__proof a:hover {
+  background: var(--color-accent);
+  color: #000;
 }
 
 .hero__cta {
@@ -99,22 +147,38 @@
 }
 
 @media (max-width: 810px) {
-  .hero__intro {
-    padding: 0 40px;
+  .hero__hint {
+    display: none;
+  }
+}
+
+/* Phones: the name is width-limited, so give the canvas only the height it needs
+   and let the intro sit right under it instead of at the bottom of a tall black gap. */
+@media (max-width: 600px) {
+  .hero {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .hero__stage {
+    flex: 0 0 auto;
+    height: max(240px, 64vw);
+    margin-top: 64px;
+  }
+
+  .hero__bottom {
+    flex: 1;
+    justify-content: center;
+    gap: 16px;
+    padding-bottom: 32px;
+  }
+
+  .hero__headline {
+    font-size: 28px;
   }
 
   .hero__subtitle {
     font-size: 13px;
     text-align: left;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__intro {
-    padding: 0 20px;
-  }
-
-  .hero__subtitle {
-    font-size: 12px;
   }
 }

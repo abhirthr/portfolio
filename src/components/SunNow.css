@@ -1,0 +1,84 @@
+.sun-now {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 6px 14px 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: help;
+}
+
+.sun-now--placeholder {
+  width: 320px;
+  max-width: 100%;
+  border-color: transparent;
+  background: transparent;
+}
+
+.sun-now strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.sun-now__arc {
+  width: 44px;
+  height: 22px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.sun-now__path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 3;
+}
+
+.sun-now__horizon {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1;
+}
+
+.sun-now__sun {
+  fill: var(--color-accent);
+  filter: drop-shadow(0 0 4px rgba(245, 165, 36, 0.9));
+}
+
+.sun-now__moon {
+  fill: #9aa4b5;
+}
+
+.sun-now__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.sun-now__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: sun-now-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sun-now-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 165, 36, 0.6); }
+  50% { box-shadow: 0 0 0 5px rgba(245, 165, 36, 0); }
+}
+
+@media (max-width: 480px) {
+  .sun-now {
+    font-size: 12px;
+    border-radius: 18px;
+  }
+}

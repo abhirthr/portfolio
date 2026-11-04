@@ -60,6 +60,7 @@ function WorkedWith() {
       <div className="worked-with__inner">
         <h2 className="worked-with__title">Experience</h2>
 
+        <div className="worked-with__grid">
         <ol className="timeline">
           {experiences.map((exp, i) => (
             <Motion.li
@@ -101,6 +102,7 @@ function WorkedWith() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -163,6 +163,36 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+/* Wide screens: timeline left, toolkit right (sticky), instead of stacked */
+@media (min-width: 1200px) {
+  .worked-with__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 72px;
+    align-items: start;
+  }
+
+  .timeline__item {
+    grid-template-columns: 170px 1fr;
+    gap: 24px;
+  }
+
+  .toolkit {
+    position: sticky;
+    top: 96px;
+    margin-top: 0;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .toolkit__groups {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
 @media (max-width: 1024px) {
   .toolkit__groups {
     grid-template-columns: 1fr;

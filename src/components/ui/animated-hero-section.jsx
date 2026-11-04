@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react"
 
 const COLOR = "#FFFFFF"
-const HIT_COLOR = "#333333"
+const HIT_COLOR = "#2a2a2a"
+const FLASH_RGB = [245, 165, 36] // solar amber flash when a pixel is hit
+const FLASH_MS = 700
+const REGROW_MS = 9000 // hit pixels grow back so the name never stays broken
 const BACKGROUND_COLOR = "#000000"
 const BALL_COLOR = "#FFFFFF"
-const PADDLE_COLOR = "#FFFFFF"
+const PADDLE_COLOR = "rgba(255, 255, 255, 0.28)"
 const LETTER_SPACING = 1
 const WORD_SPACING = 3
 
@@ -154,8 +157,10 @@ export function AnimatedHeroSection() {
     let animationId
 
     const resizeCanvas = () => {
-      canvas.width = canvas.parentElement.offsetWidth
-      canvas.height = canvas.parentElement.offsetHeight
+      // Draw at device resolution (capped at 2x) so the pixels stay crisp.
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      canvas.width = Math.round(canvas.parentElement.offsetWidth * dpr)
+      canvas.height = Math.round(canvas.parentElement.offsetHeight * dpr)
       scaleRef.current = Math.min(canvas.width / 1000, canvas.height / 1000)
       initializeGame()
     }
@@ -228,7 +233,7 @@ export function AnimatedHeroSection() {
                   if (pixelMap[i][j]) {
                     const x = startX + j * pixelSize
                     const y = startY + i * pixelSize
-                    pixelsRef.current.push({ x, y, size: pixelSize, hit: false })
+                    pixelsRef.current.push({ x, y, size: pixelSize, hit: false, hitAt: 0 })
                   }
                 }
               }
@@ -246,7 +251,7 @@ export function AnimatedHeroSection() {
                 if (pixelMap[i][j]) {
                   const x = startX + j * pixelSize
                   const y = startY + i * pixelSize
-                  pixelsRef.current.push({ x, y, size: pixelSize, hit: false })
+                  pixelsRef.current.push({ x, y, size: pixelSize, hit: false, hitAt: 0 })
                 }
               }
             }
@@ -267,7 +272,7 @@ export function AnimatedHeroSection() {
         radius: adjustedLargePixelSize / 2,
       }
 
-      const paddleWidth = adjustedLargePixelSize
+      const paddleWidth = adjustedLargePixelSize * 0.5
       const paddleLength = 10 * adjustedLargePixelSize
 
       paddlesRef.current = [
@@ -363,6 +368,7 @@ export function AnimatedHeroSection() {
           ball.y - ball.radius < pixel.y + pixel.size
         ) {
           pixel.hit = true
+          pixel.hitAt = performance.now()
           const centerX = pixel.x + pixel.size / 2
           const centerY = pixel.y + pixel.size / 2
           if (Math.abs(ball.x - centerX) > Math.abs(ball.y - centerY)) {
@@ -380,8 +386,20 @@ export function AnimatedHeroSection() {
       ctx.fillStyle = BACKGROUND_COLOR
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+      const now = performance.now()
       pixelsRef.current.forEach((pixel) => {
-        ctx.fillStyle = pixel.hit ? HIT_COLOR : COLOR
+        if (pixel.hit && now - pixel.hitAt > REGROW_MS) pixel.hit = false
+        if (!pixel.hit) {
+          ctx.fillStyle = COLOR
+        } else {
+          const t = now - pixel.hitAt
+          if (t < FLASH_MS) {
+            const a = 1 - t / FLASH_MS
+            ctx.fillStyle = `rgba(${FLASH_RGB.join(',')}, ${0.25 + 0.75 * a})`
+          } else {
+            ctx.fillStyle = HIT_COLOR
+          }
+        }
         ctx.fillRect(pixel.x, pixel.y, pixel.size, pixel.size)
       })
 
@@ -402,13 +420,40 @@ export function AnimatedHeroSection() {
       animationId = requestAnimationFrame(gameLoop)
     }
 
+    // Click or tap to serve the ball from the pointer towards the name.
+    const serve = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      const k = canvas.width / rect.width
+      const x = (e.clientX - rect.left) * k
+      const y = (e.clientY - rect.top) * k
+      const ball = ballRef.current
+      const speed = Math.hypot(ball.dx, ball.dy) || 6 * scaleRef.current
+      const ang = Math.atan2(y - canvas.height / 2, x - canvas.width / 2)
+      ball.x = Math.max(ball.radius, Math.min(canvas.width - ball.radius, x))
+      ball.y = Math.max(ball.radius, Math.min(canvas.height - ball.radius, y))
+      ball.dx = Math.cos(ang + Math.PI) * speed
+      ball.dy = Math.sin(ang + Math.PI) * speed
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const onResize = () => {
+      resizeCanvas()
+      if (reduceMotion) drawGame()
+    }
+
     resizeCanvas()
-    window.addEventListener("resize", resizeCanvas)
-    gameLoop()
+    window.addEventListener("resize", onResize)
+    if (reduceMotion) {
+      drawGame()
+    } else {
+      canvas.addEventListener("pointerdown", serve)
+      gameLoop()
+    }
 
     return () => {
       cancelAnimationFrame(animationId)
-      window.removeEventListener("resize", resizeCanvas)
+      window.removeEventListener("resize", onResize)
+      canvas.removeEventListener("pointerdown", serve)
     }
   }, [])
 
@@ -421,6 +466,8 @@ export function AnimatedHeroSection() {
         left: 0,
         width: "100%",
         height: "100%",
+        cursor: "crosshair",
+        touchAction: "pan-y",
       }}
       aria-label="Abhijeet Rathore: Animated Pong game with pixel text"
     />
