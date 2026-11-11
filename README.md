@@ -1,51 +1,53 @@
-# Abhijeet Rathore — portfolio
+# abhijeetrathore.in
 
-Personal site of Abhijeet Rathore, PhD researcher at IIT Roorkee working on machine
-learning for solar and wind forecasting.
+Personal site of Abhijeet Rathore: PhD researcher at IIT Roorkee working on machine
+learning for solar and wind forecasting. Live at **https://abhijeetrathore.in**.
 
-**Live:** https://abhijeetrathore.in
+The home page covers the featured forecasting app, the Renewable Energy 2025 paper and
+granted patent, field work on a six-station monitoring network, experience, publications,
+honors and contact. Two case-study pages go deeper:
 
-## What's on the page
+- `/projects/india-renewables-forecast/` – the live India-wide solar and wind forecasting app
+- `/projects/fft-lstm-solar-forecast/` – the FFT-assisted LSTM paper
 
-| Section | Component |
-| --- | --- |
-| Hero (pixel-name animation, CV and contact buttons) | `src/components/Hero.jsx` |
-| Featured project: India Renewables Forecast | `src/components/FeaturedProject.jsx` |
-| Experience timeline and toolkit | `src/components/WorkedWith.jsx` |
-| Research highlight: FFT-assisted LSTM paper and granted patent | `src/components/ResearchHighlight.jsx` |
-| Research Engineer work: ML-Sol, six weather stations, 2023 poster | `src/components/FieldWork.jsx` |
-| Publications, research projects, honors, courses | `src/components/SelectedWork.jsx` |
-| About and contact | `src/components/About.jsx` |
+## Stack
 
-### Case studies
+React 19, Vite 7 (multi-page build), framer-motion, plain CSS per component. No backend:
+the site is static and deployed on Vercel from `main`.
 
-Each case study is its own static page (Vite multi-page build, see `vite.config.js`):
+## Readable without JavaScript
 
-- `/projects/india-renewables-forecast/`: entry `projects/india-renewables-forecast/index.html`,
-  code in `src/case-study/`. Its numbers load live from the app's published
-  `data/model_results.json`, with a bundled snapshot in `src/data/irf-results.json` as fallback.
+Every page is **prerendered at build time**. `npm run build` runs the normal client build,
+then `scripts/prerender.mjs` renders each page with `react-dom/server` and writes the HTML
+into `dist/`. The client entries hydrate that markup, so search engines, link previews,
+screen readers and AI agents get the full content from the raw HTML.
 
-Shared pieces live in `src/components/ui/` (particle background, image lightbox,
-section wrapper). Site-wide settings such as the CV path and contact email are in
-`src/lib/site.js`; colour tokens (including the solar-amber accent) are in
-`src/index.css`.
+Also served for machines: `llms.txt` (a plain-text summary of the whole site), `sitemap.xml`,
+`robots.txt`, and JSON-LD (`Person` on the home page, `TechArticle` on the case studies).
 
-## Develop
+Rule for new components: browser APIs (`window`, `document`, canvas, observers, timers)
+belong inside `useEffect`. The first render must be deterministic so it matches on the server.
+
+## Commands
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
-npm run lint
-npm run build    # output in dist/
+npm run dev       # http://localhost:5173 (client-rendered, no prerender)
+npm run lint      # must be clean
+npm run build     # client build + prerender into dist/
+npx vite preview  # serve dist/ including the /projects/... pages
 ```
 
-Built with React 19, Vite and framer-motion. Deployed on Vercel from `main`.
+## Layout
 
-## Assets
-
-- `public/images/research/`: figures from Rathore et al., *Renewable Energy* 247 (2025)
-  123021, © Elsevier, reproduced by the author. The paper itself is linked by DOI, not hosted.
-- `public/images/field/`: ML-Sol screenshots and the Research Scholars' Day 2023 poster.
-- `public/Abhijeet_Rathore_CV.pdf`: the CV behind the Download CV button. To update it,
-  replace the file (keep the name) or change `CV_URL` in `src/lib/site.js`.
-- `public/og-image.png`: the preview card shown when the link is shared.
+```
+index.html, projects/*/index.html   page shells: meta, OG, canonical, JSON-LD
+src/entry-server.jsx                 maps page keys to components for prerendering
+src/lib/mount.jsx                    hydrate (prod) or render (dev) a page
+src/main.jsx, src/case-study/, src/fft-lstm/   page entries and case-study code
+src/components/                      home-page sections and shared UI
+src/lib/                             site constants, sun-position maths, live-results hook
+src/data/irf-results.json            bundled snapshot of the app's published results
+public/                              CV, favicons, share images, llms.txt, robots.txt, sitemap.xml
+scripts/prerender.mjs                build-time prerender
+```

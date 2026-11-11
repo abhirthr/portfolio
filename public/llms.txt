@@ -1,0 +1,96 @@
+# Abhijeet Rathore
+
+> Personal site of Abhijeet Rathore, PhD researcher at IIT Roorkee (Department of Hydro and Renewable Energy) working on machine learning for solar and wind power forecasting in India. First author of a 2025 Renewable Energy (Elsevier) paper, co-inventor on a granted Indian patent, and builder of a live India-wide solar and wind forecasting app.
+
+All pages on this site are prerendered static HTML, so their full text is readable without JavaScript. Every number on the site is sourced from the cited paper, the CV, the 2023 poster, or the app's published results file.
+
+- Site: https://abhijeetrathore.in/
+- Email: hello@abhijeetrathore.in
+- CV (PDF): https://abhijeetrathore.in/Abhijeet_Rathore_CV.pdf
+- LinkedIn: https://www.linkedin.com/in/arthr
+- Google Scholar: https://scholar.google.com/citations?user=NRMwxt8AAAAJ
+- GitHub: https://github.com/abhirthr
+- Live forecasting app: https://app.abhijeetrathore.in/
+- Open to: research collaborations and roles in renewable-energy forecasting, ML engineering and applied data science.
+
+## Pages
+
+- [Home](https://abhijeetrathore.in/): overview, featured project, research highlight, field work, experience, publications, honors, courses, contact.
+- [Case study: India Renewables Forecast](https://abhijeetrathore.in/projects/india-renewables-forecast/): the live app, how the model learns a clear-sky-index correction to weather forecasts, how it was tested, and its results.
+- [Case study: FFT-assisted LSTM solar forecasting](https://abhijeetrathore.in/projects/fft-lstm-solar-forecast/): the Renewable Energy 2025 paper explained, with per-site and seasonal results.
+
+## Current position
+
+- PhD Researcher, IIT Roorkee, Dept. of Hydro and Renewable Energy (Jul 2024 to present). Machine learning for solar and wind forecasting across India.
+
+## Experience
+
+- Research Engineer, IIT Roorkee (Jul 2022 to Jul 2024). Day-ahead PV forecasting model, a six-station weather and PV monitoring network in North India (IIT Roorkee, Saharanpur, Kurukshetra, Vikas Nagar, Greater Noida, Tanakpur), and the ML-Sol commercial forecasting web service (https://www.ml-sol.com): led backend development and model integration; automated data collection and preprocessing for six sites, cutting manual work by over 90%; built Flask and Streamlit interfaces for non-specialists.
+- Data Analyst, Del2Infinity Energy Consulting (Mar 2018 to Jul 2020, remote). Statistical and numerical modelling to support energy-management decisions.
+
+## Education
+
+- M.Tech, Power and Energy Systems Engineering, Rajiv Gandhi Institute of Petroleum Technology (Energy Institute, Bengaluru), Aug 2020 to Jun 2022. Institute Gold Medal for best academic performance.
+- B.Tech, Electrical and Electronics Engineering, Shri Ramswaroop Memorial College of Engineering and Management (AKTU), Lucknow, Jul 2013 to Jun 2017. Certificate of Merit in the 2nd, 3rd and 4th years.
+
+## Featured project: India Renewables Forecast (Jan to Mar 2026)
+
+A forecasting platform that gives a solar and wind baseline for any location in India. Click a point on the map to get a 3-day PV and wind generation forecast alongside the long-term resource for that site. Built end to end: data, model, API and web app.
+
+- Model: one India-wide LightGBM model predicts the clear-sky index (GHI / clear-sky GHI) to correct numerical weather prediction irradiance, with P10 / P90 quantile models for an 80% band. Satellite irradiance (NASA POWER) is used only for training; at forecast time only the weather forecast and sun geometry are needed.
+- Temperature: IMD gridded temperature corrects the forecast bias that feeds PV cell temperature and air density.
+- Physics: pvlib clear-sky and PV modelling, hub-height wind extrapolation with hourly shear, and a turbine power curve.
+- Testing: trained on 2022 to 2023, scored on all of 2024. Hourly irradiance RMSE at training sites fell from 101 to 78 W/m2 (23% better than the raw forecast); 10% better at 8 sites held out of training entirely; a similar gain holds through the monsoon. The app shows where the model struggles (for example high-altitude Leh) rather than hiding it.
+- Stack: Python, LightGBM, pvlib, pandas, FastAPI, React, Leaflet, Render, Vercel, GitHub Actions.
+- Live results file the case study reads: https://app.abhijeetrathore.in/data/model_results.json
+
+## Research highlight: day-ahead solar forecasting with FFT-assisted LSTM
+
+Rathore, Gupta, Sharma and Singh, "Day ahead solar forecast using long short term memory network augmented with Fast Fourier transform-assisted decomposition technique", Renewable Energy 247 (2025) 123021. https://doi.org/10.1016/j.renene.2025.123021 (not open access; the DOI is the canonical link).
+
+- Role: first author (software, data curation, analysis, validation, figures, first draft).
+- Method: NA-MEMD decomposes multivariate weather series (temperature, humidity, wind speed and direction, solar zenith angle; NSRDB 2005 to 2014) into 14 to 15 intrinsic mode functions; an FFT groups them by dominant frequency into 5 signals (HIGH 1 to 3, MEDIUM, LOW); one attention-based LSTM per signal forecasts the next day's 11 sunshine hours; the forecasts are summed.
+- Sites: Jodhpur (hot-dry), Kamuthi (warm-humid), Chikkoppa (warm-humid), Charanka (hot-dry).
+- Results (Table 5, test-set RMSE in W/m2 for AM-LSTM / N-AM-LSTM / proposed): Jodhpur 91.22 / 69.22 / 67.52; Kamuthi 121.26 / 71.5 / 51.89; Chikkoppa 107.47 / 87.36 / 70.12; Charanka 88.49 / 63.87 / 62.38. Mean RMSE 62.97 W/m2 (nRMSE 6.33%, R 0.972): 36.9% lower than attention-LSTM alone and 13% lower than decomposition without FFT.
+- Training time (Section 4.3): 876 s versus 2128 s for N-AM-LSTM, 58.8% less, by training 5 models instead of 15.
+- Stack: Python, Keras and TensorFlow, Keras Tuner, scikit-learn, Matplotlib.
+
+## Patent
+
+- "A System and Method for Forecasting Solar Photovoltaic Power Using Machine Learning". Indian Patent No. 580682, granted 16 Feb 2026. Application No. 202311059664, filed 5 Sep 2023. Patentee: iHUB DivyaSampark, IIT Roorkee. Inventors: Rhythm Singh, Raksha Sharma, Abhijeet Rathore, Priya Gupta.
+
+## Publications
+
+- 2025, journal: Day ahead solar forecast using long short term memory network augmented with Fast Fourier transform-assisted decomposition technique. Renewable Energy 247: 123021. https://doi.org/10.1016/j.renene.2025.123021
+- 2024, journal: Energy, exergy and performance analysis of a 380 kWP roof-top PV plant assisted with data-driven models for energy generation. Journal of Thermal Engineering 10(5): 1164 to 1183. https://doi.org/10.14744/thermal.0000859
+- 2023, conference: An IoT-Based Automatic Light Control System for Smart Buildings. International Conference on Signal, Machines, Automation, and Algorithm, Springer Nature Singapore. https://doi.org/10.1007/978-981-97-6349-8_42
+- 2023, book chapter: Configurations of Converters applied to Electric Vehicles with comprehensive control strategies and optimization. Chapter 13 in Power Electronics for Electric Vehicles and Energy Storage: Emerging Technologies and Developments, CRC Press. https://www.routledge.com/Power-Electronics-for-Electric-Vehicles-and-Energy-Storage-Emerging-Technologies-and-Developments/Kishan-Kannan-Reddy-Prabhakaran/p/book/9781032164243
+- 2021, conference: Building Energy Management Through Load Control Using Internet of Things. Innovations in Power and Advanced Computing Technologies (i-PACT), pp. 1 to 6. https://doi.org/10.1109/i-PACT52855.2021.9696596
+
+## Earlier research projects
+
+- M.Tech thesis: Yield Modelling and Data-Driven Feasibility Analysis of Solar PV and Solar Thermal Systems. Data-driven PV energy yield model with integrated optimisation for site-specific feasibility and parameter tuning (MATLAB, statistics).
+- B.Tech project: Enhancement of Voltage Quality in Isolated Power Systems. Battery-backed series compensator in MATLAB/Simulink to reduce total harmonic distortion and improve voltage stability.
+- Training: UPPCL Lucknow (132 kV substation operations); Industrial Automation workshop, Sofcon (PLC, HMI, SCADA); UNICON PLC Automation (MATLAB control systems, signal processing).
+
+## Skills
+
+- Machine learning: Python, time-series forecasting, LSTM and attention, LightGBM, scikit-learn, TensorFlow / Keras, feature engineering.
+- Energy modelling: pvlib, solar PV yield, wind power curves, NWP and satellite data, signal decomposition (EMD, FFT), MATLAB / Simulink.
+- Engineering: FastAPI, Flask, Streamlit, React, data pipelines, GitHub Actions, Vercel / Render.
+
+## Honors
+
+- Institute Gold Medal, RGIPT: best academic performance, M.Tech Power and Energy Systems Engineering.
+- Certificate of Merit, SRMCEM Lucknow: 2nd, 3rd and 4th years of B.Tech.
+- Merit Certificate, CBSE: Class 12 examinations.
+
+## Courses and certifications
+
+IBM / Coursera (Gen AI foundational models for NLP; Generative AI and LLMs: architecture and data preparation); Google Data Analytics Certificate; University of Michigan / Coursera (Programming for Everybody, Python Data Structures); Kaggle (Intro and Intermediate Machine Learning); DeepLearning.AI (Neural Networks and Deep Learning); MathWorks (MATLAB and Simulink Onramp, Machine Learning with MATLAB, Solving ODEs with MATLAB); Udemy (Machine Learning and Data Science Bootcamp); Andrew Ng / Stanford (Machine Learning).
+
+## Optional
+
+- [Patent certificate image](https://abhijeetrathore.in/images/patent-certificate.webp)
+- [Sitemap](https://abhijeetrathore.in/sitemap.xml)
+- [Source repository](https://github.com/abhirthr/portfolio): React 19 + Vite 7, prerendered at build time, deployed on Vercel.

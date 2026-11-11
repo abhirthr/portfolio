@@ -4,6 +4,7 @@ import './About.css'
 function About() {
   return (
     <section id="about" className="about">
+      <h2 className="visually-hidden">About and contact</h2>
 <div className="about__inner">
         <div className="about__content">
           <p className="about__quote">

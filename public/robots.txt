@@ -1,4 +1,8 @@
+# All crawlers, including AI assistants and search engines, are welcome.
 User-agent: *
 Allow: /
+
+# Machine-readable summary of this site for AI agents:
+# https://abhijeetrathore.in/llms.txt
 
 Sitemap: https://abhijeetrathore.in/sitemap.xml

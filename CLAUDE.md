@@ -25,9 +25,13 @@ end of each session.
 ## Commands
 ```bash
 npm install && npm run dev     # http://localhost:5173
-npm run lint && npm run build  # lint must be clean (0 problems)
+npm run lint && npm run build  # lint must be clean (0 problems); build also prerenders
 npx vite preview               # serves dist/, incl. /projects/... pages
 ```
+`npm run build` = `vite build` + `node scripts/prerender.mjs`. The script does an SSR build of
+`src/entry-server.jsx` into `.ssr-tmp/` (deleted afterwards), renders each page with
+react-dom/server and injects it into the `<div id="root">` of the matching dist HTML. Check with
+`curl -s https://abhijeetrathore.in/ | sed -n '/<body>/,/</body>/p'`: the body must contain the text.
 Deploy: commit on the working branch, push it, then fast-forward `main`
 (`git push origin <branch>:main`) once the user says to put it live.
 Commit author: always `Abhijeet Rathore <abhijeetrthr@gmail.com>` (set `git config user.name/user.email`
@@ -40,6 +44,9 @@ index.html                         home page (meta, OG, canonical, JSON-LD, anal
 projects/india-renewables-forecast/index.html   case-study page entry (Vite multi-page)
 projects/fft-lstm-solar-forecast/index.html     FFT-LSTM paper case-study entry
 vite.config.js                     rollup inputs: main + irf + fft
+src/entry-server.jsx               page key -> component map for the prerender (main, irf, fft)
+src/lib/mount.jsx                  hydrateRoot when the root has prerendered children, createRoot in dev
+scripts/prerender.mjs              build-time prerender (see Commands)
 src/App.jsx                        home section order
 src/components/                    Hero, FeaturedProject, WorkedWith (timeline + toolkit),
                                    ResearchHighlight (FFT-LSTM paper + patent), FieldWork
@@ -55,6 +62,8 @@ src/fft-lstm/                      FFT-LSTM case study: FftLstm.jsx, charts.jsx,
 src/lib/site.js                    CV_URL, CONTACT_EMAIL
 src/lib/useLiveResults.js          fetch live results JSON, fall back to bundled snapshot
 src/data/irf-results.json          snapshot of the app's model_results.json
+public/llms.txt                    plain-text summary of the whole site for AI agents; update it whenever
+                                   content changes (same source-of-truth rule as the page)
 public/                            CV pdf, favicons, og-image.png (home), og/<slug>.png (case-study share cards), robots.txt, sitemap.xml,
                                    images/{research,field,app}, patent-certificate.webp, avatar.webp
                                    (field/ also holds the 3 "Out in the field" photos, EXIF stripped)
@@ -68,6 +77,11 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
   framer-motion as `motion as Motion` (the repo's no-unused-vars pattern needs a capital).
   No impure calls (Math.random) during render; compute layout at module scope.
 - Nav/footer links use `/#section` so they work from the case-study page too.
+- Pages are prerendered, so components must render on the server: browser APIs (window,
+  document, canvas, observers, timers, fetch) only inside useEffect; the first render must be
+  deterministic and identical on server and client (SunNow renders a placeholder until its
+  effect runs; CountUp renders the final text). Every `<section>` has an h2 (visually-hidden
+  if the design has no visible one).
 - Every number on the site comes from a source: the paper (Table 5 etc.), the CV, the
   poster, or the app's published `model_results.json`. Synthetic visuals are labelled.
 
@@ -102,6 +116,15 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
 - The live forecast app's landing animates in; wait ~5 s before screenshots. Its Render
   backend isn't reachable from the cloud sandbox, so forecast panels can't be captured here.
 - Vercel returns a TLS reset for a domain not yet added to the project.
+- A hydration mismatch (console "Hydration failed") means a component rendered differently on
+  the server; React recovers by re-rendering on the client but the prerendered text may flash.
+  `npm run dev` does not prerender, so test hydration with `npm run build && npx vite preview`.
+
+## Status (2026-11-11, in progress)
+Branch `feat/agent-readable` (not yet pushed): build-time prerendering of all three pages,
+`public/llms.txt`, robots.txt pointer, visually-hidden h2s for Publications and About, real README.
+Motivation: an AI agent reported the site unreadable because the HTML body was an empty root div.
+Next, per the user: a UI/UX pass aimed at employers, and showcasing agentic development.
 
 ## Status (2026-11-04, end of session)
 Done and live: hero (headline, proof chips, live sun chip, playable name canvas), desktop nav

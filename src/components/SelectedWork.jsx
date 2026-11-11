@@ -120,6 +120,7 @@ function SelectedWork() {
 
   return (
     <section id="work" className="selected-work">
+      <h2 className="visually-hidden">Publications, research projects, honors and courses</h2>
       <div className="selected-work__panels">
         <ScrollExpand
           title="Publications"

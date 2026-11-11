@@ -1,13 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { MotionConfig } from 'framer-motion'
 import './index.css'
 import App from './App.jsx'
+import { mount } from './lib/mount'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <MotionConfig reducedMotion="user">
-      <App />
-    </MotionConfig>
-  </StrictMode>,
-)
+mount(App)

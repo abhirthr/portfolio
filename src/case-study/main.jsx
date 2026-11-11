@@ -1,13 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { MotionConfig } from 'framer-motion'
 import '../index.css'
 import CaseStudy from './CaseStudy.jsx'
+import { mount } from '../lib/mount'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <MotionConfig reducedMotion="user">
-      <CaseStudy />
-    </MotionConfig>
-  </StrictMode>,
-)
+mount(CaseStudy)
