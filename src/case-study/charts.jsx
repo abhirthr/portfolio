@@ -116,7 +116,7 @@ export function SiteSkill({ sites }) {
   return (
     <figure className="cs-chart">
       <figcaption className="cs-chart__title">
-        Skill at every test site <span>{sorted.length} sites · 1 − RMSE<sub>model</sub> / RMSE<sub>raw forecast</sub></span>
+        Skill at every test site <span>{sorted.length} sites, 1 − RMSE<sub>model</sub> / RMSE<sub>raw forecast</sub></span>
       </figcaption>
       <ul className="cs-legend">
         <li><span className="cs-swatch cs-swatch--model" />Training site (2024 unseen)</li>

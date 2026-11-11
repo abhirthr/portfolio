@@ -48,15 +48,15 @@ src/entry-server.jsx               page key -> component map for the prerender (
 src/lib/mount.jsx                  hydrateRoot when the root has prerendered children, createRoot in dev
 scripts/prerender.mjs              build-time prerender (see Commands)
 src/App.jsx                        home section order
-src/components/                    Hero, FeaturedProject, WorkedWith (timeline + toolkit),
-                                   ResearchHighlight (FFT-LSTM paper + patent), FieldWork
-                                   (ML-Sol, 6 stations, 2023 poster), SelectedWork (pubs,
-                                   projects, honors, courses), About (+ contact), Footer, Navbar, MenuOverlay
-src/components/ui/                 animated-hero-section (pong name canvas), particles,
-                                   lightbox, browser-frame, scroll-expand (section wrapper, takes id),
+src/components/                    Hero, FeaturedProject, ResearchHighlight (FFT-LSTM paper + patent),
+                                   FieldWork (ML-Sol, 6 stations, 2023 poster), WorkedWith (timeline +
+                                   toolkit), SelectedWork (pubs, projects, honors, courses), About
+                                   (contact + "How I build"), Footer, Navbar, MenuOverlay
+src/components/ui/                 lightbox, browser-frame, scroll-expand (titled day panel, takes id),
                                    count-up (stat numbers)
-src/components/SunNow.jsx          live "sun over Roorkee now" chip in the hero (src/lib/sun.js:
-                                   NOAA solar position + Haurwitz clear-sky, computed in browser)
+src/components/SolarDay.jsx        the hero chart: today's clear-sky irradiance curve over Roorkee with
+                                   a live "now" marker (src/lib/sun.js: NOAA solar position + Haurwitz
+                                   clear-sky). Drawn after mount; the prerender carries only the frame.
 src/case-study/                    CaseStudy.jsx, charts.jsx, CaseStudy.css, Section.jsx (shared), main.jsx
 src/fft-lstm/                      FFT-LSTM case study: FftLstm.jsx, charts.jsx, data.js (paper tables), FftLstm.css
 src/lib/site.js                    CV_URL, CONTACT_EMAIL
@@ -70,9 +70,23 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
 ```
 
 ## Conventions
-- Colour tokens in `src/index.css`: `--color-accent` #f5a524 (solar amber, on dark),
-  `--color-accent-ink` #9a5b00 (amber text on white), `--color-accent-soft`. Plain CSS per
-  component; Tailwind is installed but unused.
+- Design (2026-11-11 redesign): the page runs night → day → dusk. Hero and Featured sit on
+  `--night` #0f1424, the body on `--day` #f5f3ee paper, About/Footer on night again. A section
+  carries `.night` or `.day` and its children read `--fg`, `--fg-2`, `--fg-3`, `--line`,
+  `--accent`, `--surface` (all in `src/index.css`). Solar amber `--sun` #f5a524 (dark) /
+  `--sun-ink` #9a5b00 (light) is the only accent; `--wind` blue is reserved for wind data,
+  `--loss` red for "worse than baseline".
+- Type: Newsreader (serif, weight 400) for headings, big numbers and the A.R. wordmark; IBM Plex
+  Sans for text and UI; IBM Plex Mono only for data values, times and axis ticks. Fonts load from
+  Google Fonts in the three HTML heads. Tailwind was removed; plain CSS per component, shared
+  `.container`, `.section`, `.section-head`, `.btn`, `.link` in index.css.
+- No all-caps labels, no middle-dot meta strings, no arrows on links, no pill chips except the
+  toolkit, no per-section fade-up animations. The one page-load animation is the hero curve
+  drawing itself. Numbered markers only where content is a sequence (pipelines, case-study
+  sections). Charts: thin bars with 4px rounded data ends, legend for ≥2 series, values in text
+  colour, baselines in greys and "ours" in amber (validated with the dataviz palette script).
+- The headless screenshot helper used for review lives outside the repo (scratchpad shot.mjs:
+  Chrome DevTools Protocol, scrolls the page, then captures a viewport or full page).
 - Lint: `react-refresh/only-export-components` and React-compiler rules are on. Import
   framer-motion as `motion as Motion` (the repo's no-unused-vars pattern needs a capital).
   No impure calls (Math.random) during render; compute layout at module scope.
@@ -121,10 +135,16 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
   `npm run dev` does not prerender, so test hydration with `npm run build && npx vite preview`.
 
 ## Status (2026-11-11, in progress)
-Branch `feat/agent-readable` (not yet pushed): build-time prerendering of all three pages,
-`public/llms.txt`, robots.txt pointer, visually-hidden h2s for Publications and About, real README.
-Motivation: an AI agent reported the site unreadable because the HTML body was an empty root div.
-Next, per the user: a UI/UX pass aimed at employers, and showcasing agentic development.
+Branch `feat/agent-readable` (not yet pushed; user reviews on `npx vite preview` first):
+1. Build-time prerendering of all three pages, `public/llms.txt`, robots.txt pointer, visually-
+   hidden h2s, real README. Motivation: an AI agent reported the site unreadable (empty root div).
+2. Full UI redesign (user: the pong hero "looks childish"; chose the live solar curve + full pass
+   incl. case studies). New tokens/type (see Conventions), hero with SolarDay chart, section order
+   Hero → Featured → Research → Field → Experience → Publications → About, case studies with a
+   night header and day body, charts recoloured for the light surface. Removed: pong canvas,
+   particles, SunNow chip, Tailwind. About gained a "How I build" block (agent-readable pages,
+   developed with Claude Code against this file, traceable numbers): user to confirm wording.
+Next: user review of the preview, then push and go live; OG images still show the old design.
 
 ## Status (2026-11-04, end of session)
 Done and live: hero (headline, proof chips, live sun chip, playable name canvas), desktop nav

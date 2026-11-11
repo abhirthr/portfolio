@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import FeaturedProject from './components/FeaturedProject'
-import SelectedWork from './components/SelectedWork'
 import ResearchHighlight from './components/ResearchHighlight'
 import FieldWork from './components/FieldWork'
 import WorkedWith from './components/WorkedWith'
+import SelectedWork from './components/SelectedWork'
 import About from './components/About'
 import Footer from './components/Footer'
 import MenuOverlay from './components/MenuOverlay'
-import { Particles } from './components/ui/particles'
 
+// Section order runs night (hero, featured app) → day (research, field work,
+// experience, publications) → dusk (contact, footer).
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -22,20 +22,10 @@ function App() {
       <main>
         <Hero />
         <FeaturedProject />
-        <div className="light-sections">
-          <Particles
-            className="light-sections__particles"
-            quantity={500}
-            staticity={50}
-            ease={80}
-            size={0.5}
-            color="#000000"
-          />
-          <WorkedWith />
-          <ResearchHighlight />
-          <FieldWork />
-          <SelectedWork />
-        </div>
+        <ResearchHighlight />
+        <FieldWork />
+        <WorkedWith />
+        <SelectedWork />
         <About />
       </main>
       <Footer />

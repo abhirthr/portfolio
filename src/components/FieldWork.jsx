@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { motion as Motion } from 'framer-motion'
 import Lightbox from './ui/lightbox'
 import BrowserFrame from './ui/browser-frame'
 import './FieldWork.css'
@@ -28,7 +27,7 @@ const parameters = [
   'PV module power',
   'Air temperature',
   'Relative humidity',
-  'Wind speed & direction',
+  'Wind speed and direction',
   'Rainfall',
   'Cloud cover',
 ]
@@ -36,11 +35,6 @@ const parameters = [
 const POSTER = {
   src: '/images/field/poster-rsd-2023.webp',
   caption: "Poster presented at Research Scholars' Day, IIT Roorkee, 2023",
-}
-
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
 const PHOTOS = [
@@ -54,7 +48,7 @@ const PHOTOS = [
   {
     src: '/images/field/booth-workshop-2025.webp',
     alt: 'Abhijeet Rathore at the Machine Learning Based Solar PV Forecasting booth with the ML-Sol banner',
-    caption: 'Demonstrating ML-Sol at the Workshop on Sustainable Energy Innovations, IIT Roorkee Greater Noida, Jan 2025',
+    caption: 'Demonstrating ML-Sol at the Workshop on Sustainable Energy Innovations, IIT Roorkee Greater Noida, January 2025',
     shape: 'tall',
     focus: '50% 45%',
   },
@@ -72,153 +66,120 @@ function FieldWork() {
   const closeLightbox = () => setOpen(null)
 
   return (
-    <section id="field" className="field">
-      <Motion.div variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
-        <p className="field__eyebrow">Research Engineer · IIT Roorkee · 2022 – 2024</p>
-        <h2 className="field__title">From weather stations to a live forecasting service</h2>
-        <p className="field__lead">
-          Before the PhD I worked across the whole forecasting chain: measurements at six sites in
-          North India, the data pipelines behind them, and a commercial web service that delivers
-          the forecasts.
-        </p>
-      </Motion.div>
-
-      <div className="field__grid">
-        <Motion.article
-          className="field-card field-card--site"
-          variants={reveal}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <BrowserFrame
-            url="ml-sol.com"
-            images={['/images/field/mlsol-home.webp', '/images/field/mlsol-stations.webp']}
-            ratio={1440 / 760}
-            label="Screenshots of ml-sol.com: the home page and the monitoring-stations page"
-          />
-          <div className="field-card__body">
-            <h3 className="field-card__title">ML-Sol: PV power forecasting service</h3>
-            <p className="field-card__text">
-              A commercial website that serves solar power forecasts from the six-station network.
-              I led its backend development and the integration with the forecasting models.
-            </p>
-            <ul className="field-points">
-              <li>Automated data collection and preprocessing for six sites, cutting manual work by over 90%</li>
-              <li>Built Flask and Streamlit interfaces that made the forecasting tools usable by non-specialists</li>
-            </ul>
-            <a className="field-btn" href="https://www.ml-sol.com" target="_blank" rel="noopener noreferrer">
-              Visit ml-sol.com <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </Motion.article>
-
-        <Motion.article
-          className="field-card"
-          variants={reveal}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <h3 className="field-card__title">Six monitoring stations</h3>
-          <Motion.svg
-            className="station-map"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            viewBox={`0 0 ${MAP_W} ${MAP_H}`}
-            role="img"
-            aria-label="Relative positions of the six weather stations: IIT Roorkee, Saharanpur, Kurukshetra, Vikas Nagar, Greater Noida and Tanakpur"
-          >
-            {[77, 78, 79, 80].map((lon) => {
-              const x = (lon - LON0) * KX + 20
-              return (
-                <g key={lon}>
-                  <line x1={x} x2={x} y1="0" y2={MAP_H - 24} className="station-map__grid" />
-                  <text x={x} y={MAP_H - 6} className="station-map__tick">{lon}°E</text>
-                </g>
-              )
-            })}
-            {[29, 30].map((lat) => {
-              const y = (LAT1 - lat) * KY + 10
-              return (
-                <g key={lat}>
-                  <line x1="0" x2={MAP_W} y1={y} y2={y} className="station-map__grid" />
-                  <text x={MAP_W - 4} y={y - 6} className="station-map__tick station-map__tick--lat">{lat}°N</text>
-                </g>
-              )
-            })}
-            {stations.map((s, i) => {
-              const { x, y } = project(s)
-              return (
-                <Motion.g
-                  key={s.name}
-                  variants={{
-                    hidden: { opacity: 0 },
-                    show: { opacity: 1, transition: { duration: 0.5, delay: 0.2 + i * 0.15 } },
-                  }}
-                >
-                  <circle cx={x} cy={y} r="14" className="station-map__pulse" style={{ animationDelay: `${i * 0.4}s` }} />
-                  <circle cx={x} cy={y} r={s.hub ? 7 : 5.5} className={s.hub ? 'station-map__hub' : 'station-map__dot'} />
-                  <text x={x + s.dx} y={y + s.dy} textAnchor={s.anchor} className="station-map__label">
-                    {s.name}
-                  </text>
-                </Motion.g>
-              )
-            })}
-          </Motion.svg>
-          <p className="field-card__note">Positions to scale by latitude and longitude, from the poster’s coordinates.</p>
-          <h4 className="field-card__sub">Measured year-round</h4>
-          <ul className="field-chips">
-            {parameters.map((p) => <li key={p}>{p}</li>)}
-          </ul>
-        </Motion.article>
-      </div>
-
-      <Motion.article
-        className="poster-card"
-        variants={reveal}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <button className="poster-card__thumb" onClick={() => setOpen(POSTER)} aria-label="View poster full size">
-          <img src={POSTER.src} alt="Poster: A system and method forecasting for solar photovoltaic power using machine learning" loading="lazy" />
-        </button>
-        <div className="poster-card__body">
-          <span className="poster-card__badge">Research Scholars’ Day · IIT Roorkee · 2023</span>
-          <h3 className="poster-card__title">A System and Method for Forecasting Solar PV Power Using Machine Learning</h3>
-          <p className="poster-card__text">
-            The poster presents the project end to end: the objectives (a day-ahead irradiance model for the
-            electricity market, year-round data collection, and deployment as a website), the six instrumented
-            sites, the experimental setup, and early forecast results from the model that later became the
-            <em> Renewable Energy</em> paper and the granted patent.
+    <section id="field" className="field day section">
+      <div className="container">
+        <div className="section-head">
+          <p className="section-head__note">Research engineer at IIT Roorkee, 2022 to 2024</p>
+          <h2 className="section-head__title">From weather stations to a live forecasting service</h2>
+          <p className="section-head__lead">
+            Before the PhD I worked across the whole forecasting chain: measurements at six sites in
+            North India, the data pipelines behind them, and a commercial web service that delivers
+            the forecasts.
           </p>
-          <button className="field-btn field-btn--ghost" onClick={() => setOpen(POSTER)}>
-            View poster
+        </div>
+
+        <div className="field__grid">
+          <article className="field-card field-card--site">
+            <BrowserFrame
+              url="ml-sol.com"
+              images={['/images/field/mlsol-home.webp', '/images/field/mlsol-stations.webp']}
+              ratio={1440 / 760}
+              label="Screenshots of ml-sol.com: the home page and the monitoring-stations page"
+            />
+            <div className="field-card__body">
+              <h3 className="field-card__title">ML-Sol, a PV power forecasting service</h3>
+              <p className="field-card__text">
+                A commercial website that serves solar power forecasts from the six-station network.
+                I led its backend development and the integration with the forecasting models.
+              </p>
+              <ul className="field-points">
+                <li>Automated data collection and preprocessing for six sites, cutting manual work by over 90%</li>
+                <li>Built Flask and Streamlit interfaces that made the forecasting tools usable by non-specialists</li>
+              </ul>
+              <a className="btn" href="https://www.ml-sol.com" target="_blank" rel="noopener noreferrer">
+                Visit ml-sol.com
+              </a>
+            </div>
+          </article>
+
+          <article className="field-card">
+            <h3 className="field-card__title">Six monitoring stations</h3>
+            <svg
+              className="station-map"
+              viewBox={`0 0 ${MAP_W} ${MAP_H}`}
+              role="img"
+              aria-label="Relative positions of the six weather stations: IIT Roorkee, Saharanpur, Kurukshetra, Vikas Nagar, Greater Noida and Tanakpur"
+            >
+              {[77, 78, 79, 80].map((lon) => {
+                const x = (lon - LON0) * KX + 20
+                return (
+                  <g key={lon}>
+                    <line x1={x} x2={x} y1="0" y2={MAP_H - 24} className="station-map__grid" />
+                    <text x={x} y={MAP_H - 6} className="station-map__tick">{lon}°E</text>
+                  </g>
+                )
+              })}
+              {[29, 30].map((lat) => {
+                const y = (LAT1 - lat) * KY + 10
+                return (
+                  <g key={lat}>
+                    <line x1="0" x2={MAP_W} y1={y} y2={y} className="station-map__grid" />
+                    <text x={MAP_W - 4} y={y - 6} className="station-map__tick station-map__tick--lat">{lat}°N</text>
+                  </g>
+                )
+              })}
+              {stations.map((s, i) => {
+                const { x, y } = project(s)
+                return (
+                  <g key={s.name}>
+                    <circle cx={x} cy={y} r="14" className="station-map__pulse" style={{ animationDelay: `${i * 0.4}s` }} />
+                    <circle cx={x} cy={y} r={s.hub ? 7 : 5.5} className={s.hub ? 'station-map__hub' : 'station-map__dot'} />
+                    <text x={x + s.dx} y={y + s.dy} textAnchor={s.anchor} className="station-map__label">
+                      {s.name}
+                    </text>
+                  </g>
+                )
+              })}
+            </svg>
+            <p className="field-card__note">Positions to scale by latitude and longitude, from the poster’s coordinates.</p>
+            <h4 className="field-card__sub">Measured year-round</h4>
+            <p className="field-card__params">{parameters.join(', ')}.</p>
+          </article>
+        </div>
+
+        <article className="poster-card">
+          <button className="poster-card__thumb" onClick={() => setOpen(POSTER)} aria-label="View poster full size">
+            <img src={POSTER.src} alt="Poster: A system and method forecasting for solar photovoltaic power using machine learning" loading="lazy" />
           </button>
-        </div>
-      </Motion.article>
-
-      <Motion.div
-        className="field-photos"
-        variants={reveal}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <h3 className="field-photos__title">Out in the field</h3>
-        <div className="field-photos__grid">
-          {PHOTOS.map((p) => (
-            <button key={p.src} className={`field-photo field-photo--${p.shape}`} onClick={() => setOpen(p)}>
-              <img src={p.src} alt={p.alt} loading="lazy" style={{ objectPosition: p.focus }} />
-              <span className="field-photo__caption">{p.caption}</span>
+          <div className="poster-card__body">
+            <p className="poster-card__note">Research Scholars’ Day, IIT Roorkee, 2023</p>
+            <h3 className="poster-card__title">A System and Method for Forecasting Solar PV Power Using Machine Learning</h3>
+            <p className="poster-card__text">
+              The poster presents the project end to end: the objectives (a day-ahead irradiance model for the
+              electricity market, year-round data collection, and deployment as a website), the six instrumented
+              sites, the experimental setup, and early forecast results from the model that later became the
+              <em> Renewable Energy</em> paper and the granted patent.
+            </p>
+            <button className="btn" onClick={() => setOpen(POSTER)}>
+              View the poster
             </button>
-          ))}
-        </div>
-      </Motion.div>
+          </div>
+        </article>
 
-      <Lightbox item={open} onClose={closeLightbox} />
+        <div className="field-photos">
+          <h3 className="field-photos__title">Out in the field</h3>
+          <div className="field-photos__grid">
+            {PHOTOS.map((p) => (
+              <button key={p.src} className={`field-photo field-photo--${p.shape}`} onClick={() => setOpen(p)}>
+                <img src={p.src} alt={p.alt} loading="lazy" style={{ objectPosition: p.focus }} />
+                <span className="field-photo__caption">{p.caption}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <Lightbox item={open} onClose={closeLightbox} />
+      </div>
     </section>
   )
 }

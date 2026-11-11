@@ -30,7 +30,7 @@ function GroupedBars({ values, unit, max }) {
                     <span className={`fl-bar__fill fl-m--${m.key}`} style={{ width: `${(row[m.key] / max) * 100}%` }} />
                   </span>
                   <span className="fl-bar__value">{fmt(row[m.key])}</span>
-                  <span className="cs-tip fl-bar__tip" role="tooltip">{s.name} · {m.label}: <strong>{fmt(row[m.key])} {unit}</strong></span>
+                  <span className="cs-tip fl-bar__tip" role="tooltip">{s.name}, {m.label}: <strong>{fmt(row[m.key])} {unit}</strong></span>
                 </div>
               ))}
             </div>
@@ -52,7 +52,7 @@ export function OverallChart() {
   return (
     <figure className="cs-chart">
       <figcaption className="cs-chart__title">
-        Test-set error by site <span>{metric.label} in {metric.unit}, lower is better · Table 5</span>
+        Test-set error by site <span>{metric.label} in {metric.unit}, lower is better. Table 5</span>
       </figcaption>
       <div className="fl-tabs" role="tablist" aria-label="Metric">
         {METRICS.map((m) => (
@@ -73,7 +73,7 @@ export function SeasonChart() {
   return (
     <figure className="cs-chart">
       <figcaption className="cs-chart__title">
-        Error by season <span>RMSE in W/m², test set · Table 7</span>
+        Error by season <span>RMSE in W/m², test set. Table 7</span>
       </figcaption>
       <div className="fl-tabs" role="tablist" aria-label="Season">
         {SEASONS.map((s) => (
@@ -94,7 +94,7 @@ export function RuntimeChart() {
   return (
     <figure className="cs-chart">
       <figcaption className="cs-chart__title">
-        Training time <span>mean across the four sites, seconds · Section 4.3</span>
+        Training time <span>mean across the four sites, seconds. Section 4.3</span>
       </figcaption>
       <div className="cs-bars">
         {MODELS.map((m) => (
@@ -120,12 +120,12 @@ export function LiteratureChart() {
   return (
     <figure className="cs-chart">
       <figcaption className="cs-chart__title">
-        Against earlier work <span>hourly day-ahead GHI, RMSE in W/m² · Table 6</span>
+        Against earlier work <span>hourly day-ahead GHI, RMSE in W/m². Table 6</span>
       </figcaption>
       <div className="cs-bars">
         {LITERATURE.map((l) => (
           <div key={l.ref} className={`cs-bars__row fl-lit${l.ours ? ' is-model' : ''}`}>
-            <span className="cs-bars__label">{l.algo}<small>{l.ref} · {l.where}</small></span>
+            <span className="cs-bars__label">{l.algo}<small>{l.ref}, {l.where}</small></span>
             <span className="cs-bars__track">
               <span className="cs-bars__fill" style={{ width: `${(l.rmse / max) * 100}%` }} />
             </span>

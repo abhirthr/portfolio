@@ -12,8 +12,9 @@ honors and contact. Two case-study pages go deeper:
 
 ## Stack
 
-React 19, Vite 7 (multi-page build), framer-motion, plain CSS per component. No backend:
-the site is static and deployed on Vercel from `main`.
+React 19, Vite 7 (multi-page build), framer-motion for the hero chart, plain CSS per
+component with design tokens in `src/index.css` (night and day contexts, solar amber accent,
+Newsreader + IBM Plex type). No backend: the site is static and deployed on Vercel from `main`.
 
 ## Readable without JavaScript
 

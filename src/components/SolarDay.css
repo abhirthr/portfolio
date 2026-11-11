@@ -1,0 +1,122 @@
+.solar-day {
+  width: 100%;
+}
+
+.solar-day__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.solar-day__grid {
+  stroke: var(--line-dark);
+  stroke-width: 1;
+  stroke-dasharray: 1 5;
+}
+
+.solar-day__horizon {
+  stroke: rgba(244, 243, 240, 0.35);
+  stroke-width: 1;
+}
+
+.solar-day__tick {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--snow-3);
+}
+
+.solar-day__area {
+  fill: url(#solar-day-fill);
+}
+
+.solar-day__line {
+  fill: none;
+  stroke: var(--sun);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.solar-day__now-line {
+  stroke: rgba(244, 243, 240, 0.55);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+}
+
+.solar-day__now-dot {
+  fill: var(--sun-2);
+  stroke: var(--night);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 8px rgba(245, 165, 36, 0.9));
+}
+
+.solar-day__now-dot--down {
+  fill: #9aa4b5;
+  filter: none;
+}
+
+.solar-day__label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  fill: var(--snow-2);
+}
+
+.solar-day__label--value {
+  fill: var(--snow);
+  font-weight: 500;
+}
+
+.solar-day__caption {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 8px 40px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--snow-3);
+}
+
+.solar-day__caption span:first-child {
+  color: var(--snow-2);
+}
+
+.solar-day__live {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: var(--sun);
+  vertical-align: 1px;
+  animation: solar-day-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes solar-day-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 165, 36, 0.55); }
+  50% { box-shadow: 0 0 0 5px rgba(245, 165, 36, 0); }
+}
+
+@media (max-width: 810px) {
+  .solar-day__caption {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-day__tick,
+  .solar-day__label {
+    font-size: 15px;
+  }
+
+  .solar-day__label--value {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .solar-day__tick,
+  .solar-day__label {
+    font-size: 19px;
+  }
+
+  .solar-day__label--value {
+    font-size: 20px;
+  }
+}

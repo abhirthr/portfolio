@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { motion as Motion } from 'framer-motion'
 import Footer from '../components/Footer'
 import Lightbox from '../components/ui/lightbox'
 import Section from '../case-study/Section'
@@ -7,11 +6,6 @@ import { OverallChart, SeasonChart, RuntimeChart, LiteratureChart, FrequencyGrou
 import { DOI, SITES, FIGURES } from './data'
 import '../case-study/CaseStudy.css'
 import './FftLstm.css'
-
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-}
 
 const stages = [
   { tag: 'A', title: 'Collect', text: 'Hourly GHI and weather for four sites from the NSRDB, 2005–2014' },
@@ -30,13 +24,14 @@ function FftLstm() {
   return (
     <>
       <header className="cs-top">
-        <a href="/#research" className="cs-top__back">← Portfolio</a>
+        <a href="/#research" className="cs-top__back">Back to portfolio</a>
         <a href="/" className="cs-top__logo">A.R.</a>
       </header>
 
-      <main className="cs">
-        <Motion.div className="cs-hero" variants={reveal} initial="hidden" animate="show">
-          <p className="cs-eyebrow">Case study · Renewable Energy (Elsevier), 2025</p>
+      <main>
+        <section className="cs-hero night">
+        <div className="container">
+          <p className="cs-eyebrow">Case study, Renewable Energy (Elsevier), 2025</p>
           <h1 className="cs-hero__title fl-title">Day-ahead solar forecasting with FFT-assisted LSTM</h1>
           <p className="cs-hero__lead">
             Splitting a weather series into its frequency components makes it easier for a neural
@@ -45,10 +40,10 @@ function FftLstm() {
             Transform. The result is more accurate and takes less than half the training time.
           </p>
           <div className="cs-hero__actions">
-            <a className="cs-btn cs-btn--primary" href={DOI} target="_blank" rel="noopener noreferrer">
-              Read the paper <span aria-hidden="true">↗</span>
+            <a className="btn btn--primary" href={DOI} target="_blank" rel="noopener noreferrer">
+              Read the paper
             </a>
-            <a className="cs-btn" href="#results">Jump to results</a>
+            <a className="btn" href="#results">Jump to results</a>
           </div>
 
           <dl className="cs-meta">
@@ -57,15 +52,18 @@ function FftLstm() {
             <div><dt>Data</dt><dd>NSRDB (SUNY model), hourly, 10 km, 2005–2014, four Indian sites</dd></div>
             <div><dt>Stack</dt><dd>Python, Keras + TensorFlow, Keras Tuner, scikit-learn, Matplotlib</dd></div>
           </dl>
-        </Motion.div>
 
         <div className="cs-kpis">
-          <div className="cs-kpi"><span className="cs-kpi__value">62.97</span><span className="cs-kpi__label">W/m² mean RMSE over four sites (nRMSE 6.33%, R 0.972)</span></div>
-          <div className="cs-kpi"><span className="cs-kpi__value">−36.9%</span><span className="cs-kpi__label">mean RMSE vs the same attention-LSTM without decomposition</span></div>
-          <div className="cs-kpi"><span className="cs-kpi__value">−13.0%</span><span className="cs-kpi__label">mean RMSE vs decomposition without the FFT step</span></div>
-          <div className="cs-kpi"><span className="cs-kpi__value">−58.8%</span><span className="cs-kpi__label">training time vs that model: 876 s instead of 2128 s</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">62.97</span><span className="cs-kpi__label">W/m² mean RMSE over four sites (nRMSE 6.33%, R 0.972)</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">−36.9%</span><span className="cs-kpi__label">mean RMSE vs the same attention-LSTM without decomposition</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">−13.0%</span><span className="cs-kpi__label">mean RMSE vs decomposition without the FFT step</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">−58.8%</span><span className="cs-kpi__label">training time vs that model: 876 s instead of 2128 s</span></div>
         </div>
+        </div>
+        </section>
 
+        <div className="cs-body day">
+        <div className="container">
         <Section num="01" title="The problem">
           <p>
             Load dispatch centres schedule solar plants a day ahead, and plant operators bid into the
@@ -113,7 +111,7 @@ function FftLstm() {
             {SITES.map((s) => (
               <div key={s.name} className="fl-site">
                 <strong>{s.name}</strong>
-                <span>{s.state} · {s.lat}, {s.lon}</span>
+                <span>{s.state}, {s.lat}, {s.lon}</span>
                 <em>{s.climate}</em>
               </div>
             ))}
@@ -176,13 +174,13 @@ function FftLstm() {
             weather forecasts with satellite data.
           </p>
           <div className="cs-hero__actions">
-            <a className="cs-btn" href="/#research">Patent details</a>
-            <a className="cs-btn" href="/projects/india-renewables-forecast/">India Renewables Forecast case study <span aria-hidden="true">→</span></a>
+            <a className="btn" href="/#research">Patent details</a>
+            <a className="btn" href="/projects/india-renewables-forecast/">India Renewables Forecast case study</a>
           </div>
         </Section>
 
         <div className="fl-cite">
-          <p className="cs-eyebrow">Cite</p>
+          <p className="fl-cite__label">Cite this paper</p>
           <p>
             A. Rathore, P. Gupta, R. Sharma, R. Singh. Day ahead solar forecast using long short term
             memory network augmented with Fast Fourier transform-assisted decomposition technique.
@@ -192,10 +190,12 @@ function FftLstm() {
         </div>
 
         <div className="cs-end">
-          <a className="cs-btn cs-btn--primary" href={DOI} target="_blank" rel="noopener noreferrer">
-            Read the paper <span aria-hidden="true">↗</span>
+          <a className="btn btn--primary" href={DOI} target="_blank" rel="noopener noreferrer">
+            Read the paper
           </a>
-          <a className="cs-btn" href="/#research">Back to portfolio</a>
+          <a className="btn" href="/#research">Back to portfolio</a>
+        </div>
+        </div>
         </div>
       </main>
 

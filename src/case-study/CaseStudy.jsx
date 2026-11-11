@@ -1,4 +1,3 @@
-import { motion as Motion } from 'framer-motion'
 import snapshot from '../data/irf-results.json'
 import { useLiveResults } from '../lib/useLiveResults'
 import BrowserFrame from '../components/ui/browser-frame'
@@ -9,11 +8,6 @@ import './CaseStudy.css'
 
 const APP_URL = 'https://app.abhijeetrathore.in'
 const RESULTS_URL = `${APP_URL}/data/model_results.json`
-
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-}
 
 const pct = (v) => `${Math.round(v * 100)}%`
 const fmtDate = (iso) =>
@@ -30,13 +24,14 @@ function CaseStudy() {
   return (
     <>
       <header className="cs-top">
-        <a href="/#featured" className="cs-top__back">← Portfolio</a>
+        <a href="/#featured" className="cs-top__back">Back to portfolio</a>
         <a href="/" className="cs-top__logo">A.R.</a>
       </header>
 
-      <main className="cs">
-        <Motion.div className="cs-hero" variants={reveal} initial="hidden" animate="show">
-          <p className="cs-eyebrow">Case study · Jan – Mar 2026</p>
+      <main>
+        <section className="cs-hero night">
+        <div className="container">
+          <p className="cs-eyebrow">Case study, January to March 2026</p>
           <h1 className="cs-hero__title">India Renewables Forecast</h1>
           <p className="cs-hero__lead">
             Weather models forecast sunshine well on clear days but carry systematic errors under haze,
@@ -45,27 +40,30 @@ function CaseStudy() {
             into solar and wind power.
           </p>
           <div className="cs-hero__actions">
-            <a className="cs-btn cs-btn--primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
-              Open the live app <span aria-hidden="true">↗</span>
+            <a className="btn btn--primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
+              Open the live app
             </a>
-            <a className="cs-btn" href="#results">Jump to results</a>
+            <a className="btn" href="#results">Jump to results</a>
           </div>
 
           <dl className="cs-meta">
             <div><dt>Role</dt><dd>Built end to end: data, model, API and web app</dd></div>
             <div><dt>Model</dt><dd>LightGBM on the clear-sky index, with P10 / P90 quantile models</dd></div>
             <div><dt>Data</dt><dd>Open-Meteo forecasts, NASA POWER satellite irradiance, IMD gridded temperature</dd></div>
-            <div><dt>Stack</dt><dd>Python, pvlib, pandas, FastAPI, React, Leaflet · Render + Vercel · GitHub Actions</dd></div>
+            <div><dt>Stack</dt><dd>Python, pvlib, pandas, FastAPI, React, Leaflet, Render, Vercel, GitHub Actions</dd></div>
           </dl>
-        </Motion.div>
 
         <div className="cs-kpis">
-          <div className="cs-kpi"><span className="cs-kpi__value">−{pct(seen.skill_vs_nwp_raw)}</span><span className="cs-kpi__label">hourly error vs the raw forecast at training sites ({Math.round(seen.rmse.nwp_raw)} → {Math.round(seen.rmse.model)} W/m²)</span></div>
-          <div className="cs-kpi"><span className="cs-kpi__value">−{pct(monsoon.skill_vs_nwp_raw)}</span><span className="cs-kpi__label">during the monsoon, June–September ({Math.round(monsoon.rmse.nwp_raw)} → {Math.round(monsoon.rmse.model)} W/m²)</span></div>
-          <div className="cs-kpi"><span className="cs-kpi__value">−{pct(unseen.skill_vs_nwp_raw)}</span><span className="cs-kpi__label">at {holdout.length} sites never used in training ({Math.round(unseen.rmse.nwp_raw)} → {Math.round(unseen.rmse.model)} W/m²)</span></div>
-          <div className="cs-kpi"><span className="cs-kpi__value">{beatCount}/{r.per_site.length}</span><span className="cs-kpi__label">test sites where the model beats the raw forecast</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">−{pct(seen.skill_vs_nwp_raw)}</span><span className="cs-kpi__label">hourly error vs the raw forecast at training sites ({Math.round(seen.rmse.nwp_raw)} → {Math.round(seen.rmse.model)} W/m²)</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">−{pct(monsoon.skill_vs_nwp_raw)}</span><span className="cs-kpi__label">during the monsoon, June–September ({Math.round(monsoon.rmse.nwp_raw)} → {Math.round(monsoon.rmse.model)} W/m²)</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">−{pct(unseen.skill_vs_nwp_raw)}</span><span className="cs-kpi__label">at {holdout.length} sites never used in training ({Math.round(unseen.rmse.nwp_raw)} → {Math.round(unseen.rmse.model)} W/m²)</span></div>
+          <div className="cs-kpi"><span className="cs-kpi__value t-display">{beatCount}/{r.per_site.length}</span><span className="cs-kpi__label">test sites where the model beats the raw forecast</span></div>
         </div>
+        </div>
+        </section>
 
+        <div className="cs-body day">
+        <div className="container">
         <Section num="01" title="The problem">
           <p>
             Grid operators and plant developers need a day-ahead view of solar and wind output for any
@@ -137,8 +135,8 @@ function CaseStudy() {
               <figure className="cs-chart">
                 <figcaption className="cs-chart__title">Uncertainty band <span>target: 80% of real values inside</span></figcaption>
                 <div className="cs-coverage">
-                  <div><span className="cs-coverage__value">{pct(r.interval_80.seen_sites.coverage)}</span><span>training sites · ±{Math.round(r.interval_80.seen_sites.mean_width_wm2 / 2)} W/m² average half-width</span></div>
-                  <div><span className="cs-coverage__value">{pct(r.interval_80.unseen_sites.coverage)}</span><span>never-seen sites · slightly too narrow away from the training data</span></div>
+                  <div><span className="cs-coverage__value t-display">{pct(r.interval_80.seen_sites.coverage)}</span><span>training sites, ±{Math.round(r.interval_80.seen_sites.mean_width_wm2 / 2)} W/m² average half-width</span></div>
+                  <div><span className="cs-coverage__value t-display">{pct(r.interval_80.unseen_sites.coverage)}</span><span>never-seen sites, slightly too narrow away from the training data</span></div>
                 </div>
               </figure>
             </div>
@@ -173,7 +171,7 @@ function CaseStudy() {
           </ul>
         </Section>
 
-        <Motion.figure className="cs-shot" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+        <figure className="cs-shot">
           <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="cs-shot__link">
             <BrowserFrame
               url="app.abhijeetrathore.in"
@@ -183,13 +181,15 @@ function CaseStudy() {
             />
           </a>
           <figcaption>Try it: click anywhere in India for a 3-day solar and wind forecast.</figcaption>
-        </Motion.figure>
+        </figure>
 
         <div className="cs-end">
-          <a className="cs-btn cs-btn--primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
-            Open the live app <span aria-hidden="true">↗</span>
+          <a className="btn btn--primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
+            Open the live app
           </a>
-          <a className="cs-btn" href="/#featured">Back to portfolio</a>
+          <a className="btn" href="/#featured">Back to portfolio</a>
+        </div>
+        </div>
         </div>
       </main>
 

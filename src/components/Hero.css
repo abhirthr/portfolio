@@ -1,184 +1,105 @@
 .hero {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  min-height: 520px;
-  background: #000000;
-  overflow: hidden;
+  min-height: min(100svh, 980px);
+  padding-top: 132px;
+  padding-bottom: 36px;
   display: flex;
   flex-direction: column;
+  background:
+    radial-gradient(900px 480px at 85% -10%, rgba(245, 165, 36, 0.12), transparent 70%),
+    var(--night);
 }
 
-/* The pong/name canvas fills whatever height the bottom bar leaves. */
-.hero__stage {
-  position: relative;
+.hero__inner {
   flex: 1;
-  min-height: 0;
-  margin-top: 72px; /* keep the top paddle clear of the nav bar */
-}
-
-.hero__hint {
-  position: absolute;
-  right: 48px;
-  bottom: 12px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.3);
-  pointer-events: none;
-}
-
-.hero__bottom {
-  position: relative;
-  padding: 8px 20px 28px;
-  z-index: 10;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  text-align: center;
 }
 
-.hero__headline {
-  font-size: clamp(26px, 3.2vw, 44px);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  color: #fff;
+.hero__text {
+  max-width: 760px;
 }
 
-.hero__headline em {
-  font-style: normal;
-  color: var(--color-accent);
+.hero__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--snow);
 }
 
-.hero__intro {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.hero__avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--color-accent);
-  flex-shrink: 0;
-}
-
-.hero__subtitle {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.01em;
+.hero__lead {
+  margin-top: 22px;
+  max-width: 32em;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.5;
+  color: var(--snow-2);
 }
 
 .hero__proof {
+  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  gap: 10px 32px;
+  font-size: 15px;
+  color: var(--snow-2);
 }
 
-.hero__proof a {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--color-accent-soft);
-  border: 1px solid rgba(245, 165, 36, 0.35);
-  color: var(--color-accent);
-  font-size: 13px;
-  font-weight: 500;
-  transition: background 0.2s ease, color 0.2s ease;
+.hero__proof li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.hero__proof a:hover {
-  background: var(--color-accent);
-  color: #000;
+.hero__proof li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sun);
+  flex-shrink: 0;
 }
 
 .hero__cta {
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 12px;
 }
 
-.hero__btn {
-  padding: 11px 22px;
-  border-radius: 999px;
-  border: 1px solid var(--color-white-30);
-  color: var(--color-white);
-  font-size: 14px;
-  font-weight: 600;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-}
-
-.hero__btn:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-}
-
-.hero__btn--primary {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-black);
-}
-
-.hero__btn--primary:hover {
-  background: var(--color-accent-hover);
-}
-
-.hero__scroll-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--color-white-30);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-
-.hero__scroll-circle:hover {
-  border-color: var(--color-accent);
+.hero__chart {
+  margin-top: auto;
+  padding-top: 48px;
 }
 
 @media (max-width: 810px) {
-  .hero__hint {
-    display: none;
+  .hero {
+    padding-top: 120px;
+  }
+
+  .hero__chart {
+    padding-top: 56px;
   }
 }
 
-/* Phones: the name is width-limited, so give the canvas only the height it needs
-   and let the intro sit right under it instead of at the bottom of a tall black gap. */
 @media (max-width: 600px) {
   .hero {
-    height: auto;
-    min-height: 100svh;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 104px;
   }
 
-  .hero__stage {
-    flex: 0 0 auto;
-    height: max(240px, 64vw);
-    margin-top: 64px;
+  .hero__name {
+    font-size: clamp(48px, 15vw, 64px);
   }
 
-  .hero__bottom {
-    flex: 1;
+  .hero__cta .btn {
+    flex: 1 1 auto;
     justify-content: center;
-    gap: 16px;
-    padding-bottom: 32px;
-  }
-
-  .hero__headline {
-    font-size: 28px;
-  }
-
-  .hero__subtitle {
-    font-size: 13px;
-    text-align: left;
   }
 }

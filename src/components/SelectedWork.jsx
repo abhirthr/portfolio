@@ -119,9 +119,9 @@ function SelectedWork() {
   const shownCourses = allCourses ? courses : courses.slice(0, COURSES_SHOWN)
 
   return (
-    <section id="work" className="selected-work">
+    <section id="work" className="selected-work day">
       <h2 className="visually-hidden">Publications, research projects, honors and courses</h2>
-      <div className="selected-work__panels">
+      <div>
         <ScrollExpand
           title="Publications"
                   >
@@ -139,11 +139,11 @@ function SelectedWork() {
                 </div>
                 <div className="pub-links">
                   {pub.caseStudy && (
-                    <a className="pub-link" href={pub.caseStudy}>Case study →</a>
+                    <a className="link pub-link" href={pub.caseStudy}>Case study</a>
                   )}
                   {pub.link && (
-                    <a className="pub-link" href={pub.link} target="_blank" rel="noopener noreferrer">
-                      {pub.linkLabel || 'DOI'} <span aria-hidden="true">↗</span>
+                    <a className="link pub-link" href={pub.link} target="_blank" rel="noopener noreferrer">
+                      {pub.linkLabel || 'DOI'}
                     </a>
                   )}
                 </div>
@@ -157,8 +157,10 @@ function SelectedWork() {
             {projects.map((p, i) => (
               <div key={i} className="project-item">
                 <span className="project-label">{p.label}</span>
-                <h4 className="project-title">{p.title}</h4>
-                <p className="project-desc">{p.description}</p>
+                <div>
+                  <h4 className="project-title">{p.title}</h4>
+                  <p className="project-desc">{p.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -178,7 +180,7 @@ function SelectedWork() {
           <ul className="honor-list">
             {honors.map((h) => (
               <li key={h.title} className={`honor-item${h.gold ? ' honor-item--gold' : ''}`}>
-                <span className="honor-icon" aria-hidden="true">{h.gold ? '★' : '◆'}</span>
+                <span className="honor-icon" aria-hidden="true">{h.gold ? '★' : '✓'}</span>
                 <div>
                   <h4 className="honor-title">{h.title}</h4>
                   <p className="honor-org">{h.org}</p>
@@ -201,13 +203,12 @@ function SelectedWork() {
             ))}
           </ul>
           <button
-            className="course-toggle"
+            className="btn course-toggle"
             onClick={() => setAllCourses((v) => !v)}
             aria-expanded={allCourses}
             aria-controls="course-list"
           >
             {allCourses ? 'Show fewer' : `Show all ${courses.length}`}
-            <span aria-hidden="true">{allCourses ? ' ↑' : ' ↓'}</span>
           </button>
         </ScrollExpand>
       </div>
