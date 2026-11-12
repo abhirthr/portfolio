@@ -75,7 +75,8 @@ Rathore, Gupta, Sharma and Singh, "Day ahead solar forecast using long short ter
 
 ## Skills
 
-- Machine learning: Python, time-series forecasting, LSTM and attention, LightGBM, scikit-learn, TensorFlow / Keras, feature engineering.
+- Machine learning: Python, time-series forecasting, physics-informed machine learning, mixture of experts (model routing and blending), LSTM and attention, LightGBM, scikit-learn, TensorFlow / Keras, feature engineering.
+- LLMs and edge AI: fine-tuning large language models (Gemma, Llama, Qwen) for time-series forecasting with LoRA and QLoRA (PyTorch, Hugging Face), llama.cpp, prompt engineering, knowledge distillation, lightweight models, Raspberry Pi, sensor integration.
 - Energy modelling: pvlib, solar PV yield, wind power curves, NWP and satellite data, signal decomposition (EMD, FFT), MATLAB / Simulink.
 - Engineering: FastAPI, Flask, Streamlit, React, data pipelines, GitHub Actions, Vercel / Render.
 

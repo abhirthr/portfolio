@@ -48,7 +48,8 @@ const experiences = [
 ]
 
 const skills = [
-  { group: 'Machine learning', items: ['Python', 'Time-series forecasting', 'LSTM and attention', 'LightGBM', 'scikit-learn', 'TensorFlow / Keras', 'Feature engineering'] },
+  { group: 'Machine learning', items: ['Python', 'Time-series forecasting', 'Physics-informed ML', 'Mixture of experts', 'LSTM and attention', 'LightGBM', 'scikit-learn', 'TensorFlow / Keras', 'Feature engineering'] },
+  { group: 'LLMs and edge AI', items: ['LLM fine-tuning for forecasting', 'LoRA / QLoRA', 'PyTorch', 'Hugging Face', 'llama.cpp', 'Prompt engineering', 'Gemma, Llama, Qwen', 'Knowledge distillation', 'Lightweight models', 'Raspberry Pi', 'Sensor integration'] },
   { group: 'Energy modelling', items: ['pvlib', 'Solar PV yield', 'Wind power curves', 'NWP and satellite data', 'Signal decomposition (EMD, FFT)', 'MATLAB / Simulink'] },
   { group: 'Engineering', items: ['FastAPI', 'Flask', 'Streamlit', 'React', 'Data pipelines', 'GitHub Actions', 'Vercel / Render'] },
 ]

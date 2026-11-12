@@ -97,10 +97,7 @@
 }
 
 .navbar__logo {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1;
+  display: inline-flex;
   color: var(--snow);
   pointer-events: auto;
   transition: color 0.18s ease;

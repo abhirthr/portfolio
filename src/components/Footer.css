@@ -16,11 +16,12 @@
 }
 
 .footer__logo {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 32px;
-  line-height: 1;
+  display: inline-flex;
   color: var(--snow);
+}
+
+.footer__logo .logo {
+  height: 40px;
 }
 
 .footer__columns {

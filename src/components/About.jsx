@@ -26,25 +26,6 @@ function About() {
               <li><a className="link" href="https://github.com/abhirthr" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
           </div>
-          <div className="about__build">
-            <h3 className="about__build-title">How I build</h3>
-            <ul className="about__build-list">
-              <li>
-                <strong>Readable by people and agents.</strong> Every page here is prerendered to plain
-                HTML and the site ships an <a className="link" href="/llms.txt">llms.txt</a>, so an AI
-                assistant or a recruiter’s tooling reads the same content you do.
-              </li>
-              <li>
-                <strong>Developed with AI agents, deliberately.</strong> I work with Claude Code against a
-                project memory file that records decisions, sources and open items, so every change is
-                traceable and reviewable.
-              </li>
-              <li>
-                <strong>Numbers you can trace.</strong> Each figure on this site points to a table in the
-                paper, the CV, or the forecasting app’s published results file.
-              </li>
-            </ul>
-          </div>
         </div>
         <div className="about__photo">
           <img

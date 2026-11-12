@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import Section from './Section'
 import { BaselineBars, MonthlyChart, SiteSkill, FeatureImportance } from './charts'
 import './CaseStudy.css'
+import Logo from '../components/Logo'
 
 const APP_URL = 'https://app.abhijeetrathore.in'
 const RESULTS_URL = `${APP_URL}/data/model_results.json`
@@ -25,7 +26,9 @@ function CaseStudy() {
     <>
       <header className="cs-top">
         <a href="/#featured" className="cs-top__back">Back to portfolio</a>
-        <a href="/" className="cs-top__logo">A.R.</a>
+        <a href="/" className="cs-top__logo" aria-label="Home">
+          <Logo />
+        </a>
       </header>
 
       <main>

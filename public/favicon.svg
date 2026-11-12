@@ -1,4 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#010101"/>
-  <text x="32" y="41" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Arial, sans-serif" font-size="25" font-weight="900" letter-spacing="-1" fill="#f5a524">A.R.</text>
+  <rect width="64" height="64" rx="14" fill="#0f1424"/>
+  <g transform="translate(5 7) scale(0.82)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+    <path d="M8 54 L28 10 L46 54" stroke="#f4f3f0"/>
+    <path d="M28 10 H46 A11 11 0 0 1 46 32 H36" stroke="#f4f3f0"/>
+    <path d="M44 32 L58 54" stroke="#f4f3f0"/>
+    <line x1="16.5" y1="36" x2="40" y2="36" stroke="#f5a524"/>
+  </g>
 </svg>

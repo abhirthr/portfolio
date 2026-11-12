@@ -52,32 +52,9 @@
   color: var(--snow-2);
 }
 
-.about__build {
-  margin-top: 40px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line-dark);
-}
 
-.about__build-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--snow);
-}
 
-.about__build-list {
-  margin-top: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 36em;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--snow-2);
-}
 
-.about__build-list strong {
-  color: var(--snow);
-}
 
 .about__photo {
   justify-self: end;

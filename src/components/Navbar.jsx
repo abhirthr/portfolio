@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Navbar.css'
+import Logo from './Logo'
 
 const LINKS = [
   { id: 'featured', label: 'Projects' },
@@ -74,7 +75,9 @@ function Navbar({ onMenuToggle }) {
         ))}
       </ul>
 
-      <a className="navbar__logo" href="/#home" aria-label="Back to top">A.R.</a>
+      <a className="navbar__logo" href="/#home" aria-label="Back to top">
+        <Logo />
+      </a>
       <span className="navbar__progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
     </nav>
   )

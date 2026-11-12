@@ -284,3 +284,11 @@ sub {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* AR monogram (src/components/Logo.jsx): strokes in currentColor, crossbar in --sun. */
+.logo {
+  display: block;
+  height: 28px;
+  width: auto;
+  overflow: visible;
+}

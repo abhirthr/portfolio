@@ -51,7 +51,8 @@ src/App.jsx                        home section order
 src/components/                    Hero, FeaturedProject, ResearchHighlight (FFT-LSTM paper + patent),
                                    FieldWork (ML-Sol, 6 stations, 2023 poster), WorkedWith (timeline +
                                    toolkit), SelectedWork (pubs, projects, honors, courses), About
-                                   (contact + "How I build"), Footer, Navbar, MenuOverlay
+                                   (contact), Footer, Navbar, MenuOverlay,
+                                   Logo (AR monogram SVG, used in navbar, footer, case-study headers)
 src/components/ui/                 lightbox, browser-frame, scroll-expand (titled day panel, takes id),
                                    count-up (stat numbers)
 src/components/SolarDay.jsx        the hero chart: today's clear-sky irradiance curve over Roorkee with
@@ -142,9 +143,13 @@ Branch `feat/agent-readable` (not yet pushed; user reviews on `npx vite preview`
    incl. case studies). New tokens/type (see Conventions), hero with SolarDay chart, section order
    Hero → Featured → Research → Field → Experience → Publications → About, case studies with a
    night header and day body, charts recoloured for the light surface. Removed: pong canvas,
-   particles, SunNow chip, Tailwind. About gained a "How I build" block (agent-readable pages,
-   developed with Claude Code against this file, traceable numbers): user to confirm wording.
-Next: user review of the preview, then push and go live; OG images still show the old design.
+   particles, SunNow chip, Tailwind. A "How I build" block in About was tried and removed at the user's request (2026-11-12).
+3. Logo (2026-11-12, user approved): drawn AR monogram, the A's right leg is the R's stem, crossbar
+   in --sun. `src/components/Logo.jsx` (currentColor strokes) replaces the italic "A.R." text
+   everywhere; favicon.svg, favicon-32.png and apple-touch-icon.png redrawn to match. Use the
+   monogram alone, never next to a "A.R." or name text (user rule).
+Next: user review of the preview, then push and go live. OG share cards still show the old design;
+drafts in the new style exist but the user deferred them (2026-11-12).
 
 ## Status (2026-11-04, end of session)
 Done and live: hero (headline, proof chips, live sun chip, playable name canvas), desktop nav

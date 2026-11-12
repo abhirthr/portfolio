@@ -6,6 +6,7 @@ import { OverallChart, SeasonChart, RuntimeChart, LiteratureChart, FrequencyGrou
 import { DOI, SITES, FIGURES } from './data'
 import '../case-study/CaseStudy.css'
 import './FftLstm.css'
+import Logo from '../components/Logo'
 
 const stages = [
   { tag: 'A', title: 'Collect', text: 'Hourly GHI and weather for four sites from the NSRDB, 2005–2014' },
@@ -25,7 +26,9 @@ function FftLstm() {
     <>
       <header className="cs-top">
         <a href="/#research" className="cs-top__back">Back to portfolio</a>
-        <a href="/" className="cs-top__logo">A.R.</a>
+        <a href="/" className="cs-top__logo" aria-label="Home">
+          <Logo />
+        </a>
       </header>
 
       <main>

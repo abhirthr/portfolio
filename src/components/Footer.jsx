@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL } from '../lib/site'
+import Logo from './Logo'
 import './Footer.css'
 
 function Footer() {
@@ -9,7 +10,9 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <div className="footer__logo">A.R.</div>
+        <div className="footer__logo">
+          <Logo />
+        </div>
         <div className="footer__columns">
           <div className="footer__column">
             <h4 className="footer__column-title">Credits</h4>
