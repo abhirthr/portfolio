@@ -148,8 +148,8 @@ Branch `feat/agent-readable` (not yet pushed; user reviews on `npx vite preview`
    in --sun. `src/components/Logo.jsx` (currentColor strokes) replaces the italic "A.R." text
    everywhere; favicon.svg, favicon-32.png and apple-touch-icon.png redrawn to match. Use the
    monogram alone, never next to a "A.R." or name text (user rule).
-Next: user review of the preview, then push and go live. OG share cards still show the old design;
-drafts in the new style exist but the user deferred them (2026-11-12).
+Live since 2026-11-12 (commit 4cddb69 on main: redesign, AR logo, LLM/edge toolkit group, new CV). OG share cards redrawn in the new design with the AR monogram (2026-11-12);
+the template that renders them is kept outside the repo (Documents/portfolio-share-card-drafts/card.html, #home, #irf, #fft).
 
 ## Status (2026-11-04, end of session)
 Done and live: hero (headline, proof chips, live sun chip, playable name canvas), desktop nav
