@@ -123,13 +123,13 @@ function FeaturedProject() {
               url="app.abhijeetrathore.in"
               images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp', '/images/app/forecast-finance.webp']}
               ratio={1440 / 900}
-              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, a 7-day forecast for a 50 MW plant at Roorkee, and that plant's project financials worked step by step"
+              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, a 7-day forecast for a 50 MW plant at Roorkee, and the project financials for the same plant at Jodhpur, Rajasthan, worked step by step"
             />
           </a>
           <figcaption className="featured__shot-caption">
             The live app: click anywhere in India for a forecast. Coloured dots are the 32 test sites, shaded by
             how much the model beats the raw weather forecast. Then a 7-day forecast for a 50 MW plant at Roorkee, and
-            the working behind its project financials.
+            the working behind the same plant's project financials at Jodhpur, Rajasthan.
           </figcaption>
         </figure>
       </div>

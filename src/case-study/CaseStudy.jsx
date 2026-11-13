@@ -201,7 +201,7 @@ function CaseStudy() {
               url="app.abhijeetrathore.in"
               images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp', '/images/app/forecast-finance.webp']}
               ratio={1440 / 900}
-              label="Screenshots of the live app: the India map, a 7-day forecast for a 50 MW plant at Roorkee, and its project financials worked step by step"
+              label="Screenshots of the live app: the India map, a 7-day forecast for a 50 MW plant at Roorkee, and project financials for the same plant at Jodhpur, worked step by step"
             />
           </a>
           <figcaption>Try it: click anywhere in India for a 7-day forecast of your plant.</figcaption>
