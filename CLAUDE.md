@@ -63,6 +63,9 @@ src/fft-lstm/                      FFT-LSTM case study: FftLstm.jsx, charts.jsx,
 src/lib/site.js                    CV_URL, CONTACT_EMAIL
 src/lib/useLiveResults.js          fetch live results JSON, fall back to bundled snapshot
 src/data/irf-results.json          snapshot of the app's model_results.json
+src/data/irf-sat-nowcast.json      snapshot of the app's sat_nowcast.json (case-study section 06)
+src/data/indiaCells.js             copy of the app's India grid cells (SatNowcast dot map)
+src/case-study/SatNowcast.jsx      animated satellite-nowcast panel, adapted from the app's SatStory.jsx
 public/llms.txt                    plain-text summary of the whole site for AI agents; update it whenever
                                    content changes (same source-of-truth rule as the page)
 public/                            CV pdf, favicons, og-image.png (home), og/<slug>.png (case-study share cards), robots.txt, sitemap.xml,
@@ -134,6 +137,12 @@ public/                            CV pdf, favicons, og-image.png (home), og/<sl
 - A hydration mismatch (console "Hydration failed") means a component rendered differently on
   the server; React recovers by re-rendering on the client but the prerendered text may flash.
   `npm run dev` does not prerender, so test hydration with `npm run build && npx vite preview`.
+
+## Status (2026-11-14)
+Live (main = feat/agent-readable = 69c6c8b): IRF featured project and case study cover the satellite-corrected
+first hours and the rupee outputs; screenshots: map, Roorkee 7-day forecast, Jodhpur financials pop-up (user:
+Roorkee as the example plant, financials in Rajasthan, never Bhadla). The browser frame cycles up to three images.
+CV PDF rebuilt from `my work/Abhijeet_Rathore_Resume.html` (keep the .tex in sync).
 
 ## Status (2026-11-11, in progress)
 Branch `feat/agent-readable` (not yet pushed; user reviews on `npx vite preview` first):
