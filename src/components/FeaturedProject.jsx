@@ -4,7 +4,11 @@ import './FeaturedProject.css'
 const steps = [
   {
     title: 'ML-corrected weather forecasts',
-    text: 'One India-wide LightGBM model corrects NWP irradiance by learning the clear-sky index from archived forecasts paired with satellite-derived irradiance (NASA POWER). Satellite data is used only in training.',
+    text: 'One India-wide LightGBM model corrects NWP irradiance by learning the clear-sky index from archived forecasts paired with satellite-derived irradiance (NASA POWER).',
+  },
+  {
+    title: 'Satellite-corrected first hours',
+    text: 'Every hour, the newest Meteosat-derived reading at the point is compared with what the model expected, and the next few hours are nudged towards it, fading over about 5 hours. Weather models are weakest in the first hours; satellite pictures are strongest there.',
   },
   {
     title: 'Temperature bias correction',
@@ -13,6 +17,10 @@ const steps = [
   {
     title: 'Physics from weather to power',
     text: 'pvlib clear-sky and PV modelling, hub-height wind extrapolation with hourly shear, and a turbine power curve.',
+  },
+  {
+    title: 'From energy to rupees',
+    text: 'Deviation charges under Indian scheduling rules, and project NPV, IRR, LCOE and payback from the long-term yield, with sourced defaults and a step-by-step "show calculation" view.',
   },
 ]
 
@@ -33,8 +41,9 @@ function FeaturedProject() {
           <h2 className="section-head__title">India Renewables Forecast</h2>
           <p className="section-head__lead">
             A forecasting platform that gives a solar and wind baseline for any location in India.
-            Click a point on the map to get a 7-day generation forecast for your plant, alongside the
-            long-term resource for that site.
+            Click a point on the map to get a 7-day generation forecast for your plant, with the first hours
+            corrected by the latest satellite picture, alongside the long-term yield and project financials
+            for that site.
           </p>
         </div>
 
@@ -96,6 +105,10 @@ function FeaturedProject() {
                 <dt className="fp-stat__value t-display">10%</dt>
                 <dd className="fp-stat__label">lower at 8 sites held out of training entirely</dd>
               </div>
+              <div className="fp-stat">
+                <dt className="fp-stat__value t-display">3.2%</dt>
+                <dd className="fp-stat__label">further cut in the first live hour from the satellite correction, at held-out sites</dd>
+              </div>
             </dl>
 
             <p className="featured__honest">
@@ -108,14 +121,15 @@ function FeaturedProject() {
           <a href="https://app.abhijeetrathore.in" target="_blank" rel="noopener noreferrer" className="featured__shot-link">
             <BrowserFrame
               url="app.abhijeetrathore.in"
-              images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
+              images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp', '/images/app/forecast-finance.webp']}
               ratio={1440 / 900}
-              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, and a 7-day forecast for a 50 MW plant at Bhadla"
+              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, a 7-day forecast for a 50 MW plant at Roorkee, and that plant's project financials worked step by step"
             />
           </a>
           <figcaption className="featured__shot-caption">
             The live app: click anywhere in India for a forecast. Coloured dots are the 32 test sites, shaded by
-            how much the model beats the raw weather forecast. The second view is a 7-day forecast for a 50 MW plant.
+            how much the model beats the raw weather forecast. Then a 7-day forecast for a 50 MW plant at Roorkee, and
+            the working behind its project financials.
           </figcaption>
         </figure>
       </div>

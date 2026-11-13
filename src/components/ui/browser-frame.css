@@ -39,7 +39,7 @@
   object-position: top;
 }
 
-.browser__alt {
+.browser__alt--2 {
   animation: browser-swap 9s ease-in-out infinite;
 }
 
@@ -49,8 +49,25 @@
   100% { opacity: 0; }
 }
 
+/* Three screenshots, 4.5 s each: the second stays up until the third has fully covered it */
+.browser__alt--3.browser__pos-1 { animation: browser-swap-3a 13.5s ease-in-out infinite; }
+.browser__alt--3.browser__pos-2 { animation: browser-swap-3b 13.5s ease-in-out infinite; }
+
+@keyframes browser-swap-3a {
+  0%, 28% { opacity: 0; }
+  33%, 70% { opacity: 1; }
+  72%, 100% { opacity: 0; }
+}
+
+@keyframes browser-swap-3b {
+  0%, 61% { opacity: 0; }
+  66%, 95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .browser__alt {
     animation: none;
+    opacity: 0;
   }
 }

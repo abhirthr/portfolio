@@ -16,7 +16,7 @@ All pages on this site are prerendered static HTML, so their full text is readab
 ## Pages
 
 - [Home](https://abhijeetrathore.in/): overview, featured project, research highlight, field work, experience, publications, honors, courses, contact.
-- [Case study: India Renewables Forecast](https://abhijeetrathore.in/projects/india-renewables-forecast/): the live app, how the model learns a clear-sky-index correction to weather forecasts, how it was tested, and its results.
+- [Case study: India Renewables Forecast](https://abhijeetrathore.in/projects/india-renewables-forecast/): the live app, how the model learns a clear-sky-index correction to weather forecasts, how it was tested, its results, the satellite-corrected first hours, and the rupee value (deviation charges, project financials).
 - [Case study: FFT-assisted LSTM solar forecasting](https://abhijeetrathore.in/projects/fft-lstm-solar-forecast/): the Renewable Energy 2025 paper explained, with per-site and seasonal results.
 
 ## Current position
@@ -35,14 +35,16 @@ All pages on this site are prerendered static HTML, so their full text is readab
 
 ## Featured project: India Renewables Forecast (Jan to Mar 2026)
 
-A forecasting platform that gives a solar and wind baseline for any location in India. Click a point on the map to get a 7-day generation forecast for your plant alongside the long-term resource for that site. Built end to end: data, model, API and web app.
+A forecasting platform that gives a solar and wind baseline for any location in India. Click a point on the map to get a 7-day generation forecast for your plant, with the first hours corrected by the latest satellite picture, alongside the long-term yield and project financials for that site. Built end to end: data, model, API and web app.
 
-- Model: one India-wide LightGBM model predicts the clear-sky index (GHI / clear-sky GHI) to correct numerical weather prediction irradiance, with P10 / P90 quantile models for an 80% band. Satellite irradiance (NASA POWER) is used only for training; at forecast time only the weather forecast and sun geometry are needed.
+- Model: one India-wide LightGBM model predicts the clear-sky index (GHI / clear-sky GHI) to correct numerical weather prediction irradiance, with P10 / P90 quantile models for an 80% band. Satellite irradiance (NASA POWER) trains the model; at forecast time it needs only the weather forecast and sun geometry.
 - Temperature: IMD gridded temperature corrects the forecast bias that feeds PV cell temperature and air density.
 - Physics: pvlib clear-sky and PV modelling, hub-height wind extrapolation with hourly shear, and a turbine power curve.
+- Satellite-corrected first hours: every hour the newest Meteosat-derived irradiance at the point (Open-Meteo satellite_radiation_seamless, about 2 h behind real time) is compared with the model; a debiased fraction (0.23) of the gap is added to the next hours, fading with a 4.75 h time constant and gone by 8 h. Fitted on training sites Jan to Jun 2025, scored at held-out sites Jul to Dec 2025 against NASA POWER: hourly RMSE 3.2% lower in the first live hour and 4.7% lower one hour after the reading. Next step: forecasting from cloud motion between consecutive images.
+- From energy to rupees: deviation charges under the GERC 2019 bands (replaying 2024, scheduling on the model cuts them by about 42% on average across the 32 test sites), and project NPV, IRR, LCOE and payback from the plant's P50/P90 yield, with defaults cited from KERC tariff orders, SECI auction tariffs and CERC norms. Both open a step-by-step calculation.
 - Testing: trained on 2022 to 2023, scored on all of 2024. Hourly irradiance RMSE at training sites fell from 101 to 78 W/m2 (23% better than the raw forecast); 10% better at 8 sites held out of training entirely; a similar gain holds through the monsoon. The app shows where the model struggles (for example high-altitude Leh) rather than hiding it.
 - Stack: Python, LightGBM, pvlib, pandas, FastAPI, React, Leaflet, Render, Vercel, GitHub Actions.
-- Live results file the case study reads: https://app.abhijeetrathore.in/data/model_results.json
+- Live results files the case study reads: https://app.abhijeetrathore.in/data/model_results.json and https://app.abhijeetrathore.in/data/sat_nowcast.json
 
 ## Research highlight: day-ahead solar forecasting with FFT-assisted LSTM
 

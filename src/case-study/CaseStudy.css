@@ -647,3 +647,44 @@
     width: 100%;
   }
 }
+
+/* Satellite nowcast (SatNowcast.jsx): a night panel inside the light body. Resting styles are
+   the finished picture, so reduced motion still shows the whole story. */
+.cs-sat { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(20px, 3vw, 40px); align-items: center; padding: clamp(20px, 3vw, 36px); border-radius: var(--radius); }
+.cs-sat__anim { margin: 0; display: grid; gap: 12px; justify-items: center; }
+.cs-sat__map { width: 100%; max-width: 400px; height: auto; display: block; }
+.cs-sat__chart { width: 100%; max-width: 400px; height: auto; display: block; background: var(--night-2); border: 1px solid var(--line-dark); border-radius: var(--radius); }
+.cs-sat__anim figcaption { color: var(--snow-3); font-size: 12px; text-align: center; max-width: 400px; }
+.cs-sat__tick { fill: var(--snow-3); font: 9px var(--font-mono); }
+.cs-sat__label { fill: var(--snow-2); font: 10px var(--font-mono); }
+.cs-sat__label--corr { fill: var(--sun); }
+.cs-sat__label--actual { fill: var(--snow-3); }
+.cs-sat__text p { color: var(--snow-2); font-size: 16px; line-height: 1.65; margin: 0 0 14px; }
+.cs-sat__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 18px 0; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.cs-sat__stats div { padding: 14px 12px 14px 0; }
+.cs-sat__stats div + div { padding-left: 12px; border-left: 1px solid var(--line-dark); }
+.cs-sat__stats dt { color: var(--sun); font-size: 32px; line-height: 1.1; }
+.cs-sat__stats dd { color: var(--snow-2); font-size: 13px; line-height: 1.4; margin: 6px 0 0; }
+.cs-sat__next { border-left: 2px solid var(--sun); padding-left: 12px; color: var(--snow-3) !important; font-size: 14px !important; }
+.cs-sat__next strong { color: var(--snow); font-weight: 500; }
+.cs-sat__scan { opacity: 0; }
+.cs-sat__target { transform-box: fill-box; transform-origin: center; }
+.cs-sat__corr { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.cs-sat.is-seen .cs-sat__scan { animation: cs-sat-scan 10s linear infinite; }
+.cs-sat.is-seen .cs-sat__target { animation: cs-sat-target 10s ease infinite; }
+.cs-sat.is-seen .cs-sat__reading { animation: cs-sat-reading 10s ease infinite; }
+.cs-sat.is-seen .cs-sat__gap { animation: cs-sat-gap 10s ease infinite; }
+.cs-sat.is-seen .cs-sat__corr { animation: cs-sat-corr 10s ease infinite; }
+.cs-sat.is-seen .cs-sat__label--corr, .cs-sat.is-seen .cs-sat__fill { animation: cs-sat-label 10s ease infinite; }
+@keyframes cs-sat-scan { 0% { transform: translateY(0); opacity: 0; } 2% { opacity: 1; } 16% { transform: translateY(546px); opacity: 1; } 18%, 100% { transform: translateY(546px); opacity: 0; } }
+@keyframes cs-sat-target { 0%, 13% { opacity: 0.3; transform: scale(1); } 16% { opacity: 1; transform: scale(1.7); } 22%, 92% { opacity: 1; transform: scale(1); } 100% { opacity: 0.3; transform: scale(1); } }
+@keyframes cs-sat-reading { 0%, 17% { opacity: 0; } 22%, 92% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes cs-sat-gap { 0%, 20% { opacity: 0; } 26%, 92% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes cs-sat-corr { 0%, 26% { stroke-dashoffset: 1; opacity: 1; } 52%, 92% { stroke-dashoffset: 0; opacity: 1; } 98%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes cs-sat-label { 0%, 50% { opacity: 0; } 56%, 92% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@media (max-width: 860px) {
+  .cs-sat { grid-template-columns: 1fr; }
+  .cs-sat__stats { grid-template-columns: 1fr; }
+  .cs-sat__stats div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-dark); }
+}
+@media (prefers-reduced-motion: reduce) { .cs-sat.is-seen * { animation: none !important; } }

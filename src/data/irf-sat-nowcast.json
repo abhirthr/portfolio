@@ -1,0 +1,66 @@
+{
+ "reference": "NASA POWER hourly GHI",
+ "fit": "training sites, Jan-Jun 2025",
+ "score": "held-out sites, Jul-Dec 2025",
+ "a": 0.2309,
+ "tau_h": 4.75,
+ "live_latency_h": 2,
+ "leads": [
+  {
+   "lead_h": 1,
+   "model_rmse": 105.25,
+   "blend_rmse": 100.27,
+   "skill_vs_model": 0.047,
+   "n": 12992
+  },
+  {
+   "lead_h": 2,
+   "model_rmse": 108.5,
+   "blend_rmse": 105.06,
+   "skill_vs_model": 0.032,
+   "n": 11660
+  },
+  {
+   "lead_h": 3,
+   "model_rmse": 110.3,
+   "blend_rmse": 107.94,
+   "skill_vs_model": 0.021,
+   "n": 10301
+  },
+  {
+   "lead_h": 4,
+   "model_rmse": 110.03,
+   "blend_rmse": 108.31,
+   "skill_vs_model": 0.016,
+   "n": 8921
+  },
+  {
+   "lead_h": 5,
+   "model_rmse": 106.48,
+   "blend_rmse": 105.31,
+   "skill_vs_model": 0.011,
+   "n": 7559
+  },
+  {
+   "lead_h": 6,
+   "model_rmse": 99.79,
+   "blend_rmse": 99.0,
+   "skill_vs_model": 0.008,
+   "n": 6200
+  },
+  {
+   "lead_h": 7,
+   "model_rmse": 90.33,
+   "blend_rmse": 89.73,
+   "skill_vs_model": 0.007,
+   "n": 4832
+  },
+  {
+   "lead_h": 8,
+   "model_rmse": 76.73,
+   "blend_rmse": 76.4,
+   "skill_vs_model": 0.004,
+   "n": 3481
+  }
+ ]
+}

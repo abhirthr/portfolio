@@ -1,4 +1,6 @@
 import snapshot from '../data/irf-results.json'
+import satSnapshot from '../data/irf-sat-nowcast.json'
+import SatNowcast from './SatNowcast'
 import { useLiveResults } from '../lib/useLiveResults'
 import BrowserFrame from '../components/ui/browser-frame'
 import Footer from '../components/Footer'
@@ -9,6 +11,8 @@ import Logo from '../components/Logo'
 
 const APP_URL = 'https://app.abhijeetrathore.in'
 const RESULTS_URL = `${APP_URL}/data/model_results.json`
+const SAT_URL = `${APP_URL}/data/sat_nowcast.json`
+const isSat = (d) => Array.isArray(d?.leads) && d.leads.length > 0 && Number.isFinite(d.a)
 
 const pct = (v) => `${Math.round(v * 100)}%`
 const fmtDate = (iso) =>
@@ -16,6 +20,7 @@ const fmtDate = (iso) =>
 
 function CaseStudy() {
   const { data: r, live } = useLiveResults(RESULTS_URL, snapshot)
+  const { data: sat } = useLiveResults(SAT_URL, satSnapshot, isSat)
   const { seen, unseen, monsoon } = r.headline
   const maxRmse = Math.max(seen.rmse.kasten_czeplak, unseen.rmse.kasten_czeplak)
   const holdout = r.per_site.filter((s) => s.holdout)
@@ -40,7 +45,8 @@ function CaseStudy() {
             Weather models forecast sunshine well on clear days but carry systematic errors under haze,
             fog and monsoon cloud. This project trains one model on {r.n_train_sites} sites to learn
             those errors from satellite data, then corrects the forecast anywhere in India, and turns it
-            into solar and wind power.
+            into solar and wind power. For the first few hours, the latest satellite picture corrects it
+            further.
           </p>
           <div className="cs-hero__actions">
             <a className="btn btn--primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
@@ -52,7 +58,7 @@ function CaseStudy() {
           <dl className="cs-meta">
             <div><dt>Role</dt><dd>Built end to end: data, model, API and web app</dd></div>
             <div><dt>Model</dt><dd>LightGBM on the clear-sky index, with P10 / P90 quantile models</dd></div>
-            <div><dt>Data</dt><dd>Open-Meteo forecasts, NASA POWER satellite irradiance, IMD gridded temperature</dd></div>
+            <div><dt>Data</dt><dd>Open-Meteo forecasts, NASA POWER and Meteosat-derived satellite irradiance, IMD gridded temperature</dd></div>
             <div><dt>Stack</dt><dd>Python, pvlib, pandas, FastAPI, React, Leaflet, Render, Vercel, GitHub Actions</dd></div>
           </dl>
 
@@ -90,9 +96,10 @@ function CaseStudy() {
               weather-dependent part, which transfers across latitudes and seasons.
             </p>
             <p>
-              Satellite irradiance (NASA POWER) is used <strong>only to train</strong>. At forecast time
-              the model needs nothing but the weather forecast and the sun’s position, so it runs
-              anywhere in India, for free.
+              Satellite irradiance (NASA POWER) <strong>trains</strong> the model. At forecast time it
+              needs only the weather forecast and the sun’s position, so it runs anywhere in India, for
+              free. For the first few hours, the latest satellite reading corrects it further
+              (<a href="#satellite">section 06</a>).
             </p>
           </div>
         </Section>
@@ -111,6 +118,7 @@ function CaseStudy() {
               <li><strong>Live weather forecast</strong><span>Cloud layers, temperature, humidity, winds at 10 m and 100 m</span></li>
               <li><strong>Sun geometry</strong><span>pvlib solar position and Ineichen clear-sky</span></li>
               <li className="is-key"><strong>Frozen model</strong><span>Corrected irradiance with an 80% band</span></li>
+              <li className="is-key"><strong>Latest satellite reading</strong><span>Meteosat-derived, about 2 h old: nudges the first hours</span></li>
               <li><strong>Power</strong><span>PV: cell temperature and losses · Wind: hub-height shear, air density, power curve</span></li>
             </ol>
           </div>
@@ -150,13 +158,26 @@ function CaseStudy() {
           </p>
         </Section>
 
-        <Section num="06" title="Where it falls short">
+        <Section num="06" title="Satellite pictures fix the first hours" id="satellite">
+          <SatNowcast d={sat} />
+        </Section>
+
+        <Section num="07" title="From energy to rupees">
+          <ul className="cs-list">
+            <li><strong>Deviation charges.</strong> Indian plants pay when output strays from the schedule they filed. Replaying 2024 at every test site under the GERC 2019 charge bands, scheduling on the model instead of the raw forecast cuts those charges by about 42% on average.</li>
+            <li><strong>Project financials.</strong> NPV, project IRR, LCOE and payback for the plant you describe, on its own P50 and P90 yield. Defaults come from Indian regulators and auctions (KERC tariff orders, SECI tariffs, CERC norms), each cited and editable. Pre-tax, without debt.</li>
+            <li><strong>Show the working.</strong> Both cards open a step-by-step calculation with the plant’s own numbers, so every rupee can be traced.</li>
+          </ul>
+        </Section>
+
+        <Section num="08" title="Where it falls short">
           <ul className="cs-list">
             <li><strong>High altitude.</strong> {worst.site} is the worst site ({Math.round(worst.model.rmse)} W/m², {pct(Math.abs(worst.skill_vs_nwp_raw))} worse than the raw forecast): no training site is above ~900 m. The app warns above 1,500 m.</li>
             <li><strong>Islands.</strong> Port Blair gains nothing; the training set has no island climate.</li>
             <li><strong>Bias away from training data.</strong> At never-seen sites the model over-forecasts by {Math.round(unseen.mbe_model)} W/m² on average, against {Math.round(seen.mbe_model)} W/m² at training sites.</li>
             <li><strong>“Truth” is satellite-derived.</strong> NASA POWER is a ~1° product, not a pyranometer; ground stations are the next validation step.</li>
             <li><strong>Wind is physics-only.</strong> Hub-height extrapolation and a generic power curve, without a learned correction yet.</li>
+            <li><strong>The satellite gain is modest.</strong> About 3% in the first live hour, gone by 8 hours, and it adds a little upward bias on top of the model’s own.</li>
           </ul>
           <p className="cs-aside">
             The app shows these weak spots on its own map instead of hiding them: every test site is
@@ -164,7 +185,7 @@ function CaseStudy() {
           </p>
         </Section>
 
-        <Section num="07" title="Engineering notes">
+        <Section num="09" title="Engineering notes">
           <ul className="cs-list">
             <li><strong>One feature builder for training and serving,</strong> so the live API computes inputs exactly the way the model saw them in training.</li>
             <li><strong>A +1 hour alignment lag</strong> between NASA POWER and Open-Meteo hourly irradiance, found empirically by scanning lags against the data.</li>
@@ -178,9 +199,9 @@ function CaseStudy() {
           <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="cs-shot__link">
             <BrowserFrame
               url="app.abhijeetrathore.in"
-              images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
+              images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp', '/images/app/forecast-finance.webp']}
               ratio={1440 / 900}
-              label="Screenshots of the live app: the India map and a 7-day plant forecast"
+              label="Screenshots of the live app: the India map, a 7-day forecast for a 50 MW plant at Roorkee, and its project financials worked step by step"
             />
           </a>
           <figcaption>Try it: click anywhere in India for a 7-day forecast of your plant.</figcaption>
