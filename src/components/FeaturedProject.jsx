@@ -33,7 +33,7 @@ function FeaturedProject() {
           <h2 className="section-head__title">India Renewables Forecast</h2>
           <p className="section-head__lead">
             A forecasting platform that gives a solar and wind baseline for any location in India.
-            Click a point on the map to get a 3-day PV and wind generation forecast, alongside the
+            Click a point on the map to get a 7-day generation forecast for your plant, alongside the
             long-term resource for that site.
           </p>
         </div>
@@ -110,12 +110,12 @@ function FeaturedProject() {
               url="app.abhijeetrathore.in"
               images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
               ratio={1440 / 900}
-              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, and the results page"
+              label="Screenshots of the India Renewables Forecast app: the India map with the 32 test sites coloured by model skill, and a 7-day forecast for a 50 MW plant at Bhadla"
             />
           </a>
           <figcaption className="featured__shot-caption">
             The live app: click anywhere in India for a forecast. Coloured dots are the 32 test sites, shaded by
-            how much the model beats the raw weather forecast. The second view is the results page.
+            how much the model beats the raw weather forecast. The second view is a 7-day forecast for a 50 MW plant.
           </figcaption>
         </figure>
       </div>

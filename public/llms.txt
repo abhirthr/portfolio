@@ -35,7 +35,7 @@ All pages on this site are prerendered static HTML, so their full text is readab
 
 ## Featured project: India Renewables Forecast (Jan to Mar 2026)
 
-A forecasting platform that gives a solar and wind baseline for any location in India. Click a point on the map to get a 3-day PV and wind generation forecast alongside the long-term resource for that site. Built end to end: data, model, API and web app.
+A forecasting platform that gives a solar and wind baseline for any location in India. Click a point on the map to get a 7-day generation forecast for your plant alongside the long-term resource for that site. Built end to end: data, model, API and web app.
 
 - Model: one India-wide LightGBM model predicts the clear-sky index (GHI / clear-sky GHI) to correct numerical weather prediction irradiance, with P10 / P90 quantile models for an 80% band. Satellite irradiance (NASA POWER) is used only for training; at forecast time only the weather forecast and sun geometry are needed.
 - Temperature: IMD gridded temperature corrects the forecast bias that feeds PV cell temperature and air density.

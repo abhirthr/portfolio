@@ -180,10 +180,10 @@ function CaseStudy() {
               url="app.abhijeetrathore.in"
               images={['/images/app/forecast-map.webp', '/images/app/forecast-results.webp']}
               ratio={1440 / 900}
-              label="Screenshots of the live app: the India map and the results page"
+              label="Screenshots of the live app: the India map and a 7-day plant forecast"
             />
           </a>
-          <figcaption>Try it: click anywhere in India for a 3-day solar and wind forecast.</figcaption>
+          <figcaption>Try it: click anywhere in India for a 7-day forecast of your plant.</figcaption>
         </figure>
 
         <div className="cs-end">
